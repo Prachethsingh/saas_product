@@ -26,6 +26,8 @@ export function SlackModal({ isOpen, onClose, meeting }: SlackModalProps) {
   const [tone, setTone] = useState<ProposalTone>('diplomatic');
   const [customText, setCustomText] = useState<string>('');
   const [copied, setCopied] = useState(false);
+  const [dispatchMode, setDispatchMode] = useState<'bot' | 'webhook'>('bot');
+  const [channelId, setChannelId] = useState('');
   const [webhookUrl, setWebhookUrl] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [sendSuccess, setSendSuccess] = useState(false);
@@ -95,11 +97,16 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSendWebhook = async () => {
-    if (!webhookUrl) {
+  const handleSendToSlack = async () => {
+    if (dispatchMode === 'bot' && !channelId.trim()) {
+      setErrorMessage('Please enter a Slack Channel ID (e.g. C0123456789).');
+      return;
+    }
+    if (dispatchMode === 'webhook' && !webhookUrl.trim()) {
       setErrorMessage('Please enter an incoming Slack Webhook URL.');
       return;
     }
+
     setIsSending(true);
     setErrorMessage('');
     try {
@@ -114,18 +121,20 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
           durationMinutes: meeting.durationMinutes,
           attendeeCount: meeting.attendeeCount,
           hoursReclaimablePerMonth: meeting.hoursReclaimablePerMonth,
-          webhookUrl,
+          customText: activeText,
+          channel: dispatchMode === 'bot' ? channelId.trim() : undefined,
+          webhookUrl: dispatchMode === 'webhook' ? webhookUrl.trim() : undefined,
         }),
       });
       const data = await res.json();
-      if (data.success) {
+      if (data.success && data.sentToSlack) {
         setSendSuccess(true);
-        setTimeout(() => setSendSuccess(false), 4000);
+        setTimeout(() => setSendSuccess(false), 5000);
       } else {
         setErrorMessage(data.error || 'Failed to dispatch to Slack');
       }
     } catch (e: any) {
-      setErrorMessage(e.message || 'Network error');
+      setErrorMessage(e.message || 'Network error occurred');
     } finally {
       setIsSending(false);
     }
@@ -222,35 +231,95 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
             />
           </div>
 
-          {/* Direct webhook sender */}
-          <div className="space-y-1.5 pt-2 border-t border-white/[0.06]">
-            <label className="text-[11px] font-mono uppercase text-zinc-400">
-              Optional: Dispatch directly to team Slack webhook
-            </label>
-            <div className="flex gap-2">
-              <input
-                type="url"
-                placeholder="https://hooks.slack.com/services/..."
-                value={webhookUrl}
-                onChange={(e) => setWebhookUrl(e.target.value)}
-                className="flex-1 px-3 py-1.5 text-xs rounded-lg bg-black/50 border border-white/[0.1] text-white placeholder-zinc-600 focus:outline-none focus:border-white/30 font-mono shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]"
-              />
-              <button
-                onClick={handleSendWebhook}
-                disabled={isSending}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#4A154B] hover:bg-[#611f69] text-white transition-all disabled:opacity-50 shadow-md"
-              >
-                <Send className="w-3 h-3" />
-                <span>{isSending ? 'Sending...' : 'Send'}</span>
-              </button>
+          {/* Direct Slack Dispatch */}
+          <div className="space-y-2.5 pt-3 border-t border-white/[0.08]">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-mono uppercase text-zinc-300 font-semibold flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                1-Click Direct Slack Dispatch:
+              </span>
+              <div className="flex items-center gap-1 p-0.5 rounded-lg bg-black/40 border border-white/[0.08]">
+                <button
+                  type="button"
+                  onClick={() => setDispatchMode('bot')}
+                  className={`px-2 py-0.5 text-[11px] font-mono rounded ${
+                    dispatchMode === 'bot'
+                      ? 'bg-[#4A154B] text-white font-semibold shadow-sm'
+                      : 'text-zinc-400 hover:text-white'
+                  }`}
+                >
+                  Slack Bot (@meetingdebt)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setDispatchMode('webhook')}
+                  className={`px-2 py-0.5 text-[11px] font-mono rounded ${
+                    dispatchMode === 'webhook'
+                      ? 'bg-zinc-700 text-white font-semibold shadow-sm'
+                      : 'text-zinc-400 hover:text-white'
+                  }`}
+                >
+                  Incoming Webhook
+                </button>
+              </div>
             </div>
+
+            {dispatchMode === 'bot' ? (
+              <div className="space-y-1.5">
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    placeholder="Enter Slack Channel ID (e.g. C0123456789)"
+                    value={channelId}
+                    onChange={(e) => setChannelId(e.target.value)}
+                    className="flex-1 px-3 py-2 text-xs rounded-lg bg-black/50 border border-white/[0.1] text-white placeholder-zinc-500 focus:outline-none focus:border-amber-400/50 font-mono shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]"
+                  />
+                  <button
+                    onClick={handleSendToSlack}
+                    disabled={isSending}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-[#4A154B] hover:bg-[#611f69] text-white transition-all disabled:opacity-50 shadow-md whitespace-nowrap"
+                  >
+                    <Send className="w-3 h-3" />
+                    <span>{isSending ? 'Sending...' : 'Post to Channel'}</span>
+                  </button>
+                </div>
+                <p className="text-[11px] text-zinc-400 flex items-center gap-1">
+                  <Info className="w-3 h-3 text-zinc-400 shrink-0" />
+                  <span>Right-click your channel in Slack &rarr; <strong>View channel details</strong> &rarr; Copy <strong>Channel ID</strong> at bottom.</span>
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-1.5">
+                <div className="flex gap-2">
+                  <input
+                    type="url"
+                    placeholder="https://hooks.slack.com/services/..."
+                    value={webhookUrl}
+                    onChange={(e) => setWebhookUrl(e.target.value)}
+                    className="flex-1 px-3 py-2 text-xs rounded-lg bg-black/50 border border-white/[0.1] text-white placeholder-zinc-500 focus:outline-none focus:border-white/30 font-mono shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]"
+                  />
+                  <button
+                    onClick={handleSendToSlack}
+                    disabled={isSending}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium bg-zinc-800 hover:bg-zinc-700 text-white transition-all disabled:opacity-50 shadow-md whitespace-nowrap"
+                  >
+                    <Send className="w-3 h-3" />
+                    <span>{isSending ? 'Sending...' : 'Send Webhook'}</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
             {sendSuccess && (
-              <p className="text-xs text-emerald-400 font-mono">
-                ✓ Posted to Slack channel.
-              </p>
+              <div className="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-emerald-400" />
+                <span>✓ Successfully posted meeting proposal to Slack channel!</span>
+              </div>
             )}
             {errorMessage && (
-              <p className="text-xs text-rose-400 font-mono">{errorMessage}</p>
+              <div className="p-2.5 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-mono">
+                {errorMessage}
+              </div>
             )}
           </div>
         </div>

@@ -41,15 +41,33 @@ export async function POST(request: Request) {
     // If user provided a webhook URL or channel, send it directly to Slack
     let sentToSlack = false;
     let channelResult = null;
+    const messageText = body.customText || draft.text;
+
     if (webhookUrl) {
-      await sendSlackWebhook(webhookUrl, draft.mrkdwnPayload);
+      const payload = body.customText
+        ? { text: messageText }
+        : draft.mrkdwnPayload;
+      await sendSlackWebhook(webhookUrl, payload);
       sentToSlack = true;
-    } else if (body.channel && process.env.SLACK_BOT_TOKEN) {
+    } else if (body.channel) {
+      if (!process.env.SLACK_BOT_TOKEN) {
+        return NextResponse.json(
+          { success: false, error: 'SLACK_BOT_TOKEN is not configured in environment.' },
+          { status: 400 }
+        );
+      }
       const { postSlackMessage } = await import('@/lib/slack');
       channelResult = await postSlackMessage({
-        channel: body.channel,
-        blocks: draft.mrkdwnPayload.blocks,
-        text: draft.text,
+        channel: body.channel.trim(),
+        text: messageText,
+        blocks: body.customText
+          ? [
+              {
+                type: 'section',
+                text: { type: 'mrkdwn', text: messageText },
+              },
+            ]
+          : draft.mrkdwnPayload.blocks,
       });
       sentToSlack = true;
     }
@@ -58,10 +76,17 @@ export async function POST(request: Request) {
       success: true,
       draft,
       sentToSlack,
+      channelResult,
     });
   } catch (error: any) {
+    let msg = error.message || 'Failed to dispatch Slack message';
+    if (msg.includes('channel_not_found')) {
+      msg = 'Channel not found. Please provide the Slack Channel ID (e.g. C0123456789) found under Channel Details → About in Slack.';
+    } else if (msg.includes('not_in_channel')) {
+      msg = 'The bot is not in this private channel. Either invite @meetingdebt to the channel or use a public channel.';
+    }
     return NextResponse.json(
-      { success: false, error: error.message || 'Failed to generate Slack draft' },
+      { success: false, error: msg },
       { status: 500 }
     );
   }
