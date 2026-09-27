@@ -1,6 +1,24 @@
 # MeetingDebt 💀 — Zombie-Meeting Score & Calendar Auditor
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-saas--product.antideploy.com-emerald?style=for-the-badge&logo=vercel)](https://saas-product.antideploy.com)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Prachethsingh%2Fsaas__product-blue?style=for-the-badge&logo=github)](https://github.com/Prachethsingh/saas_product)
+[![Next.js 14](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Deployment](https://img.shields.io/badge/Deploy-Antideploy-6366f1?style=for-the-badge)](https://antideploy.com)
+
 > **Niche B2B SaaS tool for Engineering Managers & Ops Leads.** Connects read-only to Google Calendar, analyzes attendance decay, detects stale agendas, scores recurring meetings (0–100), and auto-drafts data-backed Slack messages to kill, shorten, or async-ize them.
+
+---
+
+## 🌐 Live Production Deployment
+
+- **Live URL**: [https://saas-product.antideploy.com](https://saas-product.antideploy.com)
+- **Deployment Dashboard**: [Antideploy Console](https://antideploy.com/app/cee70017-5498-4fd1-9ad7-fd238e45f509)
+- **GitHub Repository**: [Prachethsingh/saas_product](https://github.com/Prachethsingh/saas_product)
+
+Deploying fresh updates takes a single command:
+```bash
+npm run deploy:antideploy
+```
 
 ---
 
@@ -40,12 +58,13 @@ All sub-scores are normalized between $0.00$ and $1.00$ before weighting:
 
 ## 🛠️ Stack & Architecture
 
-- **Frontend**: Next.js 14 (App Router) + Tailwind CSS + Lucide Icons
+- **Frontend**: Next.js 14 (App Router) + Tailwind CSS + Lucide Icons + Recharts
 - **Backend**: Next.js 14 API Route Handlers (`/api/calendar/sync`, `/api/cron/rescore`, `/api/slack/draft`, `/api/stripe/checkout`)
+- **Hosting & CI/CD**: [Antideploy](https://antideploy.com) (Containerized Node.js runtime)
 - **Database**: PostgreSQL / Supabase (`db/schema.sql`)
 - **Auth & Calendar API**: NextAuth.js + Google OAuth (`calendar.readonly` scope)
 - **Scoring Engine**: `lib/scoring.ts`
-- **Nightly Worker**: Vercel Cron (`0 2 * * *` configured in `vercel.json`) invoking `jobs/rescore.ts`
+- **Nightly Worker**: Vercel Cron / Antideploy Scheduled Tasks (`jobs/rescore.ts`)
 - **Slack Messaging**: Slack App + Bolt SDK / Webhooks (`lib/slack.ts`)
 - **Payments**: Stripe Billing (`$15/seat/mo` Manager Pro, `$299/mo` Flat Org Tier)
 
@@ -55,6 +74,7 @@ All sub-scores are normalized between $0.00$ and $1.00$ before weighting:
 
 ```
 saas_product/
+├── .antideploy.json                   # Antideploy application configuration
 ├── app/
 │   ├── (auth)/login/page.tsx          # High-conversion Google OAuth permission page
 │   ├── (dashboard)/
@@ -64,7 +84,7 @@ saas_product/
 │   ├── api/
 │   │   ├── auth/[...nextauth]/route.ts# Google OAuth login handler
 │   │   ├── calendar/sync/route.ts     # Google Calendar sync API
-│   │   ├── cron/rescore/route.ts      # Vercel Cron nightly rescore job
+│   │   ├── cron/rescore/route.ts      # Nightly rescore cron job
 │   │   ├── slack/draft/route.ts       # Slack draft generator & webhook sender
 │   │   ├── stripe/checkout/route.ts   # Stripe checkout session generator
 │   │   ├── stripe/webhook/route.ts    # Stripe subscription webhook
@@ -88,9 +108,12 @@ saas_product/
 │   ├── scoring.ts                     # Mathematical zombie score formula
 │   ├── slack.ts                       # Bolt SDK & Slack Block Kit auto-draft generator
 │   └── stripe.ts                      # Stripe SDK, pricing plans & checkout
+├── scripts/
+│   └── deploy-antideploy.mjs          # Standalone Antideploy packaging & deploy pipeline
 ├── .env.local.example                 # Environment configuration template
-├── vercel.json                        # Vercel Cron configuration
-└── package.json
+├── vercel.json                        # Cron configuration
+├── package.json
+└── README.md
 ```
 
 ---
@@ -117,6 +140,19 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
+## 🚢 Deploying to Production (Antideploy)
+
+The project includes pre-configured Antideploy integration:
+
+```bash
+# Package, upload, and deploy container to Antideploy
+npm run deploy:antideploy
+```
+
+Antideploy automatically detects the Next.js runtime, builds the container, and provisions database variables (`DATABASE_URL`).
+
+---
+
 ## 🧪 Testing the Core Features
 
 1. **Dashboard & Score Filters**: Filter by `Kill it (70+)`, `Shorten (40-70)`, `Healthy (<40)`, or `Observation Mode`.
@@ -126,4 +162,4 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
    - The exact mathematical sub-scores: Attendance Decay ($88\%$), Agenda Staleness ($100\%$), Decision Ratio ($95\%$ penalty).
    - The occurrence audit table flagging stale agenda hashes.
 4. **Slack Auto-Draft**: Click **"Auto-Draft Slack"** to preview the pre-composed proposal. Copy it to your clipboard or send it directly via an incoming Slack Webhook.
-5. **Nightly Rescore**: Test the rescoring engine manually by clicking **"Sync Calendar"** in the top navigation or making a POST request to `/api/calendar/sync`.
+5. **Calendar Sync**: Test the rescoring engine manually by clicking **"Sync Calendar"** in the top navigation or triggering `POST /api/calendar/sync`.
