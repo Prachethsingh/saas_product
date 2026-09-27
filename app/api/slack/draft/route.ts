@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { generateSlackDraft, sendSlackWebhook } from '@/lib/slack';
-import { INITIAL_DEMO_MEETINGS } from '@/lib/db';
+import { getMeetingById } from '@/lib/server-db';
 
 export async function POST(request: Request) {
   try {
@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     } = body;
 
     // If meetingId provided, find details
-    const foundMeeting = INITIAL_DEMO_MEETINGS.find((m) => m.id === meetingId);
+    const foundMeeting = meetingId ? await getMeetingById(meetingId) : null;
     const title = meetingTitle || foundMeeting?.title || 'Team Sync';
     const score = zombieScore ?? foundMeeting?.score ?? 75;
     const rec = recommendation || foundMeeting?.recommendation || 'kill';

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { INITIAL_DEMO_MEETINGS } from '@/lib/db';
+import { getMeetingById, updateMeetingStatus } from '@/lib/server-db';
 import { generateSlackDraft } from '@/lib/slack';
 import { calculateZombieScore } from '@/lib/scoring';
 
@@ -8,7 +8,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   const { id } = params;
-  const meeting = INITIAL_DEMO_MEETINGS.find((m) => m.id === id);
+  const meeting = await getMeetingById(id);
 
   if (!meeting) {
     return NextResponse.json({ error: 'Meeting not found' }, { status: 404 });
@@ -68,14 +68,14 @@ export async function PATCH(
 ) {
   const { id } = params;
   const body = await request.json();
-  const meeting = INITIAL_DEMO_MEETINGS.find((m) => m.id === id);
-
-  if (!meeting) {
-    return NextResponse.json({ error: 'Meeting not found' }, { status: 404 });
-  }
 
   if (body.status) {
-    meeting.status = body.status;
+    await updateMeetingStatus(id, body.status);
+  }
+
+  const meeting = await getMeetingById(id);
+  if (!meeting) {
+    return NextResponse.json({ error: 'Meeting not found' }, { status: 404 });
   }
 
   return NextResponse.json({ success: true, meeting });

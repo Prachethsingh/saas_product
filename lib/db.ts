@@ -7,6 +7,8 @@ export const isSupabaseConfigured = Boolean(
   supabaseUrl && supabaseUrl.startsWith('https://') && supabaseKey && supabaseKey.length > 10
 );
 
+export const isPostgresConfigured = Boolean(process.env.DATABASE_URL);
+
 export const supabase = isSupabaseConfigured
   ? createClient(supabaseUrl, supabaseKey)
   : null;

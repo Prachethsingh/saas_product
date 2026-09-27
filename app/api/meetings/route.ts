@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { supabase, isSupabaseConfigured, INITIAL_DEMO_MEETINGS } from '@/lib/db';
+import { supabase, isSupabaseConfigured } from '@/lib/db';
+import { getMeetings } from '@/lib/server-db';
 import { calculateZombieScore } from '@/lib/scoring';
 
 export async function GET(request: Request) {
@@ -21,15 +22,8 @@ export async function GET(request: Request) {
     }
   }
 
-  // Fallback to rich demo data
-  let meetings = [...INITIAL_DEMO_MEETINGS];
-  if (filter && filter !== 'all') {
-    if (filter === 'observation') {
-      meetings = meetings.filter((m) => m.isObservationMode);
-    } else {
-      meetings = meetings.filter((m) => !m.isObservationMode && m.recommendation === filter);
-    }
-  }
+  // Fetch from Postgres (if configured) or fallback to demo data
+  const meetings = await getMeetings(filter);
 
   // Calculate executive totals
   const totalAnnualWaste = meetings.reduce((sum, m) => sum + (m.annualWasteDollars || 0), 0);
