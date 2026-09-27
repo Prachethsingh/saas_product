@@ -38,10 +38,19 @@ export async function POST(request: Request) {
       recentAvgAccepted,
     });
 
-    // If user provided a webhook URL, send it directly to Slack
+    // If user provided a webhook URL or channel, send it directly to Slack
     let sentToSlack = false;
+    let channelResult = null;
     if (webhookUrl) {
       await sendSlackWebhook(webhookUrl, draft.mrkdwnPayload);
+      sentToSlack = true;
+    } else if (body.channel && process.env.SLACK_BOT_TOKEN) {
+      const { postSlackMessage } = await import('@/lib/slack');
+      channelResult = await postSlackMessage({
+        channel: body.channel,
+        blocks: draft.mrkdwnPayload.blocks,
+        text: draft.text,
+      });
       sentToSlack = true;
     }
 

@@ -168,3 +168,35 @@ export async function sendSlackWebhook(webhookUrl: string, payload: unknown) {
   }
   return true;
 }
+
+export async function postSlackMessage(options: {
+  channel: string;
+  blocks?: Array<Record<string, unknown>>;
+  text?: string;
+  botToken?: string;
+}) {
+  const token = options.botToken || process.env.SLACK_BOT_TOKEN;
+  if (!token) {
+    throw new Error('SLACK_BOT_TOKEN is not configured.');
+  }
+
+  const res = await fetch('https://slack.com/api/chat.postMessage', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      channel: options.channel,
+      text: options.text,
+      blocks: options.blocks,
+    }),
+  });
+
+  const data = await res.json();
+  if (!data.ok) {
+    throw new Error(`Slack API error: ${data.error || 'Unknown error'}`);
+  }
+  return data;
+}
+
