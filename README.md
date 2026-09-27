@@ -61,10 +61,10 @@ All sub-scores are normalized between $0.00$ and $1.00$ before weighting:
 - **Frontend**: Next.js 14 (App Router) + Tailwind CSS + Lucide Icons + Recharts
 - **Backend**: Next.js 14 API Route Handlers (`/api/calendar/sync`, `/api/cron/rescore`, `/api/slack/draft`, `/api/stripe/checkout`)
 - **Hosting & CI/CD**: [Antideploy](https://antideploy.com) (Containerized Node.js runtime)
-- **Database**: PostgreSQL / Supabase (`db/schema.sql`)
+- **Database**: Antideploy Built-in PostgreSQL 17 (Auto-provisioned via `DATABASE_URL`, connection pooled via `pg`, auto-migrated schema)
 - **Auth & Calendar API**: NextAuth.js + Google OAuth (`calendar.readonly` scope)
 - **Scoring Engine**: `lib/scoring.ts`
-- **Nightly Worker**: Vercel Cron / Antideploy Scheduled Tasks (`jobs/rescore.ts`)
+- **Nightly Worker**: Antideploy Scheduled Tasks (`jobs/rescore.ts`)
 - **Slack Messaging**: Slack App + Bolt SDK / Webhooks (`lib/slack.ts`)
 - **Payments**: Stripe Billing (`$15/seat/mo` Manager Pro, `$299/mo` Flat Org Tier)
 
@@ -85,10 +85,11 @@ saas_product/
 │   │   ├── auth/[...nextauth]/route.ts# Google OAuth login handler
 │   │   ├── calendar/sync/route.ts     # Google Calendar sync API
 │   │   ├── cron/rescore/route.ts      # Nightly rescore cron job
-│   │   ├── slack/draft/route.ts       # Slack draft generator & webhook sender
+│   │   ├── meetings/route.ts          # Meeting list & executive totals API (Postgres)
+│   │   ├── meetings/[id]/route.ts     # Meeting deep dive & status mutation API (Postgres)
+│   │   ├── slack/draft/route.ts       # Slack draft generator & 1-click dispatch API
 │   │   ├── stripe/checkout/route.ts   # Stripe checkout session generator
-│   │   ├── stripe/webhook/route.ts    # Stripe subscription webhook
-│   │   └── meetings/route.ts          # Meeting list & detail endpoints
+│   │   └── stripe/webhook/route.ts    # Stripe subscription webhook
 │   ├── globals.css                    # Tailwind & dark theme styling
 │   └── layout.tsx                     # Root HTML & metadata
 ├── components/
@@ -97,18 +98,23 @@ saas_product/
 │   ├── score-badge.tsx                # Zombie score visual indicator (0-100)
 │   ├── slack-modal.tsx                # Interactive Slack preview & one-click dispatch
 │   └── pricing-modal.tsx              # Stripe Manager ($15/mo) and Org ($299/mo) plans
+├── migrations/
+│   └── 001_initial_schema.sql         # Antideploy Postgres migration: users, calendars, meetings, occurrences, scores
 ├── db/
-│   └── schema.sql                     # Postgres tables: users, calendars, meetings, occurrences, scores
+│   └── schema.sql                     # Postgres reference schema & views
 ├── jobs/
-│   └── rescore.ts                     # Scheduled rescoring job
+│   └── rescore.ts                     # Scheduled rescoring job (Postgres backed)
 ├── lib/
 │   ├── auth.ts                        # NextAuth Google provider setup
-│   ├── db.ts                          # Supabase client + demo dataset fallback
+│   ├── db.ts                          # Client-safe models & initial demo dataset
+│   ├── postgres.ts                    # Antideploy PostgreSQL pool, auto-migration & queries
+│   ├── server-db.ts                   # Unified database coordinator
 │   ├── google-calendar.ts             # Google Calendar API event parser & token refresh
 │   ├── scoring.ts                     # Mathematical zombie score formula
 │   ├── slack.ts                       # Bolt SDK & Slack Block Kit auto-draft generator
 │   └── stripe.ts                      # Stripe SDK, pricing plans & checkout
 ├── scripts/
+│   ├── check-db.mjs                   # Antideploy database health & table inspection script
 │   └── deploy-antideploy.mjs          # Standalone Antideploy packaging & deploy pipeline
 ├── .env.local.example                 # Environment configuration template
 ├── vercel.json                        # Cron configuration
