@@ -21,7 +21,10 @@ export function PricingModal({ isOpen, onClose }: PricingModalProps) {
       const res = await fetch('/api/stripe/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ planId }),
+        body: JSON.stringify({
+          planId,
+          returnUrl: typeof window !== 'undefined' ? window.location.origin : undefined,
+        }),
       });
       const data = await res.json();
       if (data.url) {

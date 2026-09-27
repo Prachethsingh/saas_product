@@ -3,7 +3,9 @@ import { createCheckoutSession, PLANS } from '@/lib/stripe';
 
 export async function POST(request: Request) {
   try {
-    const { planId, returnUrl = 'http://localhost:3000' } = await request.json();
+    const origin = request.headers.get('origin') || process.env.NEXTAUTH_URL || 'https://saas-product.antideploy.com';
+    const body = await request.json();
+    const { planId, returnUrl = origin } = body;
     const plan = planId === 'team' ? PLANS.team : PLANS.manager;
 
     const result = await createCheckoutSession({

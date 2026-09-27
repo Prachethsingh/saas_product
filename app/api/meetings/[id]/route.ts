@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import { getMeetingById, updateMeetingStatus } from '@/lib/server-db';
 import { generateSlackDraft } from '@/lib/slack';
 import { calculateZombieScore } from '@/lib/scoring';
@@ -7,12 +9,20 @@ export async function GET(
   request: Request,
   { params }: { params: { id: string } }
 ) {
-  const { id } = params;
-  const meeting = await getMeetingById(id);
+  const session = await getServerSession(authOptions);
+  const isAuthenticated = Boolean(session?.user);
 
-  if (!meeting) {
+  const { id } = params;
+  const rawMeeting = await getMeetingById(id);
+
+  if (!rawMeeting) {
     return NextResponse.json({ error: 'Meeting not found' }, { status: 404 });
   }
+
+  const meeting = {
+    ...rawMeeting,
+    organizerEmail: isAuthenticated ? rawMeeting.organizerEmail : '[Protected]',
+  };
 
   // Recalculate score live with full occurrence metadata
   const occurrencesInput = meeting.occurrences.map((o) => ({
