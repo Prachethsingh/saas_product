@@ -1,11 +1,11 @@
 /**
  * Nightly Rescoring Job
- * Invoked by Vercel Cron at 02:00 AM UTC or on-demand via admin trigger.
+ * Invoked by Antideploy Cron or on-demand via admin trigger.
  */
 
-import { supabase, isSupabaseConfigured, INITIAL_DEMO_MEETINGS } from '../lib/db';
+import { INITIAL_DEMO_MEETINGS, isPostgresConfigured } from '../lib/db';
 import { calculateZombieScore, OccurrenceInput } from '../lib/scoring';
-import { fetchCalendarEvents, mapGoogleEventsToOccurrences, refreshGoogleAccessToken } from '../lib/google-calendar';
+import { getPostgresPool, initPostgresSchema } from '../lib/postgres';
 
 export interface RescoreSummary {
   calendarsProcessed: number;
@@ -24,102 +24,95 @@ export async function runNightlyRescoreJob(): Promise<RescoreSummary> {
     timestamp: new Date().toISOString(),
   };
 
-  if (!isSupabaseConfigured || !supabase) {
-    // If running in local demo mode, evaluate demo meetings
-    for (const m of INITIAL_DEMO_MEETINGS) {
-      const occurrences: OccurrenceInput[] = m.occurrences.map((o) => ({
-        date: o.date,
-        attendeeCount: o.attendeeCount,
-        acceptedCount: o.acceptedCount,
-        declinedCount: o.declinedCount,
-        durationMinutes: o.durationMinutes,
-        actionItemsLogged: o.actionItemsLogged,
-        agendaText: o.agendaText,
-      }));
+  const pool = getPostgresPool();
 
-      const res = calculateZombieScore(occurrences);
-      m.score = res.score;
-      m.recommendation = res.recommendation;
-      m.isObservationMode = res.isObservationMode;
-      m.annualWasteDollars = res.estimatedAnnualWasteDollars;
-      m.hoursReclaimablePerMonth = res.hoursReclaimablePerMonth;
-
-      summary.meetingsProcessed++;
-      summary.scoresGenerated++;
-      if (res.score >= 70) summary.zombiesFlagged++;
-    }
-
-    summary.calendarsProcessed = 1;
-    return summary;
-  }
-
-  // 1. Fetch active calendars with refresh tokens
-  const { data: calendars, error: calErr } = await supabase
-    .from('calendars')
-    .select('id, user_id, google_email, google_refresh_token');
-
-  if (calErr || !calendars) {
-    throw new Error(`Failed to query calendars: ${calErr?.message}`);
-  }
-
-  for (const cal of calendars) {
-    if (!cal.google_refresh_token) continue;
-    summary.calendarsProcessed++;
-
+  if (isPostgresConfigured && pool) {
     try {
-      // 2. Refresh token & fetch 90 days of events
-      const { accessToken } = await refreshGoogleAccessToken(cal.google_refresh_token);
-      const events = await fetchCalendarEvents(accessToken);
-      const occurrencesByRecurringId = mapGoogleEventsToOccurrences(events);
+      await initPostgresSchema();
+      const { rows: meetings } = await pool.query('SELECT * FROM meetings');
 
-      // 3. For each recurring series, update or insert meeting record & score
-      for (const [googleRecurringId, occs] of Array.from(occurrencesByRecurringId.entries())) {
+      for (const m of meetings) {
+        const { rows: occurrences } = await pool.query(
+          'SELECT * FROM occurrences WHERE meeting_id = $1 ORDER BY occurrence_date ASC',
+          [m.id]
+        );
+
+        const occInputs: OccurrenceInput[] = occurrences.map((o: any) => ({
+          date: o.occurrence_date,
+          attendeeCount: o.attendee_count,
+          acceptedCount: o.accepted_count,
+          declinedCount: o.declined_count,
+          durationMinutes: o.duration_minutes,
+          actionItemsLogged: o.action_items_logged,
+          agendaText: o.agenda_text || '',
+        }));
+
+        const res = calculateZombieScore(occInputs);
+
+        await pool.query(
+          `UPDATE meetings SET
+            score = $1,
+            recommendation = $2,
+            is_observation_mode = $3,
+            annual_waste_dollars = $4,
+            hours_reclaimable_per_month = $5,
+            breakdown_json = $6,
+            updated_at = now()
+           WHERE id = $7`,
+          [
+            res.score,
+            res.recommendation,
+            res.isObservationMode,
+            res.estimatedAnnualWasteDollars,
+            res.hoursReclaimablePerMonth,
+            JSON.stringify(res.breakdown),
+            m.id,
+          ]
+        );
+
+        await pool.query(
+          `INSERT INTO scores (
+            meeting_id, score, recommendation, breakdown_json, occurrences_evaluated
+          ) VALUES ($1, $2, $3, $4, $5)`,
+          [m.id, res.score, res.recommendation, JSON.stringify(res.breakdown), occurrences.length]
+        );
+
         summary.meetingsProcessed++;
-
-        // Calculate score
-        const scoreResult = calculateZombieScore(occs);
-
-        // Fetch or create meeting
-        const { data: meeting } = await supabase
-          .from('meetings')
-          .upsert(
-            {
-              calendar_id: cal.id,
-              google_recurring_event_id: googleRecurringId,
-              title: googleRecurringId, // updated from events if available
-              is_observation_mode: scoreResult.isObservationMode,
-              duration_minutes: occs[0]?.durationMinutes || 30,
-              updated_at: new Date().toISOString(),
-            },
-            { onConflict: 'calendar_id, google_recurring_event_id' }
-          )
-          .select('id')
-          .single();
-
-        if (meeting) {
-          // Record score snapshot
-          await supabase.from('scores').insert({
-            meeting_id: meeting.id,
-            score: scoreResult.score,
-            recommendation: scoreResult.recommendation,
-            breakdown_json: scoreResult.breakdown,
-            occurrences_evaluated: occs.length,
-          });
-
-          summary.scoresGenerated++;
-          if (scoreResult.score >= 70) summary.zombiesFlagged++;
-        }
+        summary.scoresGenerated++;
+        if (res.score >= 70) summary.zombiesFlagged++;
       }
 
-      // Update calendar last synced time
-      await supabase
-        .from('calendars')
-        .update({ last_synced_at: new Date().toISOString() })
-        .eq('id', cal.id);
-    } catch (err) {
-      console.error(`Error processing calendar ${cal.id}:`, err);
+      summary.calendarsProcessed = 1;
+      return summary;
+    } catch (err: any) {
+      console.error('[RescoreJob] Error in Postgres rescore:', err.message);
     }
   }
 
+  // Fallback to local demo meetings
+  for (const m of INITIAL_DEMO_MEETINGS) {
+    const occurrences: OccurrenceInput[] = m.occurrences.map((o) => ({
+      date: o.date,
+      attendeeCount: o.attendeeCount,
+      acceptedCount: o.acceptedCount,
+      declinedCount: o.declinedCount,
+      durationMinutes: o.durationMinutes,
+      actionItemsLogged: o.actionItemsLogged,
+      agendaText: o.agendaText,
+    }));
+
+    const res = calculateZombieScore(occurrences);
+    m.score = res.score;
+    m.recommendation = res.recommendation;
+    m.isObservationMode = res.isObservationMode;
+    m.annualWasteDollars = res.estimatedAnnualWasteDollars;
+    m.hoursReclaimablePerMonth = res.hoursReclaimablePerMonth;
+
+    summary.meetingsProcessed++;
+    summary.scoresGenerated++;
+    if (res.score >= 70) summary.zombiesFlagged++;
+  }
+
+  summary.calendarsProcessed = 1;
   return summary;
 }

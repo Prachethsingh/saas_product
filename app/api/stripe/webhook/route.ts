@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
-import { supabase, isSupabaseConfigured } from '@/lib/db';
+import { isPostgresConfigured } from '@/lib/db';
+import { queryPostgres } from '@/lib/postgres';
 
 export async function POST(request: Request) {
   const body = await request.text();
@@ -21,26 +22,21 @@ export async function POST(request: Request) {
         const customerId = session.customer;
         const subscriptionId = session.subscription;
 
-        if (userId && isSupabaseConfigured && supabase) {
-          await supabase
-            .from('users')
-            .update({
-              stripe_customer_id: customerId,
-              stripe_subscription_id: subscriptionId,
-              plan: 'manager',
-              updated_at: new Date().toISOString(),
-            })
-            .eq('id', userId);
+        if (userId && isPostgresConfigured) {
+          await queryPostgres(
+            'UPDATE users SET stripe_customer_id = $1, stripe_subscription_id = $2, plan = $3, updated_at = now() WHERE id = $4',
+            [customerId, subscriptionId, 'manager', userId]
+          );
         }
         break;
       }
       case 'customer.subscription.deleted': {
         const sub = event.data.object as any;
-        if (isSupabaseConfigured && supabase) {
-          await supabase
-            .from('users')
-            .update({ plan: 'free', updated_at: new Date().toISOString() })
-            .eq('stripe_subscription_id', sub.id);
+        if (isPostgresConfigured) {
+          await queryPostgres(
+            'UPDATE users SET plan = $1, updated_at = now() WHERE stripe_subscription_id = $2',
+            ['free', sub.id]
+          );
         }
         break;
       }

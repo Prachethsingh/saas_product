@@ -1,17 +1,6 @@
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
-
-export const isSupabaseConfigured = Boolean(
-  supabaseUrl && supabaseUrl.startsWith('https://') && supabaseKey && supabaseKey.length > 10
-);
-
 export const isPostgresConfigured = Boolean(process.env.DATABASE_URL);
-
-export const supabase = isSupabaseConfigured
-  ? createClient(supabaseUrl, supabaseKey)
-  : null;
+export const isSupabaseConfigured = false;
+export const supabase = null;
 
 /**
  * Mock demo dataset for out-of-the-box evaluation without requiring immediate DB credentials
