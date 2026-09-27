@@ -7,15 +7,17 @@ import {
   RotateCw, 
   Sparkles, 
   Calendar,
-  CheckCircle2
+  CheckCircle2,
+  BookOpen
 } from 'lucide-react';
 
 interface DashboardNavProps {
   onSyncTriggered?: () => void;
   onOpenPricing?: () => void;
+  onOpenGuide?: () => void;
 }
 
-export function DashboardNav({ onSyncTriggered, onOpenPricing }: DashboardNavProps) {
+export function DashboardNav({ onSyncTriggered, onOpenPricing, onOpenGuide }: DashboardNavProps) {
   const [isSyncing, setIsSyncing] = useState(false);
   const [justSynced, setJustSynced] = useState(false);
 
@@ -59,7 +61,17 @@ export function DashboardNav({ onSyncTriggered, onOpenPricing }: DashboardNavPro
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
+          {/* In-App Guide Button */}
+          <button
+            onClick={onOpenGuide}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-amber-200 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/25 hover:border-amber-500/40 backdrop-blur-xl shadow-sm transition-all"
+            title="Open Product Guide & User Manual"
+          >
+            <BookOpen className="w-3.5 h-3.5 text-amber-300" />
+            <span className="hidden sm:inline">Product Guide</span>
+          </button>
+
           <button
             onClick={handleManualSync}
             disabled={isSyncing}
@@ -67,7 +79,7 @@ export function DashboardNav({ onSyncTriggered, onOpenPricing }: DashboardNavPro
             title="Sync latest 90 days from Google Calendar"
           >
             <RotateCw className={`w-3.5 h-3.5 text-zinc-400 ${isSyncing ? 'animate-spin text-zinc-100' : ''}`} />
-            <span>{isSyncing ? 'Syncing...' : justSynced ? 'Synced' : 'Sync Calendar'}</span>
+            <span className="hidden sm:inline">{isSyncing ? 'Syncing...' : justSynced ? 'Synced' : 'Sync Calendar'}</span>
           </button>
 
           <button
@@ -75,7 +87,8 @@ export function DashboardNav({ onSyncTriggered, onOpenPricing }: DashboardNavPro
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-100 bg-white/[0.08] hover:bg-white/[0.14] border border-white/[0.15] hover:border-white/[0.28] backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)] transition-all"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-            <span>Plans & Billing</span>
+            <span className="hidden sm:inline">Plans & Billing</span>
+            <span className="sm:hidden">Plans</span>
           </button>
 
           <div className="w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.12] backdrop-blur-xl flex items-center justify-center text-[11px] font-mono text-zinc-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)]">

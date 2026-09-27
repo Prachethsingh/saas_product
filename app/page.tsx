@@ -9,8 +9,9 @@ import {
   Info, 
   Flame,
   CheckCircle2,
-  Sparkles,
-  Check
+  Sparkles,  Check,
+  BookOpen,
+  ArrowRight
 } from 'lucide-react';
 import { MeetingCard } from '@/components/meeting-card';
 import { SlackModal } from '@/components/slack-modal';
@@ -146,6 +147,14 @@ export default function DashboardPage() {
           />
           <span className="font-mono font-medium text-white tabular-nums">${hourlyRate}/hr</span>
         </div>
+
+        <button
+          onClick={() => window.dispatchEvent(new CustomEvent('open-guide'))}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-amber-200 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 backdrop-blur-xl transition-all shadow-sm cursor-pointer"
+        >
+          <BookOpen className="w-3.5 h-3.5 text-amber-300" />
+          <span>How to Use (Guide)</span>
+        </button>
       </div>
 
       {/* KPI Overview Grid - Apple Liquid Glass Panels */}
@@ -191,11 +200,30 @@ export default function DashboardPage() {
       </div>
 
       {/* Interactive Meeting Doctor & Simulator */}
+      <div id="meeting-simulator">
       <MeetingSimulator
         hourlyRate={hourlyRate}
         onAddMeeting={handleAddSimulatedMeeting}
         onOpenSlackDraft={(m) => setSelectedSlackMeeting(m)}
       />
+      </div>
+
+      {/* Interactive Quick Guide Banner */}
+      <div className="rounded-xl border border-amber-500/25 bg-amber-500/[0.05] backdrop-blur-xl px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-[inset_0_1px_0_0_rgba(245,158,11,0.15)]">
+        <div className="flex items-center gap-2.5 text-zinc-300">
+          <BookOpen className="w-4 h-4 text-amber-400 shrink-0" />
+          <span>
+            <strong className="text-white font-medium">New to MeetingDebt?</strong> Read our interactive guide on the 5-signal formula, Slack bot dispatch, and calendar auditing.
+          </span>
+        </div>
+        <button
+          onClick={() => window.dispatchEvent(new CustomEvent('open-guide'))}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-500/30 font-semibold text-[11px] font-mono transition-all self-start sm:self-auto shrink-0 shadow-sm cursor-pointer"
+        >
+          <span>Open Guide & Tour</span>
+          <ArrowRight className="w-3 h-3" />
+        </button>
+      </div>
 
       {/* Observation Mode Notice */}
       <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-xl px-4 py-3 flex items-start sm:items-center justify-between gap-3 text-xs shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
