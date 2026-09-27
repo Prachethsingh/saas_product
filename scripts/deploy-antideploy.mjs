@@ -73,6 +73,8 @@ console.log(`Archive created: ${archiveSizeKB} KB`);
 const boundary = `----AntideployBoundary${Date.now()}`;
 const crlf = '\r\n';
 
+const isForce = process.argv.includes('--force');
+
 const headerParts = [
   `--${boundary}`,
   'Content-Disposition: form-data; name="archive"; filename="project.tar.gz"',
@@ -89,7 +91,6 @@ const totalLength = preBuffer.length + archiveData.length + postBuffer.length;
 
 console.log('Pushing archive to Antideploy API...');
 
-const isForce = process.argv.includes('--force');
 const deployUrl = `https://antideploy.com/api/v1/deploy?applicationId=${applicationId}${isForce ? '&force=true' : ''}`;
 
 const req = https.request(deployUrl, {
