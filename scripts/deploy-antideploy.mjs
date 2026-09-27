@@ -89,7 +89,10 @@ const totalLength = preBuffer.length + archiveData.length + postBuffer.length;
 
 console.log('Pushing archive to Antideploy API...');
 
-const req = https.request(`https://antideploy.com/api/v1/deploy?applicationId=${applicationId}`, {
+const isForce = process.argv.includes('--force');
+const deployUrl = `https://antideploy.com/api/v1/deploy?applicationId=${applicationId}${isForce ? '&force=true' : ''}`;
+
+const req = https.request(deployUrl, {
   method: 'POST',
   headers: {
     'Authorization': `Bearer ${token}`,
