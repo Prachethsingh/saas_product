@@ -1,17 +1,25 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Activity, ShieldCheck, ArrowRight, Lock, Check } from 'lucide-react';
+import React, { useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { signIn } from 'next-auth/react';
+import { Activity, ShieldCheck, ArrowRight, Lock, Check, AlertCircle } from 'lucide-react';
 import { LiquidGlassCard } from '@/components/ui/liquid-glass';
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const error = searchParams.get('error');
   const [connecting, setConnecting] = useState(false);
 
-  const handleGoogleSignIn = () => {
-    setConnecting(true);
-    window.location.href = '/api/auth/signin/google';
+  const handleGoogleSignIn = async () => {
+    try {
+      setConnecting(true);
+      await signIn('google', { callbackUrl: '/' });
+    } catch (err) {
+      console.error(err);
+      setConnecting(false);
+    }
   };
 
   const handleDemoSignIn = () => {
@@ -34,13 +42,32 @@ export default function LoginPage() {
           </p>
         </div>
 
+        {/* Error Alert */}
+        {error && (
+          <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-start gap-2 animate-fade-in">
+            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-rose-500" />
+            <div>
+              <div className="font-semibold">Sign-in Notice:</div>
+              <div className="mt-0.5 text-[11px] text-rose-700 leading-normal">
+                {error === 'OAuthSignin' || error === 'google'
+                  ? 'Could not initiate Google OAuth. Verify that Authorized redirect URI is set in Google Cloud Console.'
+                  : error === 'OAuthCallback'
+                  ? 'Google rejected the callback. Verify that Authorized redirect URI matches http://localhost:3000/api/auth/callback/google.'
+                  : error === 'AccessDenied'
+                  ? 'Access was denied. Ensure your Google account is added under Test Users in Google Cloud OAuth consent screen.'
+                  : `Authentication error code: ${error}`}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Card */}
         <LiquidGlassCard variant="serene" className="p-6 space-y-5 bg-white/95 border-sky-100 shadow-xl">
           <div className="space-y-2">
             <button
               onClick={handleGoogleSignIn}
               disabled={connecting}
-              className="w-full py-2.5 px-3 rounded-lg text-xs font-medium text-white bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 flex items-center justify-center gap-2 shadow-sm transition-all disabled:opacity-50"
+              className="w-full py-2.5 px-3 rounded-lg text-xs font-medium text-white bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 flex items-center justify-center gap-2 shadow-sm transition-all duration-200 ease-spring active:scale-95 disabled:opacity-50"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -84,5 +111,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-xs text-slate-500">Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
