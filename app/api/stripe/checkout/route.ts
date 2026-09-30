@@ -12,6 +12,8 @@ export async function POST(request: Request) {
       userId: 'user_current_lead',
       userEmail: 'ops.lead@startup.com',
       priceId: plan.priceId,
+      planName: `MeetingDebt - ${plan.name}`,
+      amountInCents: plan.price * 100,
       returnUrl,
     });
 

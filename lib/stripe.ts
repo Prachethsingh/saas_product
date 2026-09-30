@@ -64,7 +64,9 @@ export const PLANS = {
 export async function createCheckoutSession(params: {
   userId: string;
   userEmail: string;
-  priceId: string;
+  priceId?: string;
+  planName?: string;
+  amountInCents?: number;
   returnUrl: string;
   quantity?: number;
 }) {
@@ -75,17 +77,38 @@ export async function createCheckoutSession(params: {
     };
   }
 
+  const hasPredefinedPrice = params.priceId && params.priceId.startsWith('price_') && !params.priceId.includes('sample');
+
+  const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = hasPredefinedPrice
+    ? [
+        {
+          price: params.priceId,
+          quantity: params.quantity || 1,
+        },
+      ]
+    : [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: params.planName || 'MeetingDebt Subscription',
+              description: 'Calendar Audit & Zombie Meeting Scoring Subscription',
+            },
+            unit_amount: params.amountInCents || 1500,
+            recurring: {
+              interval: 'month',
+            },
+          },
+          quantity: params.quantity || 1,
+        },
+      ];
+
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     billing_address_collection: 'auto',
     customer_email: params.userEmail,
     client_reference_id: params.userId,
-    line_items: [
-      {
-        price: params.priceId,
-        quantity: params.quantity || 1,
-      },
-    ],
+    line_items: lineItems,
     mode: 'subscription',
     success_url: `${params.returnUrl}?session_id={CHECKOUT_SESSION_ID}&success=true`,
     cancel_url: `${params.returnUrl}?canceled=true`,
