@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { DashboardNav } from '@/components/dashboard-nav';
 import { PricingModal } from '@/components/pricing-modal';
 import { GuideModal } from '@/components/guide-modal';
-import { LiquidGlassFilterDefs } from '@/components/ui/liquid-glass';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [isPricingOpen, setIsPricingOpen] = useState(false);
@@ -23,10 +22,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col text-zinc-100 selection:bg-rose-500/20 selection:text-white">
-      {/* SVG Refraction Filters */}
-      <LiquidGlassFilterDefs />
-
+    <div className="min-h-screen flex flex-col bg-white text-slate-900">
       <DashboardNav 
         onOpenPricing={() => setIsPricingOpen(true)} 
         onOpenGuide={() => setIsGuideOpen(true)}
@@ -50,26 +46,26 @@ export function Providers({ children }: { children: React.ReactNode }) {
         }}
       />
 
-      <footer className="border-t border-white/[0.08] py-6 text-center text-xs text-zinc-500 bg-[#07080c]/80 backdrop-blur-md">
+      <footer className="border-t border-slate-200 py-6 text-center text-xs text-slate-500 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} MeetingDebt. Built for EMs, Ops Leads, and Engineering teams.</p>
-          <div className="flex items-center gap-3 text-zinc-400 font-mono text-[11px] flex-wrap">
+          <p>© {new Date().getFullYear()} MeetingDebt. Calendar analytics for engineering teams.</p>
+          <div className="flex items-center gap-3 text-slate-600 font-mono text-[11px] flex-wrap">
             <button
               onClick={() => setIsGuideOpen(true)}
-              className="text-amber-300/80 hover:text-amber-200 transition-colors underline-offset-4 hover:underline"
+              className="text-slate-600 hover:text-slate-900 transition-colors font-medium underline-offset-4 hover:underline"
             >
-              📖 Product Guide
+              Documentation
             </button>
-            <span className="text-zinc-600">•</span>
-            <Link href="/privacy" className="hover:text-white transition-colors underline-offset-4 hover:underline">
+            <span className="text-slate-300">/</span>
+            <Link href="/privacy" className="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">
               Privacy Policy
             </Link>
-            <span className="text-zinc-600">•</span>
-            <Link href="/terms" className="hover:text-white transition-colors underline-offset-4 hover:underline">
+            <span className="text-slate-300">/</span>
+            <Link href="/terms" className="hover:text-slate-900 transition-colors underline-offset-4 hover:underline">
               Terms of Service
             </Link>
-            <span className="text-zinc-600">•</span>
-            <span>Google API Limited Use</span>
+            <span className="text-slate-300">/</span>
+            <span>Google API Limited Use Compliance</span>
           </div>
         </div>
       </footer>

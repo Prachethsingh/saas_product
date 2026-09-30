@@ -1,6 +1,6 @@
 /**
  * Slack Integration & Auto-Draft Message Generator
- * Proposes courteous, data-backed Slack drafts to kill, async-ize, or shorten zombie meetings.
+ * Generates courteous, data-backed Slack notice drafts for recurring meetings.
  */
 
 export interface SlackDraftParams {
@@ -10,7 +10,7 @@ export interface SlackDraftParams {
   earlyAvgAccepted?: number;
   recentAvgAccepted?: number;
   durationMinutes: number;
-  attendeeCount: number;
+  attendeeCount?: number;
   hoursReclaimablePerMonth: number;
   estimatedAnnualWasteDollars?: number;
   channelOrRecipient?: string;
@@ -33,21 +33,20 @@ export function generateSlackDraft(params: SlackDraftParams): SlackDraftMessage 
     earlyAvgAccepted = 8,
     recentAvgAccepted = 3,
     durationMinutes,
-    attendeeCount,
     hoursReclaimablePerMonth,
   } = params;
 
   if (recommendation === 'kill' || zombieScore >= 70) {
     const rawText = 
-`👋 Hey team — I've been reviewing our recurring syncs to protect everyone's deep-work focus.
+`Team: I have been reviewing our recurring syncs to protect everyone's deep-work focus time.
 
-Over the last 8 occurrences of *${meetingTitle}*, attendance has dropped from ~${Math.round(earlyAvgAccepted)} down to ~${Math.round(recentAvgAccepted)} attendees, and most updates can now be shared asynchronously.
+Over the last 8 occurrences of *${meetingTitle}*, accepted attendance dropped from ~${Math.round(earlyAvgAccepted)} down to ~${Math.round(recentAvgAccepted)} attendees, and routine updates can be shared asynchronously.
 
-🎯 *Proposal:* Let's cancel this recurring calendar slot and move our updates to an async weekly thread in this channel instead.
+Proposal: Cancel this recurring calendar slot and move our updates to an async weekly thread in this channel instead.
 
-This frees up *~${hoursReclaimablePerMonth} hours/month* of uninterrupted engineering time across the team.
+This recovers approximately ${hoursReclaimablePerMonth} hours/month of uninterrupted engineering time across the team.
 
-Reply with :+1: if you support killing it, or let me know if there's a critical blocker that still requires live synchronous discussion!`;
+Please comment with your thoughts or let me know if there is a critical topic that still requires live synchronous discussion.`;
 
     return {
       subject: `Proposal: Sunset recurring "${meetingTitle}" & switch to async`,
@@ -58,15 +57,14 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
             type: 'header',
             text: {
               type: 'plain_text',
-              text: `Calendar Hygiene: Sunset "${meetingTitle}"?`,
-              emoji: true,
+              text: `Schedule Review: Sunset "${meetingTitle}"?`,
             },
           },
           {
             type: 'section',
             text: {
               type: 'mrkdwn',
-              text: `Hey team! Our calendar audit flagged *${meetingTitle}* as a candidate to transition to async updates.\n\n*Signal breakdown:* Zombie score is *${zombieScore}/100*. Active attendance declined from *${earlyAvgAccepted}* to *${recentAvgAccepted}* participants over the last 2 months.`,
+              text: `Team: Calendar audit flagged *${meetingTitle}* as a candidate to transition to async updates.\n\n*Signal summary:* Composite score is *${zombieScore}/100*. Active attendance declined from *${earlyAvgAccepted}* to *${recentAvgAccepted}* participants over the last 2 months.`,
             },
           },
           {
@@ -78,7 +76,7 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
               },
               {
                 type: 'mrkdwn',
-                text: `*Suggested Alternative:*\nAsync Monday Slack Thread`,
+                text: `*Alternative:*\nAsync Weekly Status Thread`,
               },
             ],
           },
@@ -87,7 +85,7 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
             elements: [
               {
                 type: 'button',
-                text: { type: 'plain_text', text: '👍 Kill Series' },
+                text: { type: 'plain_text', text: 'Sunset Series' },
                 style: 'danger',
                 value: 'kill_meeting',
               },
@@ -106,13 +104,13 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
   if (recommendation === 'shorten' || zombieScore >= 40) {
     const suggestedDuration = durationMinutes > 30 ? 25 : 15;
     const rawText = 
-`Hey team — proposing a quick tweak to *${meetingTitle}*.
+`Team: Proposing a duration adjustment for *${meetingTitle}*.
 
-Right now we have ${durationMinutes} minutes blocked on the calendar. To keep the discussion crisp and give everyone time back between back-to-back calls:
+Right now we have ${durationMinutes} minutes scheduled on the calendar. To keep the discussion crisp and give everyone recovery time between back-to-back calls:
 
-⚡ *Proposal:* Trim this meeting from *${durationMinutes}m → ${suggestedDuration}m*, and require 3 bullet points in the agenda 1 hour before start.
+Proposal: Trim this meeting from *${durationMinutes}m to ${suggestedDuration}m*, and require a brief written agenda in the calendar invite description.
 
-Let me know if that works for everyone starting next week!`;
+Please comment if that works for you starting next week.`;
 
     return {
       subject: `Proposal: Shorten "${meetingTitle}" from ${durationMinutes}m to ${suggestedDuration}m`,
@@ -123,8 +121,7 @@ Let me know if that works for everyone starting next week!`;
             type: 'header',
             text: {
               type: 'plain_text',
-              text: `⚡ Shorten "${meetingTitle}"?`,
-              emoji: true,
+              text: `Shorten "${meetingTitle}"?`,
             },
           },
           {
@@ -141,8 +138,8 @@ Let me know if that works for everyone starting next week!`;
 
   // Healthy
   return {
-    subject: `Meeting Health: "${meetingTitle}" is high-performing`,
-    text: `Great news: "${meetingTitle}" has high attendance and consistent action items. No calendar intervention needed!`,
+    subject: `Meeting Review: "${meetingTitle}" is high-performing`,
+    text: `Notice: "${meetingTitle}" has high attendance and consistent participation. No schedule changes recommended.`,
     mrkdwnPayload: {
       blocks: [
         {
@@ -199,4 +196,3 @@ export async function postSlackMessage(options: {
   }
   return data;
 }
-

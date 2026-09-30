@@ -19,28 +19,28 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#07080c] text-zinc-100 flex flex-col justify-center items-center px-4 py-12">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col justify-center items-center px-4 py-12">
       <div className="w-full max-w-sm space-y-6">
         {/* Brand */}
-        <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/[0.05] border border-white/[0.12] backdrop-blur-xl text-white mb-1 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]">
-            <Activity className="w-5 h-5 text-zinc-100" />
+        <div className="text-center space-y-1.5">
+          <div className="inline-flex items-center justify-center w-8 h-8 rounded-md bg-slate-900 text-white mb-1">
+            <Activity className="w-4 h-4" />
           </div>
-          <h1 className="text-xl font-bold tracking-tight text-white">
+          <h1 className="text-lg font-bold tracking-tight text-slate-900">
             MeetingDebt
           </h1>
-          <p className="text-xs text-zinc-400">
-            Audit recurring calendar telemetry and eliminate zombie meetings.
+          <p className="text-xs text-slate-500">
+            Calendar analytics and recurring meeting audit.
           </p>
         </div>
 
-        {/* Liquid Glass Card */}
-        <LiquidGlassCard variant="neutral" className="p-6 space-y-5">
-          <div className="space-y-2.5">
+        {/* Card */}
+        <LiquidGlassCard variant="neutral" className="p-6 space-y-5 bg-white border-slate-200 shadow-sm">
+          <div className="space-y-2">
             <button
               onClick={handleGoogleSignIn}
               disabled={connecting}
-              className="w-full py-2.5 px-3 rounded-lg text-xs font-medium text-white bg-white/[0.08] hover:bg-white/[0.14] border border-white/[0.15] backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] flex items-center justify-center gap-2.5 transition-all disabled:opacity-50"
+              className="w-full py-2 px-3 rounded-md text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -53,33 +53,33 @@ export default function LoginPage() {
 
             <button
               onClick={handleDemoSignIn}
-              className="w-full py-2.5 px-3 rounded-lg text-xs font-medium text-zinc-300 bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] backdrop-blur-md flex items-center justify-center gap-1.5 transition-all"
+              className="w-full py-2 px-3 rounded-md text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 flex items-center justify-center gap-1.5 transition-colors"
             >
-              <span>Explore Interactive Demo</span>
-              <ArrowRight className="w-3 h-3 text-zinc-500" />
+              <span>Explore Interactive Dashboard</span>
+              <ArrowRight className="w-3 h-3 text-slate-400" />
             </button>
           </div>
 
-          <div className="pt-4 border-t border-white/[0.06] space-y-2 text-[11px] text-zinc-400">
-            <div className="flex items-center gap-1.5 text-zinc-300 font-medium">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="pt-4 border-t border-slate-200 space-y-2 text-[11px] text-slate-600">
+            <div className="flex items-center gap-1.5 text-slate-900 font-semibold">
+              <ShieldCheck className="w-3.5 h-3.5 text-slate-700" />
               <span>Permission Guarantee</span>
             </div>
-            <ul className="space-y-1 text-zinc-400">
+            <ul className="space-y-1 text-slate-600">
               <li className="flex items-center gap-1.5">
-                <Check className="w-3 h-3 text-emerald-400 shrink-0" />
-                <span><code className="text-zinc-200">calendar.readonly</code> only (cannot edit/delete)</span>
+                <Check className="w-3 h-3 text-slate-700 shrink-0" />
+                <span><code className="text-slate-900 bg-slate-100 px-1 py-0.5 rounded font-mono">calendar.readonly</code> only (read-only access)</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <Check className="w-3 h-3 text-emerald-400 shrink-0" />
-                <span>Zero email body or attachment access</span>
+                <Check className="w-3 h-3 text-slate-700 shrink-0" />
+                <span>Zero email, contact, or document access</span>
               </li>
             </ul>
           </div>
         </LiquidGlassCard>
 
-        <div className="text-center text-[11px] text-zinc-500 flex items-center justify-center gap-1.5">
-          <Lock className="w-3 h-3 text-zinc-400" />
+        <div className="text-center text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
+          <Lock className="w-3 h-3 text-slate-400" />
           <span>SOC-2 certified infrastructure</span>
         </div>
       </div>

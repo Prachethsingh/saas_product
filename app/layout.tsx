@@ -3,9 +3,9 @@ import './globals.css';
 import { Providers } from '@/components/providers';
 
 export const metadata: Metadata = {
-  title: 'MeetingDebt — Zombie-Meeting Score & Calendar Auditor',
-  description: 'Connect Google Calendar to score recurring meetings on attendance decay, agenda staleness, and time sink signals. Auto-draft Slack messages to kill or shorten zombie meetings.',
-  keywords: ['meeting auditor', 'zombie meetings', 'google calendar analytics', 'engineering productivity', 'saas'],
+  title: 'MeetingDebt: Calendar Analytics and Recurring Meeting Audit',
+  description: 'Calendar analytics for engineering teams. Measure recurring meeting attendance decay, identify low-engagement calendar events, and draft schedule adjustments.',
+  keywords: ['meeting auditor', 'recurring meeting analytics', 'google calendar analytics', 'engineering productivity'],
   authors: [{ name: 'MeetingDebt' }],
 };
 
@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="antialiased selection:bg-rose-500/30 selection:text-white bg-[#090a0f] text-zinc-100">
+    <html lang="en">
+      <body className="antialiased selection:bg-slate-200 selection:text-slate-900 bg-white text-slate-900 font-sans">
         <Providers>
           {children}
         </Providers>

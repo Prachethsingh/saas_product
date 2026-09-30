@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Copy, Check, Send, MessageSquare, Info, Sparkles } from 'lucide-react';
-import { generateSlackDraft, SlackDraftMessage } from '@/lib/slack';
+import { X, Copy, Check, Send, MessageSquare, Info } from 'lucide-react';
 import { LiquidGlassCard } from './ui/liquid-glass';
 
 interface SlackModalProps {
@@ -20,7 +19,7 @@ interface SlackModalProps {
   } | null;
 }
 
-type ProposalTone = 'diplomatic' | 'direct' | 'async' | 'humorous';
+type ProposalTone = 'diplomatic' | 'direct' | 'async';
 
 export function SlackModal({ isOpen, onClose, meeting }: SlackModalProps) {
   const [tone, setTone] = useState<ProposalTone>('diplomatic');
@@ -41,46 +40,37 @@ export function SlackModal({ isOpen, onClose, meeting }: SlackModalProps) {
   const getTemplateByTone = (t: ProposalTone): string => {
     switch (t) {
       case 'direct':
-        return `⚠️ Calendar Audit Alert: *${meeting.title}*
+        return `Notice: Calendar review for "${meeting.title}"
 
-Our team spent ~${meeting.durationMinutes * 4} minutes this month on this recurring slot, while active accepted attendance dropped from ${earlyAvg} to ${recentAvg} participants.
+Our team logged ${meeting.durationMinutes * 4} minutes this month on this recurring slot, while accepted attendance dropped from ${earlyAvg} to ${recentAvg} participants.
 
-📊 *Impact:* Sunsetting this meeting will instantly reclaim *~${meeting.hoursReclaimablePerMonth} engineering hours/month*.
+Estimated impact: Sunsetting this recurring slot recovers approximately ${meeting.hoursReclaimablePerMonth} engineering hours/month across participants.
 
-Unless there are active launch blockers requiring live synchronous time, I am canceling next week's occurrence. Please post any critical updates in this channel.`;
+Unless there are active launch blockers requiring live synchronous time, I propose removing next week's occurrence and keeping updates in this channel.`;
 
       case 'async':
-        return `👋 Hey team! Proposing we transition *${meeting.title}* to an asynchronous format.
+        return `Team: Proposing we transition "${meeting.title}" to an asynchronous format.
 
-To protect everyone's focus blocks, let's replace this ${meeting.durationMinutes}-minute calendar call with a weekly automated check-in thread right here in this channel every Monday morning.
+To protect focused engineering blocks, let us replace this ${meeting.durationMinutes}-minute calendar call with a weekly status thread in this channel every Monday morning.
 
-🎯 *Format:*
-1. What shipped last week
-2. Top priority for this week
-3. Immediate blockers
+Format:
+1. Shipped in previous cycle
+2. Priorities for current cycle
+3. Active blockers
 
-Reply with 👍 if you support switching to async!`;
-
-      case 'humorous':
-        return `🧟‍♂️ *Zombie Meeting Alert:* Time to put "${meeting.title}" out of its misery!
-
-Our calendar auditor calculated a *Zombie Score of ${meeting.score}/100*. Attendance has quietly dropped by ~${Math.round(((earlyAvg - recentAvg) / earlyAvg) * 100)}%, and we're mostly staring at each other on mute.
-
-Let's kill this calendar invite and celebrate getting *${meeting.hoursReclaimablePerMonth} hours/month* of our lives back.
-
-Hit 👍 to pull the plug, or speak now to save it!`;
+Please comment if you support switching to an async thread or if live discussion is still needed.`;
 
       case 'diplomatic':
       default:
-        return `👋 Hey team — I've been reviewing our recurring syncs to protect everyone's deep-work focus time.
+        return `Team: I have been reviewing our recurring schedule to protect uninterrupted focus blocks.
 
-Over the last 8 occurrences of *${meeting.title}*, attendance has dropped from ~${earlyAvg} down to ~${recentAvg} attendees, and most updates can now be shared asynchronously.
+Over the last 8 occurrences of "${meeting.title}", accepted attendance dropped from ${earlyAvg} to ${recentAvg} attendees, and routine updates can be shared asynchronously.
 
-🎯 *Proposal:* Let's cancel this recurring calendar slot and move our updates to an async weekly thread in this channel instead.
+Proposal: Remove this recurring calendar invite and move updates to a weekly thread in this channel.
 
-This frees up *~${meeting.hoursReclaimablePerMonth} hours/month* of uninterrupted engineering time across the team.
+This recovers approximately ${meeting.hoursReclaimablePerMonth} engineering hours/month across the team.
 
-Reply with :+1: if you support killing it, or let me know if there's a critical blocker that still requires live synchronous discussion!`;
+Please comment with your feedback or mention if there are topics requiring live synchronous discussion.`;
     }
   };
 
@@ -99,7 +89,7 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
 
   const handleSendToSlack = async () => {
     if (dispatchMode === 'bot' && !channelId.trim()) {
-      setErrorMessage('Please enter a Slack Channel ID (e.g. C0123456789).');
+      setErrorMessage('Please enter a Slack Channel ID (example: C0123456789).');
       return;
     }
     if (dispatchMode === 'webhook' && !webhookUrl.trim()) {
@@ -141,26 +131,26 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <LiquidGlassCard variant="neutral" className="relative w-full max-w-2xl flex flex-col max-h-[92vh] overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
+      <LiquidGlassCard variant="neutral" className="relative w-full max-w-2xl flex flex-col max-h-[92vh] overflow-hidden bg-white border-slate-200 shadow-xl">
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/[0.08] bg-black/40">
-          <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-[#4A154B] flex items-center justify-center text-white shadow-sm">
+        <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-200 bg-slate-50">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-slate-900 flex items-center justify-center text-white">
               <MessageSquare className="w-3.5 h-3.5" />
             </div>
             <div>
-              <h3 className="font-semibold text-white text-sm">
-                Slack Auto-Draft Generator
+              <h3 className="font-semibold text-slate-900 text-sm">
+                Slack Notice Drafter
               </h3>
-              <p className="text-[11px] text-zinc-400">
-                Customizable message templates for "{meeting.title}"
+              <p className="text-[11px] text-slate-500">
+                Message template for "{meeting.title}"
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-colors"
+            className="p-1 rounded text-slate-400 hover:text-slate-700 transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -168,95 +158,84 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
 
         {/* Content */}
         <div className="p-5 overflow-y-auto space-y-4">
-          {/* Tone Selector Pills */}
+          {/* Tone Selector */}
           <div>
-            <label className="text-[11px] font-mono uppercase text-zinc-400 block mb-1.5">
-              Select Message Tone:
+            <label className="text-[11px] font-mono uppercase text-slate-500 font-semibold block mb-1.5">
+              Select Message Format:
             </label>
-            <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex items-center gap-1.5 flex-wrap">
               <button
                 onClick={() => handleToneChange('diplomatic')}
-                className={`px-3 py-1 rounded-full text-xs font-mono transition-all ${
+                className={`px-3 py-1 rounded-md text-xs font-mono transition-colors ${
                   tone === 'diplomatic'
-                    ? 'bg-white text-zinc-950 font-bold shadow-md'
-                    : 'bg-white/[0.04] text-zinc-400 hover:text-white border border-white/10'
+                    ? 'bg-slate-900 text-white font-medium'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
                 }`}
               >
-                Diplomatic & Polite
+                Collaborative
               </button>
               <button
                 onClick={() => handleToneChange('direct')}
-                className={`px-3 py-1 rounded-full text-xs font-mono transition-all ${
+                className={`px-3 py-1 rounded-md text-xs font-mono transition-colors ${
                   tone === 'direct'
-                    ? 'bg-rose-500 text-white font-bold shadow-md'
-                    : 'bg-white/[0.04] text-zinc-400 hover:text-rose-300 border border-white/10'
+                    ? 'bg-slate-900 text-white font-medium'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
                 }`}
               >
-                Direct & Data-Driven
+                Data-Driven
               </button>
               <button
                 onClick={() => handleToneChange('async')}
-                className={`px-3 py-1 rounded-full text-xs font-mono transition-all ${
+                className={`px-3 py-1 rounded-md text-xs font-mono transition-colors ${
                   tone === 'async'
-                    ? 'bg-indigo-500 text-white font-bold shadow-md'
-                    : 'bg-white/[0.04] text-zinc-400 hover:text-indigo-300 border border-white/10'
+                    ? 'bg-slate-900 text-white font-medium'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
                 }`}
               >
-                Async Thread Proposal
-              </button>
-              <button
-                onClick={() => handleToneChange('humorous')}
-                className={`px-3 py-1 rounded-full text-xs font-mono transition-all ${
-                  tone === 'humorous'
-                    ? 'bg-amber-500 text-zinc-950 font-bold shadow-md'
-                    : 'bg-white/[0.04] text-zinc-400 hover:text-amber-300 border border-white/10'
-                }`}
-              >
-                Zombie-Hunter 🧟
+                Async Proposal
               </button>
             </div>
           </div>
 
-          {/* Editable Live Slack Preview */}
+          {/* Editable Preview */}
           <div className="space-y-1.5">
-            <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400">
-              <span>Editable Message Body:</span>
-              <span className="text-zinc-500">{activeText.length} characters</span>
+            <div className="flex items-center justify-between text-[11px] font-mono text-slate-500">
+              <span>Message Body:</span>
+              <span>{activeText.length} characters</span>
             </div>
             <textarea
               rows={8}
               value={activeText}
               onChange={(e) => setCustomText(e.target.value)}
-              className="w-full p-3.5 rounded-xl bg-black/60 border border-white/[0.1] text-zinc-200 text-xs font-mono leading-relaxed focus:outline-none focus:border-white/30 shadow-inner resize-none"
+              className="w-full p-3 rounded-md bg-white border border-slate-200 text-slate-800 text-xs font-mono leading-relaxed focus:outline-none focus:border-slate-400 resize-none"
             />
           </div>
 
-          {/* Direct Slack Dispatch */}
-          <div className="space-y-2.5 pt-3 border-t border-white/[0.08]">
+          {/* Dispatch Settings */}
+          <div className="space-y-2.5 pt-3 border-t border-slate-200">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-mono uppercase text-zinc-300 font-semibold flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                1-Click Direct Slack Dispatch:
+              <span className="text-xs font-medium text-slate-700">
+                Direct Dispatch:
               </span>
-              <div className="flex items-center gap-1 p-0.5 rounded-lg bg-black/40 border border-white/[0.08]">
+              <div className="flex items-center gap-1 p-0.5 rounded-md bg-slate-100 border border-slate-200">
                 <button
                   type="button"
                   onClick={() => setDispatchMode('bot')}
                   className={`px-2 py-0.5 text-[11px] font-mono rounded ${
                     dispatchMode === 'bot'
-                      ? 'bg-[#4A154B] text-white font-semibold shadow-sm'
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'bg-white text-slate-900 font-medium shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  Slack Bot (@meetingdebt)
+                  Bot App
                 </button>
                 <button
                   type="button"
                   onClick={() => setDispatchMode('webhook')}
                   className={`px-2 py-0.5 text-[11px] font-mono rounded ${
                     dispatchMode === 'webhook'
-                      ? 'bg-zinc-700 text-white font-semibold shadow-sm'
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'bg-white text-slate-900 font-medium shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   Incoming Webhook
@@ -269,23 +248,23 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
                 <div className="flex gap-2">
                   <input
                     type="text"
-                    placeholder="Enter Slack Channel ID (e.g. C0123456789)"
+                    placeholder="Slack Channel ID (e.g. C0123456789)"
                     value={channelId}
                     onChange={(e) => setChannelId(e.target.value)}
-                    className="flex-1 px-3 py-2 text-xs rounded-lg bg-black/50 border border-white/[0.1] text-white placeholder-zinc-500 focus:outline-none focus:border-amber-400/50 font-mono shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]"
+                    className="flex-1 px-2.5 py-1.5 text-xs rounded-md bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-400 font-mono"
                   />
                   <button
                     onClick={handleSendToSlack}
                     disabled={isSending}
-                    className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-[#4A154B] hover:bg-[#611f69] text-white transition-all disabled:opacity-50 shadow-md whitespace-nowrap"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-slate-900 hover:bg-slate-800 text-white transition-colors disabled:opacity-50 whitespace-nowrap"
                   >
                     <Send className="w-3 h-3" />
                     <span>{isSending ? 'Sending...' : 'Post to Channel'}</span>
                   </button>
                 </div>
-                <p className="text-[11px] text-zinc-400 flex items-center gap-1">
-                  <Info className="w-3 h-3 text-zinc-400 shrink-0" />
-                  <span>Right-click your channel in Slack &rarr; <strong>View channel details</strong> &rarr; Copy <strong>Channel ID</strong> at bottom.</span>
+                <p className="text-[11px] text-slate-500 flex items-center gap-1">
+                  <Info className="w-3 h-3 text-slate-400 shrink-0" />
+                  <span>Right-click your channel in Slack, select View channel details, and copy Channel ID.</span>
                 </p>
               </div>
             ) : (
@@ -296,12 +275,12 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
                     placeholder="https://hooks.slack.com/services/..."
                     value={webhookUrl}
                     onChange={(e) => setWebhookUrl(e.target.value)}
-                    className="flex-1 px-3 py-2 text-xs rounded-lg bg-black/50 border border-white/[0.1] text-white placeholder-zinc-500 focus:outline-none focus:border-white/30 font-mono shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]"
+                    className="flex-1 px-2.5 py-1.5 text-xs rounded-md bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-400 font-mono"
                   />
                   <button
                     onClick={handleSendToSlack}
                     disabled={isSending}
-                    className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium bg-zinc-800 hover:bg-zinc-700 text-white transition-all disabled:opacity-50 shadow-md whitespace-nowrap"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-slate-900 hover:bg-slate-800 text-white transition-colors disabled:opacity-50 whitespace-nowrap"
                   >
                     <Send className="w-3 h-3" />
                     <span>{isSending ? 'Sending...' : 'Send Webhook'}</span>
@@ -311,31 +290,31 @@ Reply with :+1: if you support killing it, or let me know if there's a critical 
             )}
 
             {sendSuccess && (
-              <div className="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono flex items-center gap-1.5">
-                <Check className="w-3.5 h-3.5 text-emerald-400" />
-                <span>✓ Successfully posted meeting proposal to Slack channel!</span>
+              <div className="p-2 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Message successfully posted to Slack channel.</span>
               </div>
             )}
             {errorMessage && (
-              <div className="p-2.5 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-mono">
+              <div className="p-2 rounded-md bg-rose-50 border border-rose-200 text-rose-800 text-xs font-mono">
                 {errorMessage}
               </div>
             )}
           </div>
         </div>
 
-        {/* Footer controls */}
-        <div className="px-5 py-3 border-t border-white/[0.08] bg-black/40 flex items-center justify-between">
-          <span className="text-xs font-mono text-zinc-400">
-            Reclaims <strong className="text-zinc-200">~{meeting.hoursReclaimablePerMonth} hrs/mo</strong>
+        {/* Footer */}
+        <div className="px-5 py-3 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
+          <span className="text-xs font-mono text-slate-500">
+            Reclaims approx. {meeting.hoursReclaimablePerMonth} hrs/mo
           </span>
 
           <button
             onClick={handleCopy}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-white text-zinc-950 hover:bg-zinc-200 transition-all shadow-md"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-slate-900 text-white hover:bg-slate-800 transition-colors"
           >
-            {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-zinc-900" />}
-            <span>{copied ? 'Copied to Clipboard!' : 'Copy Slack Proposal'}</span>
+            {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-white" />}
+            <span>{copied ? 'Copied to Clipboard' : 'Copy Notice Text'}</span>
           </button>
         </div>
       </LiquidGlassCard>

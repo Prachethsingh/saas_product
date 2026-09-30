@@ -251,9 +251,9 @@ export function calculateZombieScore(
 
   if (score >= 70) {
     recommendation = 'kill';
-    headline = 'Critical Zombie: Kill or Move to Async';
+    headline = 'Sunset Recommended: Move to Async or Cancel';
     actionSuggestion =
-      'Attendance has collapsed and agenda is stale. Convert to Slack async check-in or cancel series.';
+      'Attendance has declined and agenda is stale. Convert to Slack async check-in or cancel series.';
   } else if (score >= 40) {
     recommendation = 'shorten';
     const currentDur = Math.round(avgDurationHours * 60);

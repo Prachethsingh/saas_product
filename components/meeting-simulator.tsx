@@ -2,17 +2,11 @@
 
 import React, { useState } from 'react';
 import { 
-  Zap, 
   Sliders, 
-  Flame, 
-  Clock, 
-  Users, 
   Plus, 
   Check, 
-  MessageSquare, 
   ChevronDown, 
-  ChevronUp,
-  Sparkles
+  ChevronUp
 } from 'lucide-react';
 import { calculateZombieScore, OccurrenceInput } from '@/lib/scoring';
 import { ScoreBadge } from './score-badge';
@@ -28,10 +22,9 @@ interface MeetingSimulatorProps {
 export function MeetingSimulator({
   hourlyRate,
   onAddMeeting,
-  onOpenSlackDraft,
 }: MeetingSimulatorProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [title, setTitle] = useState('Weekly Team Alignment');
+  const [title, setTitle] = useState('Weekly Engineering Sync');
   const [durationMinutes, setDurationMinutes] = useState(60);
   const [attendeeCount, setAttendeeCount] = useState(10);
   const [recentAttendees, setRecentAttendees] = useState(4);
@@ -39,7 +32,6 @@ export function MeetingSimulator({
   const [actionItems, setActionItems] = useState(0);
   const [added, setAdded] = useState(false);
 
-  // Generate synthetic occurrences based on simulator parameters
   const occurrences: OccurrenceInput[] = Array.from({ length: 8 }).map((_, i) => {
     const isEarly = i < 4;
     const accepted = isEarly
@@ -62,8 +54,8 @@ export function MeetingSimulator({
   const handleAdd = () => {
     const newMeeting: MeetingRecord = {
       id: `sim_${Date.now()}`,
-      title: title || 'Custom Simulated Sync',
-      organizerEmail: 'you@company.io',
+      title: title || 'Simulated Recurring Meeting',
+      organizerEmail: 'team@company.internal',
       durationMinutes,
       recurrenceRule: 'RRULE:FREQ=WEEKLY;BYDAY=TU',
       status: 'active',
@@ -103,7 +95,7 @@ export function MeetingSimulator({
   return (
     <LiquidGlassCard
       variant={simResult.score >= 70 ? 'danger' : simResult.score >= 40 ? 'warning' : 'neutral'}
-      className="p-4 sm:p-5 transition-all border-dashed"
+      className="p-4 sm:p-5 border"
     >
       {/* Header bar that toggles expand */}
       <div
@@ -111,20 +103,20 @@ export function MeetingSimulator({
         className="flex items-center justify-between cursor-pointer select-none"
       >
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-white/[0.08] backdrop-blur-xl border border-white/[0.12] flex items-center justify-center text-amber-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]">
-            <Zap className="w-4 h-4" />
+          <div className="w-7 h-7 rounded-md bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700">
+            <Sliders className="w-3.5 h-3.5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-sm text-white">
-                Live Zombie Simulator & Meeting Doctor
+              <span className="font-semibold text-sm text-slate-900">
+                Schedule Impact Calculator
               </span>
-              <span className="text-[10px] font-mono text-zinc-400 bg-white/[0.05] px-2 py-0.5 rounded-full border border-white/10">
-                Interactive Tool
+              <span className="text-[11px] font-mono text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded-md border border-slate-200">
+                Interactive Model
               </span>
             </div>
-            <p className="text-xs text-zinc-400">
-              Drag sliders to test any recurring meeting and watch the score recalculate live.
+            <p className="text-xs text-slate-500 mt-0.5">
+              Simulate prospective recurring meetings to calculate time cost and projected score.
             </p>
           </div>
         </div>
@@ -135,30 +127,29 @@ export function MeetingSimulator({
             recommendation={simResult.recommendation}
             size="sm"
           />
-          <button className="p-1 rounded-lg text-zinc-400 hover:text-white transition-colors">
+          <button className="p-1 rounded text-slate-400 hover:text-slate-700 transition-colors">
             {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
         </div>
       </div>
 
-      {/* Expanded Interactive Controls */}
+      {/* Expanded Controls */}
       {isOpen && (
-        <div className="mt-5 pt-4 border-t border-white/[0.06] space-y-5 animate-fade-in">
-          {/* Sliders Grid */}
+        <div className="mt-5 pt-4 border-t border-slate-200 space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Title & Duration */}
             <div className="space-y-1.5">
-              <label className="text-[11px] font-mono uppercase text-zinc-400">Meeting Title</label>
+              <label className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Series Title</label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-3 py-1.5 text-xs rounded-lg bg-black/40 border border-white/[0.1] text-white focus:outline-none focus:border-white/30 font-mono shadow-inner"
+                className="w-full px-2.5 py-1.5 text-xs rounded-md bg-white border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-400 font-mono"
               />
               <div className="pt-2">
-                <div className="flex justify-between text-xs text-zinc-400 mb-1">
+                <div className="flex justify-between text-xs text-slate-500 mb-1">
                   <span>Duration:</span>
-                  <span className="font-mono text-white">{durationMinutes} mins</span>
+                  <span className="font-mono text-slate-900 font-semibold">{durationMinutes} mins</span>
                 </div>
                 <input
                   type="range"
@@ -167,7 +158,7 @@ export function MeetingSimulator({
                   step="15"
                   value={durationMinutes}
                   onChange={(e) => setDurationMinutes(Number(e.target.value))}
-                  className="w-full accent-indigo-400 cursor-pointer"
+                  className="w-full accent-slate-800 cursor-pointer"
                 />
               </div>
             </div>
@@ -175,9 +166,9 @@ export function MeetingSimulator({
             {/* Attendance Sliders */}
             <div className="space-y-2">
               <div>
-                <div className="flex justify-between text-xs text-zinc-400 mb-1">
-                  <span>Invited Attendees:</span>
-                  <span className="font-mono text-white">{attendeeCount}</span>
+                <div className="flex justify-between text-xs text-slate-500 mb-1">
+                  <span>Total Invitees:</span>
+                  <span className="font-mono text-slate-900 font-semibold">{attendeeCount}</span>
                 </div>
                 <input
                   type="range"
@@ -189,13 +180,13 @@ export function MeetingSimulator({
                     setAttendeeCount(val);
                     if (recentAttendees > val) setRecentAttendees(val);
                   }}
-                  className="w-full accent-cyan-400 cursor-pointer"
+                  className="w-full accent-slate-800 cursor-pointer"
                 />
               </div>
               <div>
-                <div className="flex justify-between text-xs text-zinc-400 mb-1">
+                <div className="flex justify-between text-xs text-slate-500 mb-1">
                   <span>Recent Accepted:</span>
-                  <span className="font-mono text-white">{recentAttendees}</span>
+                  <span className="font-mono text-slate-900 font-semibold">{recentAttendees}</span>
                 </div>
                 <input
                   type="range"
@@ -203,7 +194,7 @@ export function MeetingSimulator({
                   max={attendeeCount}
                   value={recentAttendees}
                   onChange={(e) => setRecentAttendees(Number(e.target.value))}
-                  className="w-full accent-rose-400 cursor-pointer"
+                  className="w-full accent-slate-800 cursor-pointer"
                 />
               </div>
             </div>
@@ -211,9 +202,9 @@ export function MeetingSimulator({
             {/* Stale Agenda & Actions */}
             <div className="space-y-2">
               <div>
-                <div className="flex justify-between text-xs text-zinc-400 mb-1">
-                  <span>Stale Agenda Streak:</span>
-                  <span className="font-mono text-white">{staleStreak} in a row</span>
+                <div className="flex justify-between text-xs text-slate-500 mb-1">
+                  <span>Identical Agenda Occurrences:</span>
+                  <span className="font-mono text-slate-900 font-semibold">{staleStreak} in a row</span>
                 </div>
                 <input
                   type="range"
@@ -221,13 +212,13 @@ export function MeetingSimulator({
                   max="8"
                   value={staleStreak}
                   onChange={(e) => setStaleStreak(Number(e.target.value))}
-                  className="w-full accent-amber-400 cursor-pointer"
+                  className="w-full accent-slate-800 cursor-pointer"
                 />
               </div>
               <div>
-                <div className="flex justify-between text-xs text-zinc-400 mb-1">
-                  <span>Action Items Logged:</span>
-                  <span className="font-mono text-white">{actionItems}</span>
+                <div className="flex justify-between text-xs text-slate-500 mb-1">
+                  <span>Logged Action Outcomes:</span>
+                  <span className="font-mono text-slate-900 font-semibold">{actionItems}</span>
                 </div>
                 <input
                   type="range"
@@ -235,34 +226,34 @@ export function MeetingSimulator({
                   max="5"
                   value={actionItems}
                   onChange={(e) => setActionItems(Number(e.target.value))}
-                  className="w-full accent-emerald-400 cursor-pointer"
+                  className="w-full accent-slate-800 cursor-pointer"
                 />
               </div>
             </div>
 
-            {/* Real-time Calculation Result Box */}
-            <div className="rounded-xl border border-white/[0.1] bg-black/50 p-3.5 flex flex-col justify-between shadow-inner">
+            {/* Result Box */}
+            <div className="rounded-md border border-slate-200 bg-white p-3.5 flex flex-col justify-between">
               <div>
-                <div className="text-[10px] uppercase font-mono text-zinc-400">Live Result</div>
-                <div className="flex items-baseline gap-2 mt-1">
-                  <span className="text-3xl font-mono font-bold text-white tabular-nums">
+                <div className="text-[10px] uppercase font-mono text-slate-400 font-semibold">Projected Score</div>
+                <div className="flex items-baseline gap-1 mt-1">
+                  <span className="text-2xl font-mono font-bold text-slate-900 tabular-nums">
                     {simResult.score}
                   </span>
-                  <span className="text-xs text-zinc-500 font-mono">/ 100</span>
+                  <span className="text-xs text-slate-400 font-mono">/ 100</span>
                 </div>
-                <div className="text-xs text-rose-300 font-mono mt-1">
-                  Est. Burn: ${simResult.estimatedAnnualWasteDollars.toLocaleString()}/yr
+                <div className="text-xs text-slate-700 font-mono mt-1">
+                  Est. Cost: ${simResult.estimatedAnnualWasteDollars.toLocaleString()}/yr
                 </div>
               </div>
 
-              <div className="pt-2 flex items-center gap-2">
+              <div className="pt-3">
                 <button
                   onClick={handleAdd}
                   disabled={added}
-                  className="flex-1 py-1.5 rounded-lg text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-200 transition-all flex items-center justify-center gap-1 shadow-md disabled:opacity-50"
+                  className="w-full py-1.5 rounded-md text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 transition-colors flex items-center justify-center gap-1 disabled:opacity-50"
                 >
-                  {added ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Plus className="w-3.5 h-3.5" />}
-                  <span>{added ? 'Added to List!' : 'Add to Dashboard'}</span>
+                  {added ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+                  <span>{added ? 'Added to Audit' : 'Add to Dashboard'}</span>
                 </button>
               </div>
             </div>

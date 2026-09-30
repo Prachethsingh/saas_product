@@ -2,16 +2,12 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
-  Activity, 
-  Clock, 
-  Search, 
   Sliders, 
   Info, 
-  Flame,
-  CheckCircle2,
-  Sparkles,  Check,
+  Check,
   BookOpen,
-  ArrowRight
+  ArrowRight,
+  Search
 } from 'lucide-react';
 import { MeetingCard } from '@/components/meeting-card';
 import { SlackModal } from '@/components/slack-modal';
@@ -33,7 +29,6 @@ export default function DashboardPage() {
   };
 
   useEffect(() => {
-    // Background sync from API if server has updated entries
     fetch('/api/meetings')
       .then((res) => res.json())
       .then((data) => {
@@ -47,14 +42,13 @@ export default function DashboardPage() {
   }, []);
 
   const handleToggleStatus = async (meetingId: string, nextStatus: string) => {
-    // Optimistic UI update for instant feedback
     setMeetings((prev) =>
       prev.map((m) => (m.id === meetingId ? { ...m, status: nextStatus as any } : m))
     );
 
     if (nextStatus === 'killed') {
       const found = meetings.find(m => m.id === meetingId);
-      showToast(`🎉 Sunset confirmed! Reclaimed +${found?.hoursReclaimablePerMonth || 20} hrs/mo for your team.`);
+      showToast(`Series archived. Estimated recovery: +${found?.hoursReclaimablePerMonth || 20} hrs/mo.`);
     } else {
       showToast('Meeting series reactivated.');
     }
@@ -72,10 +66,9 @@ export default function DashboardPage() {
 
   const handleAddSimulatedMeeting = (newMeeting: MeetingRecord) => {
     setMeetings((prev) => [newMeeting, ...prev]);
-    showToast(`Added "${newMeeting.title}" to your active audit dashboard!`);
+    showToast(`Added "${newMeeting.title}" to active audit.`);
   };
 
-  // Instant in-memory search and category filtering
   const filteredMeetings = useMemo(() => {
     return meetings.filter((m) => {
       const matchesSearch =
@@ -93,7 +86,6 @@ export default function DashboardPage() {
     });
   }, [meetings, searchQuery, filter]);
 
-  // Dynamic KPI aggregates
   const totalHoursReclaimable = useMemo(() => {
     return meetings.reduce((sum, m) => sum + (m.status !== 'killed' ? (m.hoursReclaimablePerMonth || 0) : 0), 0);
   }, [meetings]);
@@ -111,206 +103,187 @@ export default function DashboardPage() {
     <div className="space-y-6">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-900 border border-white/20 text-white text-xs shadow-2xl backdrop-blur-2xl animate-fade-in font-mono">
-          <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-3.5 py-2 rounded-md bg-slate-900 border border-slate-800 text-white text-xs shadow-lg font-mono">
+          <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}
 
-      {/* Title & Loaded Rate Slider */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/[0.08] pb-5">
+      {/* Header & Controls */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-5">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.1] backdrop-blur-md text-[11px] font-mono text-zinc-300 mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-            <span>Interactive Telemetry Engine</span>
-          </div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+          <h1 className="text-xl font-bold tracking-tight text-slate-900">
             Recurring Calendar Audit
           </h1>
-          <p className="text-xs text-zinc-400 mt-1">
-            Analyzing 90-day calendar telemetry across {meetings.length} recurring series.
+          <p className="text-xs text-slate-500 mt-0.5">
+            Analyzed 90-day attendance metrics and engagement health across {meetings.length} recurring series.
           </p>
         </div>
 
-        {/* Loaded Rate Adjuster Glass Capsule */}
-        <div className="flex items-center gap-3 bg-white/[0.04] backdrop-blur-xl border border-white/[0.12] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)] rounded-lg px-3 py-1.5 text-xs">
-          <Sliders className="w-3.5 h-3.5 text-zinc-400" />
-          <span className="text-zinc-400">Loaded Cost:</span>
-          <input
-            type="range"
-            min="50"
-            max="150"
-            step="5"
-            value={hourlyRate}
-            onChange={(e) => setHourlyRate(Number(e.target.value))}
-            className="w-24 accent-zinc-200 cursor-pointer"
-          />
-          <span className="font-mono font-medium text-white tabular-nums">${hourlyRate}/hr</span>
-        </div>
+        <div className="flex items-center gap-2 flex-wrap">
+          {/* Loaded Rate Adjuster */}
+          <div className="flex items-center gap-2.5 bg-white border border-slate-200 rounded-md px-3 py-1.5 text-xs">
+            <Sliders className="w-3.5 h-3.5 text-slate-500" />
+            <span className="text-slate-600">Loaded Rate:</span>
+            <input
+              type="range"
+              min="50"
+              max="150"
+              step="5"
+              value={hourlyRate}
+              onChange={(e) => setHourlyRate(Number(e.target.value))}
+              className="w-24 accent-slate-800 cursor-pointer"
+            />
+            <span className="font-mono font-semibold text-slate-900 tabular-nums">${hourlyRate}/hr</span>
+          </div>
 
-        <button
-          onClick={() => window.dispatchEvent(new CustomEvent('open-guide'))}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-amber-200 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 backdrop-blur-xl transition-all shadow-sm cursor-pointer"
-        >
-          <BookOpen className="w-3.5 h-3.5 text-amber-300" />
-          <span>How to Use (Guide)</span>
-        </button>
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('open-guide'))}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 transition-colors"
+          >
+            <BookOpen className="w-3.5 h-3.5 text-slate-500" />
+            <span>Audit Guide</span>
+          </button>
+        </div>
       </div>
 
-      {/* KPI Overview Grid - Apple Liquid Glass Panels */}
+      {/* Metric Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <LiquidGlassCard variant="danger" className="p-4">
-          <div className="text-[11px] font-mono uppercase text-zinc-400">Est. Payroll Burn</div>
-          <div className="text-xl sm:text-2xl font-mono font-bold text-rose-300 mt-1 tabular-nums drop-shadow-sm">
+          <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Est. Annual Cost</div>
+          <div className="text-xl sm:text-2xl font-mono font-bold text-rose-600 mt-1 tabular-nums">
             ${dynamicAnnualWaste.toLocaleString()}
-            <span className="text-xs font-normal text-zinc-400 font-sans">/yr</span>
+            <span className="text-xs font-normal text-slate-500 font-sans">/yr</span>
           </div>
-          <div className="text-[11px] text-zinc-500 mt-1">Recalculated at ${hourlyRate}/hr</div>
+          <div className="text-[11px] text-slate-500 mt-0.5">Calculated at ${hourlyRate}/hr</div>
         </LiquidGlassCard>
 
         <LiquidGlassCard variant="neutral" className="p-4">
-          <div className="text-[11px] font-mono uppercase text-zinc-400">Reclaimable Focus</div>
-          <div className="text-xl sm:text-2xl font-mono font-bold text-zinc-100 mt-1 tabular-nums">
+          <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Reclaimable Hours</div>
+          <div className="text-xl sm:text-2xl font-mono font-bold text-slate-900 mt-1 tabular-nums">
             {totalHoursReclaimable}
-            <span className="text-xs font-normal text-zinc-400 font-sans"> hrs/mo</span>
+            <span className="text-xs font-normal text-slate-500 font-sans"> hrs/mo</span>
           </div>
-          <div className="text-[11px] text-zinc-500 mt-1">~{Math.round(totalHoursReclaimable * 12)} engineering hrs/yr</div>
+          <div className="text-[11px] text-slate-500 mt-0.5">Approx. {Math.round(totalHoursReclaimable * 12)} team hours/yr</div>
         </LiquidGlassCard>
 
         <LiquidGlassCard variant="warning" className="p-4">
-          <div className="text-[11px] font-mono uppercase text-zinc-400">Intervention Targets</div>
-          <div className="text-xl sm:text-2xl font-mono font-bold text-zinc-100 mt-1 flex items-baseline gap-1.5 tabular-nums">
-            <span className="text-rose-400">{killCount}</span>
-            <span className="text-xs font-normal text-zinc-400 font-sans">kill</span>
-            <span className="text-zinc-600">/</span>
-            <span className="text-amber-400">{shortenCount}</span>
-            <span className="text-xs font-normal text-zinc-400 font-sans">shorten</span>
+          <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Review Candidates</div>
+          <div className="text-xl sm:text-2xl font-mono font-bold text-slate-900 mt-1 flex items-baseline gap-1.5 tabular-nums">
+            <span className="text-rose-600">{killCount}</span>
+            <span className="text-xs font-normal text-slate-500 font-sans">sunset</span>
+            <span className="text-slate-300">/</span>
+            <span className="text-amber-700">{shortenCount}</span>
+            <span className="text-xs font-normal text-slate-500 font-sans">shorten</span>
           </div>
-          <div className="text-[11px] text-zinc-500 mt-1">{healthyCount} verified healthy</div>
+          <div className="text-[11px] text-slate-500 mt-0.5">{healthyCount} series verified healthy</div>
         </LiquidGlassCard>
 
         <LiquidGlassCard variant="neutral" className="p-4">
-          <div className="text-[11px] font-mono uppercase text-zinc-400">Observation Mode</div>
-          <div className="text-xl sm:text-2xl font-mono font-bold text-zinc-200 mt-1 tabular-nums">
+          <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Baseline Calibration</div>
+          <div className="text-xl sm:text-2xl font-mono font-bold text-slate-900 mt-1 tabular-nums">
             {observationCount}
-            <span className="text-xs font-normal text-zinc-400 font-sans"> series</span>
+            <span className="text-xs font-normal text-slate-500 font-sans"> series</span>
           </div>
-          <div className="text-[11px] text-zinc-500 mt-1">Gathering initial 6 occurrences</div>
+          <div className="text-[11px] text-slate-500 mt-0.5">Under 6 recorded occurrences</div>
         </LiquidGlassCard>
       </div>
 
-      {/* Interactive Meeting Doctor & Simulator */}
+      {/* Simulator Section */}
       <div id="meeting-simulator">
-      <MeetingSimulator
-        hourlyRate={hourlyRate}
-        onAddMeeting={handleAddSimulatedMeeting}
-        onOpenSlackDraft={(m) => setSelectedSlackMeeting(m)}
-      />
+        <MeetingSimulator
+          hourlyRate={hourlyRate}
+          onAddMeeting={handleAddSimulatedMeeting}
+          onOpenSlackDraft={(m) => setSelectedSlackMeeting(m)}
+        />
       </div>
 
-      {/* Interactive Quick Guide Banner */}
-      <div className="rounded-xl border border-amber-500/25 bg-amber-500/[0.05] backdrop-blur-xl px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-[inset_0_1px_0_0_rgba(245,158,11,0.15)]">
-        <div className="flex items-center gap-2.5 text-zinc-300">
-          <BookOpen className="w-4 h-4 text-amber-400 shrink-0" />
+      {/* Baseline Policy Notice */}
+      <div className="rounded-md border border-slate-200 bg-slate-50 px-4 py-2.5 flex items-start sm:items-center justify-between gap-3 text-xs text-slate-600">
+        <div className="flex items-center gap-2">
+          <Info className="w-3.5 h-3.5 text-slate-500 shrink-0" />
           <span>
-            <strong className="text-white font-medium">New to MeetingDebt?</strong> Read our interactive guide on the 5-signal formula, Slack bot dispatch, and calendar auditing.
+            <strong className="text-slate-800">Minimum Baseline Requirement:</strong> Series require at least 6 occurrences before scoring to prevent false positives from short sprints or seasonal changes.
           </span>
         </div>
-        <button
-          onClick={() => window.dispatchEvent(new CustomEvent('open-guide'))}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-500/30 font-semibold text-[11px] font-mono transition-all self-start sm:self-auto shrink-0 shadow-sm cursor-pointer"
-        >
-          <span>Open Guide & Tour</span>
-          <ArrowRight className="w-3 h-3" />
-        </button>
-      </div>
-
-      {/* Observation Mode Notice */}
-      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-xl px-4 py-3 flex items-start sm:items-center justify-between gap-3 text-xs shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
-        <div className="flex items-center gap-2.5 text-zinc-400">
-          <Info className="w-4 h-4 text-zinc-400 shrink-0" />
-          <span>
-            <strong className="text-zinc-200">Observation Baseline Rule:</strong> We require at least 6 occurrences before computing a score to eliminate false positives from short-term sprints or seasonal holidays.
-          </span>
-        </div>
-        <span className="hidden md:inline font-mono text-[11px] text-zinc-500 shrink-0">
-          N ≥ 6 Baseline Rule
+        <span className="hidden md:inline font-mono text-[11px] text-slate-500 shrink-0">
+          N &ge; 6 Baseline Rule
         </span>
       </div>
 
       {/* Filters and Search Bar */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
-        {/* Filter Glass Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 text-xs">
+        {/* Filter Segmented Controls */}
+        <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 text-xs font-mono">
           <button
             onClick={() => setFilter('all')}
-            className={`px-3 py-1.5 rounded-full font-mono transition-all backdrop-blur-md cursor-pointer ${
+            className={`px-3 py-1.5 rounded-md transition-colors ${
               filter === 'all'
-                ? 'bg-white text-zinc-950 font-bold shadow-md'
-                : 'text-zinc-400 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08]'
+                ? 'bg-slate-900 text-white font-medium'
+                : 'text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200'
             }`}
           >
             All ({meetings.length})
           </button>
           <button
             onClick={() => setFilter('kill')}
-            className={`px-3 py-1.5 rounded-full font-mono transition-all backdrop-blur-md cursor-pointer ${
+            className={`px-3 py-1.5 rounded-md transition-colors ${
               filter === 'kill'
-                ? 'bg-rose-500 text-white font-bold shadow-[0_0_15px_rgba(244,63,94,0.4)]'
-                : 'text-zinc-400 hover:text-rose-300 bg-white/[0.03] hover:bg-rose-500/10 border border-white/[0.08]'
+                ? 'bg-rose-600 text-white font-medium'
+                : 'text-slate-600 hover:text-rose-700 bg-white hover:bg-rose-50 border border-slate-200'
             }`}
           >
-            Needs Sunset ({killCount})
+            Sunset Recommended ({killCount})
           </button>
           <button
             onClick={() => setFilter('shorten')}
-            className={`px-3 py-1.5 rounded-full font-mono transition-all backdrop-blur-md cursor-pointer ${
+            className={`px-3 py-1.5 rounded-md transition-colors ${
               filter === 'shorten'
-                ? 'bg-amber-500 text-zinc-950 font-bold shadow-[0_0_15px_rgba(245,158,11,0.4)]'
-                : 'text-zinc-400 hover:text-amber-300 bg-white/[0.03] hover:bg-amber-500/10 border border-white/[0.08]'
+                ? 'bg-amber-600 text-white font-medium'
+                : 'text-slate-600 hover:text-amber-800 bg-white hover:bg-amber-50 border border-slate-200'
             }`}
           >
-            Shorten ({shortenCount})
+            Shorten Recommended ({shortenCount})
           </button>
           <button
             onClick={() => setFilter('healthy')}
-            className={`px-3 py-1.5 rounded-full font-mono transition-all backdrop-blur-md cursor-pointer ${
+            className={`px-3 py-1.5 rounded-md transition-colors ${
               filter === 'healthy'
-                ? 'bg-emerald-500 text-zinc-950 font-bold shadow-[0_0_15px_rgba(16,185,129,0.4)]'
-                : 'text-zinc-400 hover:text-emerald-300 bg-white/[0.03] hover:bg-emerald-500/10 border border-white/[0.08]'
+                ? 'bg-emerald-600 text-white font-medium'
+                : 'text-slate-600 hover:text-emerald-800 bg-white hover:bg-emerald-50 border border-slate-200'
             }`}
           >
             Healthy ({healthyCount})
           </button>
           <button
             onClick={() => setFilter('observation')}
-            className={`px-3 py-1.5 rounded-full font-mono transition-all backdrop-blur-md cursor-pointer ${
+            className={`px-3 py-1.5 rounded-md transition-colors ${
               filter === 'observation'
-                ? 'bg-zinc-700 text-white font-bold shadow-md'
-                : 'text-zinc-400 hover:text-zinc-200 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08]'
+                ? 'bg-slate-700 text-white font-medium'
+                : 'text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200'
             }`}
           >
-            Observing ({observationCount})
+            Baseline ({observationCount})
           </button>
         </div>
 
-        {/* Search Glass Capsule */}
+        {/* Search Input */}
         <div className="relative w-full sm:w-64">
-          <Search className="w-3.5 h-3.5 absolute left-3 top-2.5 text-zinc-400" />
+          <Search className="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-slate-400" />
           <input
             type="text"
-            placeholder="Filter by title or host..."
+            placeholder="Search title or host..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-full bg-white/[0.04] backdrop-blur-xl border border-white/[0.12] text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-white/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)] font-mono"
+            className="w-full pl-8 pr-2.5 py-1.5 text-xs rounded-md bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-400 font-mono"
           />
         </div>
       </div>
 
       {/* Meeting Cards List */}
       {filteredMeetings.length === 0 ? (
-        <div className="py-16 text-center border border-dashed border-white/[0.08] rounded-xl bg-white/[0.02] backdrop-blur-md p-8">
-          <p className="text-xs text-zinc-400">No recurring series match the active filter.</p>
+        <div className="py-12 text-center border border-dashed border-slate-200 rounded-md bg-white p-6">
+          <p className="text-xs text-slate-500">No recurring series match the active filter.</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -326,7 +299,7 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* Slack Modal for Auto-Draft */}
+      {/* Slack Modal */}
       <SlackModal
         isOpen={Boolean(selectedSlackMeeting)}
         meeting={selectedSlackMeeting}
