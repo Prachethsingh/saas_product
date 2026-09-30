@@ -166,7 +166,7 @@ export default function DashboardPage() {
 
         <LiquidGlassCard variant="neutral" className="p-4">
           <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Reclaimable Hours</div>
-          <div className="text-xl sm:text-2xl font-mono font-bold text-slate-900 mt-1 tabular-nums">
+          <div className="text-xl sm:text-2xl font-mono font-bold text-sky-950 mt-1 tabular-nums">
             {totalHoursReclaimable}
             <span className="text-xs font-normal text-slate-500 font-sans"> hrs/mo</span>
           </div>
@@ -175,7 +175,7 @@ export default function DashboardPage() {
 
         <LiquidGlassCard variant="warning" className="p-4">
           <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Review Candidates</div>
-          <div className="text-xl sm:text-2xl font-mono font-bold text-slate-900 mt-1 flex items-baseline gap-1.5 tabular-nums">
+          <div className="text-xl sm:text-2xl font-mono font-bold text-sky-950 mt-1 flex items-baseline gap-1.5 tabular-nums">
             <span className="text-rose-600">{killCount}</span>
             <span className="text-xs font-normal text-slate-500 font-sans">sunset</span>
             <span className="text-slate-300">/</span>
@@ -187,7 +187,7 @@ export default function DashboardPage() {
 
         <LiquidGlassCard variant="neutral" className="p-4">
           <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Baseline Calibration</div>
-          <div className="text-xl sm:text-2xl font-mono font-bold text-slate-900 mt-1 tabular-nums">
+          <div className="text-xl sm:text-2xl font-mono font-bold text-sky-950 mt-1 tabular-nums">
             {observationCount}
             <span className="text-xs font-normal text-slate-500 font-sans"> series</span>
           </div>
@@ -209,7 +209,7 @@ export default function DashboardPage() {
         <div className="flex items-center gap-2">
           <Info className="w-4 h-4 text-sky-600 shrink-0" />
           <span>
-            <strong className="text-slate-800">Minimum Baseline Requirement:</strong> Series require at least 6 occurrences before scoring to prevent false positives from short sprints or seasonal changes.
+            <strong className="text-sky-950">Minimum Baseline Requirement:</strong> Series require at least 6 occurrences before scoring to prevent false positives from short sprints or seasonal changes.
           </span>
         </div>
         <span className="hidden md:inline font-mono text-[11px] text-sky-800/70 shrink-0">
@@ -225,8 +225,8 @@ export default function DashboardPage() {
             onClick={() => setFilter('all')}
             className={`px-3 py-1.5 rounded-xl transition-all ${
               filter === 'all'
-                ? 'bg-sky-700 text-white font-semibold shadow-xs'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/40'
+                ? 'bg-sky-600 text-white font-semibold shadow-xs'
+                : 'text-slate-600 hover:text-sky-950 hover:bg-white/40'
             }`}
           >
             All ({meetings.length})
@@ -265,8 +265,8 @@ export default function DashboardPage() {
             onClick={() => setFilter('observation')}
             className={`px-3 py-1.5 rounded-xl transition-all ${
               filter === 'observation'
-                ? 'bg-slate-700 text-white font-semibold shadow-xs'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/40'
+                ? 'bg-sky-800 text-white font-semibold shadow-xs'
+                : 'text-slate-600 hover:text-sky-950 hover:bg-white/40'
             }`}
           >
             Baseline ({observationCount})

@@ -1,7 +1,7 @@
 # Graph Report - saas_product  (2026-09-30)
 
 ## Corpus Check
-- 66 files · ~30,855 words
+- 66 files · ~31,014 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: .example 1, (none) 1, .css 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b1a0fa86`
+- Built from commit: `8c1f68da`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

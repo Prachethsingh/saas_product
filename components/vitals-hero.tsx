@@ -114,18 +114,18 @@ export function VitalsHero({
         </button>
       </div>
 
-      {/* Two Hero Cards: Your Daily Vitals + Stress Level */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-3.5">
-        {/* Your Daily Vitals (Col 7) */}
-        <div className="md:col-span-7 rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-5 shadow-[0_10px_30px_-4px_rgba(15,60,110,0.06),inset_0_1px_2px_rgba(255,255,255,0.9)] flex flex-col justify-between">
+      {/* Two Hero Cards: Your Daily Vitals + Stress Level - Golden Ratio Alignment (1.618 : 1) */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1.618fr_1fr] gap-4">
+        {/* Your Daily Vitals (Golden Major: 61.8%) */}
+        <div className="rounded-2xl bg-white/70 backdrop-blur-2xl border border-white/90 p-5 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.06),inset_0_1px_2px_rgba(255,255,255,0.95)] flex flex-col justify-between">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-sm font-bold text-slate-800 tracking-tight">Your Daily Vitals</h2>
-            <div className="w-6 h-6 rounded-full bg-sky-100/80 border border-white flex items-center justify-center text-sky-600 shadow-xs">
+            <h2 className="text-sm font-semibold text-sky-950 tracking-tight">Your Daily Vitals</h2>
+            <div className="w-6 h-6 rounded-full bg-sky-100/90 border border-white flex items-center justify-center text-sky-600 shadow-xs">
               <Sparkles className="w-3.5 h-3.5" />
             </div>
           </div>
 
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center justify-between gap-5">
             {/* Circular Gauge */}
             <div className="relative w-28 h-28 shrink-0 flex items-center justify-center">
               <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
@@ -134,7 +134,7 @@ export function VitalsHero({
                   cx="50"
                   cy="50"
                   r="40"
-                  className="stroke-sky-100/70"
+                  className="stroke-sky-100/80"
                   strokeWidth="8"
                   fill="transparent"
                 />
@@ -160,10 +160,10 @@ export function VitalsHero({
               </svg>
 
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                <span className="text-base font-bold text-slate-800 tracking-tight">
+                <span className="text-base font-bold text-sky-950 tracking-tight">
                   10,245
                 </span>
-                <span className="text-[10px] text-slate-500 font-medium -mt-0.5">
+                <span className="text-[10px] text-sky-800/70 font-medium -mt-0.5">
                   (Goal: 12,000)
                 </span>
               </div>
@@ -173,21 +173,21 @@ export function VitalsHero({
             <div className="flex-1 space-y-2.5">
               <div className="flex items-center justify-between text-xs">
                 <div>
-                  <div className="text-[11px] text-slate-500 font-medium">Steps / Focus Score</div>
-                  <div className="text-xs font-semibold text-slate-800">10,245 pts</div>
+                  <div className="text-[11px] text-slate-600 font-medium">Steps / Focus Score</div>
+                  <div className="text-xs font-semibold text-sky-950">10,245 pts</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-[11px] text-slate-500 font-medium">Sync Cadence</div>
-                  <div className="text-xs font-semibold text-slate-800">72 bpm</div>
+                  <div className="text-[11px] text-slate-600 font-medium">Sync Cadence</div>
+                  <div className="text-xs font-semibold text-sky-950">72 bpm</div>
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-sky-100/60 flex items-center justify-between text-xs">
-                <div className="flex items-center gap-1 text-[11px] text-slate-500">
-                  <Moon className="w-3 h-3 text-sky-500" />
+              <div className="pt-2 border-t border-sky-100 flex items-center justify-between text-xs">
+                <div className="flex items-center gap-1.5 text-[11px] text-slate-600">
+                  <Moon className="w-3.5 h-3.5 text-sky-500" />
                   <span>Deep Work</span>
                 </div>
-                <div className="font-semibold text-sky-900 text-xs">
+                <div className="font-semibold text-sky-800 text-xs">
                   7h 15m
                 </div>
               </div>
@@ -195,11 +195,11 @@ export function VitalsHero({
           </div>
         </div>
 
-        {/* Stress Level / Schedule Density Card (Col 5) */}
-        <div className="md:col-span-5 rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-5 shadow-[0_10px_30px_-4px_rgba(15,60,110,0.06),inset_0_1px_2px_rgba(255,255,255,0.9)] flex flex-col justify-between">
+        {/* Stress Level / Schedule Density Card (Golden Minor: 38.2%) */}
+        <div className="rounded-2xl bg-white/70 backdrop-blur-2xl border border-white/90 p-5 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.06),inset_0_1px_2px_rgba(255,255,255,0.95)] flex flex-col justify-between">
           <div className="flex items-center justify-between mb-2">
-            <h2 className="text-sm font-bold text-slate-800 tracking-tight">Stress Level</h2>
-            <span className="text-[10px] font-medium text-sky-700 bg-sky-100/70 border border-sky-200/50 px-2 py-0.5 rounded-full">
+            <h2 className="text-sm font-semibold text-sky-950 tracking-tight">Stress Level</h2>
+            <span className="text-[10px] font-medium text-sky-800 bg-sky-100/80 border border-sky-200/60 px-2.5 py-0.5 rounded-full">
               Optimized
             </span>
           </div>
@@ -213,12 +213,10 @@ export function VitalsHero({
                   <stop offset="100%" stopColor="#bae6fd" stopOpacity="0.02" />
                 </linearGradient>
               </defs>
-              {/* Shaded Area under wave */}
               <path
                 d="M 0 35 C 30 15, 60 45, 90 25 C 120 10, 150 40, 200 20 L 200 60 L 0 60 Z"
                 fill="url(#waveFill)"
               />
-              {/* Serene Wave Curve Stroke */}
               <path
                 d="M 0 35 C 30 15, 60 45, 90 25 C 120 10, 150 40, 200 20"
                 fill="transparent"
@@ -229,14 +227,14 @@ export function VitalsHero({
             </svg>
           </div>
 
-          <div className="flex items-center justify-between mt-2 pt-2 border-t border-sky-100/60">
+          <div className="flex items-center justify-between mt-2 pt-2 border-t border-sky-100">
             <div>
-              <div className="text-xs font-semibold text-slate-800">Calm</div>
-              <div className="text-[10px] text-slate-500">Low meeting fatigue index</div>
+              <div className="text-xs font-semibold text-sky-950">Calm</div>
+              <div className="text-[10px] text-slate-600">Low meeting fatigue index</div>
             </div>
             <button
               onClick={onOpenGuide}
-              className="px-3 py-1 rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white text-xs font-medium shadow-sm transition-all hover:scale-105 active:scale-95"
+              className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white text-xs font-medium shadow-sm transition-all hover:scale-105 active:scale-95"
             >
               See More
             </button>
@@ -246,40 +244,40 @@ export function VitalsHero({
 
       {/* Row of 3 Quick Glass Chips */}
       <div className="grid grid-cols-3 gap-3">
-        <div className="rounded-2xl bg-white/60 backdrop-blur-lg border border-white/80 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
-          <div className="text-[10px] font-medium text-slate-500">Today's Focus</div>
-          <div className="text-xs sm:text-sm font-bold text-slate-800 mt-0.5 truncate">
+        <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
+          <div className="text-[10px] font-medium text-slate-600">Today's Focus</div>
+          <div className="text-xs sm:text-sm font-semibold text-sky-950 mt-0.5 truncate">
             Mindfulness
           </div>
         </div>
 
-        <div className="rounded-2xl bg-white/60 backdrop-blur-lg border border-white/80 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
-          <div className="text-[10px] font-medium text-slate-500">Workouts</div>
-          <div className="text-xs sm:text-sm font-bold text-slate-800 mt-0.5 truncate">
+        <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
+          <div className="text-[10px] font-medium text-slate-600">Workouts</div>
+          <div className="text-xs sm:text-sm font-semibold text-sky-950 mt-0.5 truncate">
             2 Remaining
           </div>
         </div>
 
-        <div className="rounded-2xl bg-white/60 backdrop-blur-lg border border-white/80 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
-          <div className="text-[10px] font-medium text-slate-500">Hydration</div>
-          <div className="text-xs sm:text-sm font-bold text-slate-800 mt-0.5 truncate">
+        <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
+          <div className="text-[10px] font-medium text-slate-600">Hydration</div>
+          <div className="text-xs sm:text-sm font-semibold text-sky-950 mt-0.5 truncate">
             5/8 Glasses
           </div>
         </div>
       </div>
 
       {/* My Wellness Journey / Weekly Trend Card */}
-      <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-5 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.07),inset_0_1px_2px_rgba(255,255,255,0.9)]">
+      <div className="rounded-2xl bg-white/70 backdrop-blur-2xl border border-white/90 p-5 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.07),inset_0_1px_2px_rgba(255,255,255,0.95)]">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-sm font-bold text-slate-800 tracking-tight">My Wellness Journey</h2>
-            <p className="text-[11px] text-slate-500 mt-0.5">
+            <h2 className="text-sm font-semibold text-sky-950 tracking-tight">My Wellness Journey</h2>
+            <p className="text-[11px] text-slate-600 mt-0.5">
               Attendance consistency and focus capacity over the past 7 days
             </p>
           </div>
           <button
             onClick={onOpenGuide}
-            className="px-3 py-1 rounded-xl bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 text-white text-xs font-medium shadow-sm transition-all hover:scale-105 active:scale-95"
+            className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white text-xs font-medium shadow-sm transition-all hover:scale-105 active:scale-95"
           >
             See More
           </button>

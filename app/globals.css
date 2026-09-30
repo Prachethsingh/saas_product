@@ -4,13 +4,17 @@
 
 :root {
   --background: #edf5fc;
-  --foreground: #0f233a;
+  --foreground: #102a45;
+  --phi: 1.618;
+  --phi-inv: 0.618;
 }
 
 body {
   color: var(--foreground);
   background-color: var(--background);
   min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "San Francisco", sans-serif;
+  letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: 
@@ -20,6 +24,31 @@ body {
     radial-gradient(at 80% 85%, rgba(186, 230, 253, 0.6) 0px, transparent 50%),
     linear-gradient(180deg, #eaf4fd 0%, #dbeafe 50%, #eff6ff 100%);
   background-attachment: fixed;
+}
+
+/* Golden Ratio Alignment Utilities (phi = 1.618) */
+.golden-grid {
+  display: grid;
+  grid-template-columns: 1.618fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .golden-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.golden-ratio-box {
+  aspect-ratio: 1.618 / 1;
+}
+
+.golden-major {
+  flex: 1.618 1.618 0%;
+}
+
+.golden-minor {
+  flex: 1 1 0%;
 }
 
 /* Tabular mono numbers for data tables and metrics */

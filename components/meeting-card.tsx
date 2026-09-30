@@ -147,23 +147,23 @@ export function MeetingCard({
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-2 shrink-0 border-t lg:border-t-0 pt-2 lg:pt-0 border-slate-200">
+        <div className="flex items-center gap-2 shrink-0 border-t lg:border-t-0 pt-2 lg:pt-0 border-white/70">
           {!meeting.isObservationMode && meeting.score >= 40 && !isKilled && (
             <button
               onClick={() => onOpenSlackDraft(meeting)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 transition-colors"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-medium text-white bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 shadow-sm transition-all hover:scale-105 active:scale-95"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-slate-300" />
+              <MessageSquare className="w-3.5 h-3.5 text-white/90" />
               <span>Draft Notice</span>
             </button>
           )}
 
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-medium text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200 transition-colors"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-medium text-sky-950 hover:text-sky-900 bg-white/70 hover:bg-white border border-white/90 shadow-2xs transition-all"
           >
             <span>{isExpanded ? 'Hide Details' : 'View Audit'}</span>
-            {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+            {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5 text-sky-600" />}
           </button>
 
           {onToggleStatus && (
@@ -313,7 +313,7 @@ export function MeetingCard({
 
             <button
               onClick={() => onOpenSlackDraft(meeting)}
-              className="px-3 py-1.5 rounded-md text-xs font-medium bg-slate-900 hover:bg-slate-800 text-white transition-colors"
+              className="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white shadow-sm transition-all"
             >
               Draft Slack Notice
             </button>

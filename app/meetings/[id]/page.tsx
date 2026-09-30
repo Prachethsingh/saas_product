@@ -114,9 +114,9 @@ export default function MeetingDetailPage() {
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => setIsSlackModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium text-white bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 shadow-sm transition-all"
           >
-            <MessageSquare className="w-3.5 h-3.5 text-slate-300" />
+            <MessageSquare className="w-3.5 h-3.5 text-white/90" />
             <span>Draft Slack Notice</span>
           </button>
         </div>
@@ -352,9 +352,9 @@ export default function MeetingDetailPage() {
 
           <button
             onClick={handleCopyDraft}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-slate-900 hover:bg-slate-800 text-white transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white shadow-sm transition-all"
           >
-            {copiedDraft ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-white" />}
+            {copiedDraft ? <Check className="w-3.5 h-3.5 text-emerald-300" /> : <Copy className="w-3.5 h-3.5 text-white" />}
             <span>{copiedDraft ? 'Copied' : 'Copy Text'}</span>
           </button>
         </div>

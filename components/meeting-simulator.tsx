@@ -232,16 +232,16 @@ export function MeetingSimulator({
             </div>
 
             {/* Result Box */}
-            <div className="rounded-md border border-slate-200 bg-white p-3.5 flex flex-col justify-between">
+            <div className="rounded-2xl border border-white/80 bg-white/70 backdrop-blur-xl p-4 flex flex-col justify-between shadow-xs">
               <div>
-                <div className="text-[10px] uppercase font-mono text-slate-400 font-semibold">Projected Score</div>
+                <div className="text-[10px] uppercase font-mono text-slate-500 font-semibold">Projected Score</div>
                 <div className="flex items-baseline gap-1 mt-1">
-                  <span className="text-2xl font-mono font-bold text-slate-900 tabular-nums">
+                  <span className="text-2xl font-mono font-bold text-sky-950 tabular-nums">
                     {simResult.score}
                   </span>
-                  <span className="text-xs text-slate-400 font-mono">/ 100</span>
+                  <span className="text-xs text-sky-800/60 font-mono">/ 100</span>
                 </div>
-                <div className="text-xs text-slate-700 font-mono mt-1">
+                <div className="text-xs text-sky-900 font-mono mt-1">
                   Est. Cost: ${simResult.estimatedAnnualWasteDollars.toLocaleString()}/yr
                 </div>
               </div>
@@ -250,7 +250,7 @@ export function MeetingSimulator({
                 <button
                   onClick={handleAdd}
                   disabled={added}
-                  className="w-full py-1.5 rounded-md text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 transition-colors flex items-center justify-center gap-1 disabled:opacity-50"
+                  className="w-full py-2 rounded-xl text-xs font-medium text-white bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 shadow-sm transition-all hover:scale-[1.02] active:scale-98 flex items-center justify-center gap-1.5 disabled:opacity-50"
                 >
                   {added ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
                   <span>{added ? 'Added to Audit' : 'Add to Dashboard'}</span>

@@ -61,29 +61,29 @@ export function DashboardNav({ onSyncTriggered, onOpenPricing, onOpenGuide }: Da
         <div className="flex items-center gap-2">
           <button
             onClick={onOpenGuide}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-sky-950 bg-white/70 hover:bg-white border border-white/90 shadow-2xs transition-all"
           >
-            <BookOpen className="w-3.5 h-3.5 text-slate-500" />
+            <BookOpen className="w-3.5 h-3.5 text-sky-600" />
             <span className="hidden sm:inline">Audit Guide</span>
           </button>
 
           <button
             onClick={handleManualSync}
             disabled={isSyncing}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 transition-colors disabled:opacity-50"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-sky-950 bg-white/70 hover:bg-white border border-white/90 shadow-2xs transition-all disabled:opacity-50"
           >
-            <RotateCw className={`w-3.5 h-3.5 text-slate-500 ${isSyncing ? 'animate-spin text-slate-800' : ''}`} />
+            <RotateCw className={`w-3.5 h-3.5 text-sky-600 ${isSyncing ? 'animate-spin text-sky-800' : ''}`} />
             <span className="hidden sm:inline">{isSyncing ? 'Syncing...' : justSynced ? 'Synced' : 'Sync Calendar'}</span>
           </button>
 
           <button
             onClick={onOpenPricing}
-            className="px-3 py-1.5 rounded-md text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 transition-colors"
+            className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-white bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 shadow-sm transition-all hover:scale-105 active:scale-95"
           >
             <span>Plans & Billing</span>
           </button>
 
-          <div className="w-7 h-7 rounded-md bg-slate-100 border border-slate-200 flex items-center justify-center text-[11px] font-mono font-semibold text-slate-700">
+          <div className="w-7 h-7 rounded-xl bg-sky-100/80 border border-sky-200/60 flex items-center justify-center text-[11px] font-mono font-semibold text-sky-800 shadow-2xs">
             EM
           </div>
         </div>

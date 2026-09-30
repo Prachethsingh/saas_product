@@ -8,7 +8,7 @@ export function LiquidGlassFilterDefs() {
 
 interface LiquidGlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
-  variant?: 'neutral' | 'danger' | 'warning' | 'success';
+  variant?: 'neutral' | 'danger' | 'warning' | 'success' | 'serene';
   interactive?: boolean;
 }
 
@@ -20,6 +20,7 @@ export function LiquidGlassCard({
 }: LiquidGlassCardProps) {
   const variantStyles = {
     neutral: 'border-white/80 bg-white/65 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.07)] text-slate-800',
+    serene: 'border-sky-100/90 bg-white/85 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.08)] text-slate-800',
     danger: 'border-rose-200/80 bg-rose-50/50 shadow-[0_12px_32px_-4px_rgba(244,63,94,0.08)] text-slate-800',
     warning: 'border-amber-200/80 bg-amber-50/50 shadow-[0_12px_32px_-4px_rgba(245,158,11,0.08)] text-slate-800',
     success: 'border-emerald-200/80 bg-emerald-50/50 shadow-[0_12px_32px_-4px_rgba(16,185,129,0.08)] text-slate-800',
@@ -37,7 +38,7 @@ export function LiquidGlassCard({
 
 interface LiquidGlassPillProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: React.ReactNode;
-  variant?: 'danger' | 'warning' | 'success' | 'neutral';
+  variant?: 'danger' | 'warning' | 'success' | 'neutral' | 'serene';
 }
 
 export function LiquidGlassPill({
@@ -48,6 +49,7 @@ export function LiquidGlassPill({
 }: LiquidGlassPillProps) {
   const variantStyles = {
     neutral: 'border-white/90 text-slate-700 bg-white/70 shadow-sm',
+    serene: 'border-sky-200/80 text-sky-800 bg-sky-50/80 shadow-sm',
     danger: 'border-rose-200/80 text-rose-700 bg-rose-50/80 shadow-sm',
     warning: 'border-amber-200/80 text-amber-800 bg-amber-50/80 shadow-sm',
     success: 'border-emerald-200/80 text-emerald-800 bg-emerald-50/80 shadow-sm',

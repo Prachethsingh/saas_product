@@ -90,10 +90,10 @@
     "semantic_hash": "eb70169241ce56fcbd3afadf92aabd0b"
   },
   "app/page.tsx": {
-    "mtime": 1790782756.7547412,
-    "seen": 1790783472.9690223,
-    "ast_hash": "da8c0d5a72ee7afaddfad110be72864d",
-    "semantic_hash": "da8c0d5a72ee7afaddfad110be72864d"
+    "mtime": 1790784731.0434468,
+    "seen": 1790785086.814805,
+    "ast_hash": "16a66b95c846b2eb70d0c6068cdc4c3a",
+    "semantic_hash": ""
   },
   "app/privacy/page.tsx": {
     "mtime": 1790782828.0196326,
@@ -108,10 +108,10 @@
     "semantic_hash": "85805b7a3f42ff6991d9e742eabfae43"
   },
   "components/dashboard-nav.tsx": {
-    "mtime": 1790782609.6010504,
-    "seen": 1790783472.969027,
-    "ast_hash": "257b97973773b509e0e5c5e7fb623c79",
-    "semantic_hash": "257b97973773b509e0e5c5e7fb623c79"
+    "mtime": 1790784662.0683117,
+    "seen": 1790785086.8150039,
+    "ast_hash": "1e14fca05501b139d56a73b7fe95e2b8",
+    "semantic_hash": ""
   },
   "components/guide-modal.tsx": {
     "mtime": 1790782711.2855628,
@@ -138,10 +138,10 @@
     "semantic_hash": "934d0d600cfc042f5a382eaabbe0beb0"
   },
   "components/providers.tsx": {
-    "mtime": 1790782738.540946,
-    "seen": 1790783472.969037,
-    "ast_hash": "9061391395124ff45f6353aaa725638a",
-    "semantic_hash": "9061391395124ff45f6353aaa725638a"
+    "mtime": 1790784682.064932,
+    "seen": 1790785086.815389,
+    "ast_hash": "2464784f99e88f077ef460c8673ba417",
+    "semantic_hash": ""
   },
   "components/score-badge.tsx": {
     "mtime": 1790782592.7837603,
@@ -156,10 +156,10 @@
     "semantic_hash": "9be97b1730bcad0c0697194e3317cf98"
   },
   "components/ui/liquid-glass.tsx": {
-    "mtime": 1790782553.4327514,
-    "seen": 1790783472.9690416,
-    "ast_hash": "74df880c693d152ff2bbc950bddaa165",
-    "semantic_hash": "74df880c693d152ff2bbc950bddaa165"
+    "mtime": 1790784609.9156318,
+    "seen": 1790785086.8156273,
+    "ast_hash": "c23a60ca3b340113cb7c088dcb0fcdb1",
+    "semantic_hash": ""
   },
   "jobs/rescore.ts": {
     "mtime": 1790527812.977197,
@@ -294,16 +294,16 @@
     "semantic_hash": "5f2b43d7ebc6f978e0701c0fe06b97c1"
   },
   "tailwind.config.ts": {
-    "mtime": 1790781659.4638045,
-    "seen": 1790783472.9690802,
-    "ast_hash": "32103edc7d7e98287f3214881fb9ed08",
-    "semantic_hash": "32103edc7d7e98287f3214881fb9ed08"
+    "mtime": 1790784584.9875896,
+    "seen": 1790785086.8175128,
+    "ast_hash": "1a2a7d423c0bcb3ab034c779a0182dd9",
+    "semantic_hash": ""
   },
   "tests/white-liquid-ui.spec.js": {
-    "mtime": 1790782854.2302628,
-    "seen": 1790783472.9690833,
-    "ast_hash": "3f130fcd8df4585b9dd7673e247f54f3",
-    "semantic_hash": "3f130fcd8df4585b9dd7673e247f54f3"
+    "mtime": 1790785031.579335,
+    "seen": 1790785086.817514,
+    "ast_hash": "e3858ec0b63b1475e690114f0d90cc9a",
+    "semantic_hash": ""
   },
   "tsconfig.json": {
     "mtime": 1790353406.0126207,
@@ -369,6 +369,24 @@
     "mtime": 1790783377.2598088,
     "seen": 1790783753.142736,
     "ast_hash": "306d7c787777a7b2fb0d058a1d2c0d37",
+    "semantic_hash": ""
+  },
+  ".vscode/settings.json": {
+    "mtime": 1790784218.0219443,
+    "seen": 1790785086.813693,
+    "ast_hash": "e21598ab261bad9c03d700c295c63245",
+    "semantic_hash": ""
+  },
+  "components/mobile-dock.tsx": {
+    "mtime": 1790784644.5114229,
+    "seen": 1790785086.8152955,
+    "ast_hash": "a8d62beb842241d6970a430cad9a4edc",
+    "semantic_hash": ""
+  },
+  "components/vitals-hero.tsx": {
+    "mtime": 1790784917.0957363,
+    "seen": 1790785086.8156285,
+    "ast_hash": "3c75d1f5eb63bbbe9edf9a7ad4c5aeab",
     "semantic_hash": ""
   }
 }

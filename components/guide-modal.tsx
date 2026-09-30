@@ -27,8 +27,8 @@ export function GuideModal({ isOpen, onClose, onOpenSimulator }: GuideModalProps
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/50 backdrop-blur-sm overflow-y-auto">
-      <LiquidGlassCard variant="neutral" className="relative w-full max-w-4xl p-5 sm:p-7 max-h-[90vh] flex flex-col overflow-hidden my-auto bg-white border-slate-200 shadow-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-sky-950/20 backdrop-blur-md overflow-y-auto">
+      <LiquidGlassCard variant="serene" className="relative w-full max-w-4xl p-5 sm:p-7 max-h-[90vh] flex flex-col overflow-hidden my-auto bg-white/95 border-sky-100/80 shadow-2xl">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -59,8 +59,8 @@ export function GuideModal({ isOpen, onClose, onOpenSimulator }: GuideModalProps
             onClick={() => setActiveTab('quickstart')}
             className={`px-2.5 py-1.5 rounded-md flex items-center gap-1.5 transition-colors whitespace-nowrap ${
               activeTab === 'quickstart'
-                ? 'bg-slate-900 text-white font-medium'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                ? 'bg-gradient-to-r from-sky-500 to-sky-600 text-white font-medium shadow-sm'
+                : 'text-slate-600 hover:text-sky-950 hover:bg-sky-50/70'
             }`}
           >
             <span>1. Overview</span>
@@ -70,8 +70,8 @@ export function GuideModal({ isOpen, onClose, onOpenSimulator }: GuideModalProps
             onClick={() => setActiveTab('formula')}
             className={`px-2.5 py-1.5 rounded-md flex items-center gap-1.5 transition-colors whitespace-nowrap ${
               activeTab === 'formula'
-                ? 'bg-slate-900 text-white font-medium'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                ? 'bg-gradient-to-r from-sky-500 to-sky-600 text-white font-medium shadow-sm'
+                : 'text-slate-600 hover:text-sky-950 hover:bg-sky-50/70'
             }`}
           >
             <span>2. Scoring Formula</span>
@@ -81,8 +81,8 @@ export function GuideModal({ isOpen, onClose, onOpenSimulator }: GuideModalProps
             onClick={() => setActiveTab('slack')}
             className={`px-2.5 py-1.5 rounded-md flex items-center gap-1.5 transition-colors whitespace-nowrap ${
               activeTab === 'slack'
-                ? 'bg-slate-900 text-white font-medium'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                ? 'bg-gradient-to-r from-sky-500 to-sky-600 text-white font-medium shadow-sm'
+                : 'text-slate-600 hover:text-sky-950 hover:bg-sky-50/70'
             }`}
           >
             <span>3. Slack Dispatch</span>
@@ -92,8 +92,8 @@ export function GuideModal({ isOpen, onClose, onOpenSimulator }: GuideModalProps
             onClick={() => setActiveTab('google')}
             className={`px-2.5 py-1.5 rounded-md flex items-center gap-1.5 transition-colors whitespace-nowrap ${
               activeTab === 'google'
-                ? 'bg-slate-900 text-white font-medium'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                ? 'bg-gradient-to-r from-sky-500 to-sky-600 text-white font-medium shadow-sm'
+                : 'text-slate-600 hover:text-sky-950 hover:bg-sky-50/70'
             }`}
           >
             <span>4. Google Sync</span>
@@ -103,8 +103,8 @@ export function GuideModal({ isOpen, onClose, onOpenSimulator }: GuideModalProps
             onClick={() => setActiveTab('simulator')}
             className={`px-2.5 py-1.5 rounded-md flex items-center gap-1.5 transition-colors whitespace-nowrap ${
               activeTab === 'simulator'
-                ? 'bg-slate-900 text-white font-medium'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                ? 'bg-gradient-to-r from-sky-500 to-sky-600 text-white font-medium shadow-sm'
+                : 'text-slate-600 hover:text-sky-950 hover:bg-sky-50/70'
             }`}
           >
             <span>5. Schedule Calculator</span>
@@ -278,7 +278,7 @@ export function GuideModal({ isOpen, onClose, onOpenSimulator }: GuideModalProps
                       onClose();
                       onOpenSimulator();
                     }}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white font-medium text-xs shadow-sm transition-all"
                   >
                     <span>Open Calculator</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -299,7 +299,7 @@ export function GuideModal({ isOpen, onClose, onOpenSimulator }: GuideModalProps
 
           <button
             onClick={onClose}
-            className="px-3 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium"
+            className="px-3.5 py-1.5 rounded-md bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white text-xs font-medium shadow-sm transition-all"
           >
             Close Documentation
           </button>

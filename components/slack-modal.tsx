@@ -131,16 +131,16 @@ Please comment with your feedback or mention if there are topics requiring live 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
-      <LiquidGlassCard variant="neutral" className="relative w-full max-w-2xl flex flex-col max-h-[92vh] overflow-hidden bg-white border-slate-200 shadow-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sky-950/20 backdrop-blur-md">
+      <LiquidGlassCard variant="serene" className="relative w-full max-w-2xl flex flex-col max-h-[92vh] overflow-hidden bg-white/95 border-sky-100/80 shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-200 bg-slate-50">
+        <div className="flex items-center justify-between px-5 py-3.5 border-b border-sky-100 bg-sky-50/50">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-slate-900 flex items-center justify-center text-white">
+            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-sky-500 to-sky-600 flex items-center justify-center text-white shadow-sm">
               <MessageSquare className="w-3.5 h-3.5" />
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 text-sm">
+              <h3 className="font-semibold text-sky-950 text-sm">
                 Slack Notice Drafter
               </h3>
               <p className="text-[11px] text-slate-500">
@@ -166,30 +166,30 @@ Please comment with your feedback or mention if there are topics requiring live 
             <div className="flex items-center gap-1.5 flex-wrap">
               <button
                 onClick={() => handleToneChange('diplomatic')}
-                className={`px-3 py-1 rounded-md text-xs font-mono transition-colors ${
+                className={`px-3 py-1 rounded-xl text-xs font-mono transition-all ${
                   tone === 'diplomatic'
-                    ? 'bg-slate-900 text-white font-medium'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+                    ? 'bg-sky-600 text-white font-medium shadow-xs'
+                    : 'bg-white/70 text-sky-950 hover:bg-white border border-white/80'
                 }`}
               >
                 Collaborative
               </button>
               <button
                 onClick={() => handleToneChange('direct')}
-                className={`px-3 py-1 rounded-md text-xs font-mono transition-colors ${
+                className={`px-3 py-1 rounded-xl text-xs font-mono transition-all ${
                   tone === 'direct'
-                    ? 'bg-slate-900 text-white font-medium'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+                    ? 'bg-sky-600 text-white font-medium shadow-xs'
+                    : 'bg-white/70 text-sky-950 hover:bg-white border border-white/80'
                 }`}
               >
                 Data-Driven
               </button>
               <button
                 onClick={() => handleToneChange('async')}
-                className={`px-3 py-1 rounded-md text-xs font-mono transition-colors ${
+                className={`px-3 py-1 rounded-xl text-xs font-mono transition-all ${
                   tone === 'async'
-                    ? 'bg-slate-900 text-white font-medium'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+                    ? 'bg-sky-600 text-white font-medium shadow-xs'
+                    : 'bg-white/70 text-sky-950 hover:bg-white border border-white/80'
                 }`}
               >
                 Async Proposal
@@ -256,7 +256,7 @@ Please comment with your feedback or mention if there are topics requiring live 
                   <button
                     onClick={handleSendToSlack}
                     disabled={isSending}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-slate-900 hover:bg-slate-800 text-white transition-colors disabled:opacity-50 whitespace-nowrap"
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-medium bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white shadow-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-50 whitespace-nowrap"
                   >
                     <Send className="w-3 h-3" />
                     <span>{isSending ? 'Sending...' : 'Post to Channel'}</span>
@@ -280,7 +280,7 @@ Please comment with your feedback or mention if there are topics requiring live 
                   <button
                     onClick={handleSendToSlack}
                     disabled={isSending}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-slate-900 hover:bg-slate-800 text-white transition-colors disabled:opacity-50 whitespace-nowrap"
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-medium bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white shadow-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-50 whitespace-nowrap"
                   >
                     <Send className="w-3 h-3" />
                     <span>{isSending ? 'Sending...' : 'Send Webhook'}</span>
@@ -304,16 +304,16 @@ Please comment with your feedback or mention if there are topics requiring live 
         </div>
 
         {/* Footer */}
-        <div className="px-5 py-3 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
+        <div className="px-5 py-3 border-t border-white/80 bg-white/60 flex items-center justify-between">
           <span className="text-xs font-mono text-slate-500">
             Reclaims approx. {meeting.hoursReclaimablePerMonth} hrs/mo
           </span>
 
           <button
             onClick={handleCopy}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-slate-900 text-white hover:bg-slate-800 transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-medium bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white shadow-sm transition-all hover:scale-105 active:scale-95"
           >
-            {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-white" />}
+            {copied ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5 text-white" />}
             <span>{copied ? 'Copied to Clipboard' : 'Copy Notice Text'}</span>
           </button>
         </div>

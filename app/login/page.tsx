@@ -23,10 +23,10 @@ export default function LoginPage() {
       <div className="w-full max-w-sm space-y-6">
         {/* Brand */}
         <div className="text-center space-y-1.5">
-          <div className="inline-flex items-center justify-center w-8 h-8 rounded-md bg-slate-900 text-white mb-1">
+          <div className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-md shadow-sky-500/20 mb-1">
             <Activity className="w-4 h-4" />
           </div>
-          <h1 className="text-lg font-bold tracking-tight text-slate-900">
+          <h1 className="text-lg font-bold tracking-tight text-sky-950">
             MeetingDebt
           </h1>
           <p className="text-xs text-slate-500">
@@ -35,12 +35,12 @@ export default function LoginPage() {
         </div>
 
         {/* Card */}
-        <LiquidGlassCard variant="neutral" className="p-6 space-y-5 bg-white border-slate-200 shadow-sm">
+        <LiquidGlassCard variant="serene" className="p-6 space-y-5 bg-white/95 border-sky-100 shadow-xl">
           <div className="space-y-2">
             <button
               onClick={handleGoogleSignIn}
               disabled={connecting}
-              className="w-full py-2 px-3 rounded-md text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
+              className="w-full py-2.5 px-3 rounded-lg text-xs font-medium text-white bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 flex items-center justify-center gap-2 shadow-sm transition-all disabled:opacity-50"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />

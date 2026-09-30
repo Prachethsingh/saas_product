@@ -9,6 +9,9 @@ test('Clean Enterprise UI visual and interaction test', async ({ page }) => {
   await expect(page.locator('body')).toContainText('Your Daily Vitals');
   await expect(page.locator('body')).toContainText('My Wellness Journey');
 
+  // Capture top hero with Golden Ratio layout (1.618 : 1)
+  await page.screenshot({ path: 'screenshot-desktop-golden-ratio.png' });
+
   // Verify Loaded Rate Slider interaction
   const slider = page.locator('input[type="range"]').first();
   await slider.fill('120');
@@ -20,8 +23,8 @@ test('Clean Enterprise UI visual and interaction test', async ({ page }) => {
   await page.click('button:has-text("Sunset")');
   await page.waitForTimeout(300);
 
-  // Take screenshot of clean dashboard
-  await page.screenshot({ path: 'screenshot-clean-enterprise-dashboard.png', fullPage: true });
+  // Take screenshot of filtered audit cards
+  await page.screenshot({ path: 'screenshot-clean-enterprise-dashboard.png' });
 
   // Open the Guide Modal
   await page.click('button:has-text("Audit Guide")');

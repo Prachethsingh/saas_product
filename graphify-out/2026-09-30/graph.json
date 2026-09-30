@@ -4,6 +4,19 @@
   "graph": {},
   "nodes": [
     {
+      "id": "components_dashboard_nav_dashboardnavprops",
+      "label": "DashboardNavProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "dashboardnavprops",
+      "source_file": "components/dashboard-nav.tsx",
+      "source_location": "L11"
+    },
+    {
       "id": "components_guide_modal_guidemodalprops",
       "label": "GuideModalProps",
       "_callable": true,
@@ -17,30 +30,17 @@
       "source_location": "L18"
     },
     {
-      "id": "components_meeting_card_meetingcardprops",
-      "label": "MeetingCardProps",
+      "id": "components_mobile_dock_mobiledockprops",
+      "label": "MobileDockProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
       "community_name": "LiquidGlassCard",
       "file_type": "code",
-      "norm_label": "meetingcardprops",
-      "source_file": "components/meeting-card.tsx",
-      "source_location": "L21"
-    },
-    {
-      "id": "components_meeting_simulator_meetingsimulatorprops",
-      "label": "MeetingSimulatorProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "LiquidGlassCard",
-      "file_type": "code",
-      "norm_label": "meetingsimulatorprops",
-      "source_file": "components/meeting-simulator.tsx",
-      "source_location": "L16"
+      "norm_label": "mobiledockprops",
+      "source_file": "components/mobile-dock.tsx",
+      "source_location": "L7"
     },
     {
       "id": "components_score_badge_scorebadgeprops",
@@ -108,17 +108,43 @@
       "source_location": "L38"
     },
     {
-      "id": "lib_db_meetingrecord",
-      "label": "MeetingRecord",
+      "id": "components_vitals_hero_vitalsheroprops",
+      "label": "VitalsHeroProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
       "community_name": "LiquidGlassCard",
       "file_type": "code",
-      "norm_label": "meetingrecord",
-      "source_file": "lib/db.ts",
-      "source_location": "L8"
+      "norm_label": "vitalsheroprops",
+      "source_file": "components/vitals-hero.tsx",
+      "source_location": "L6"
+    },
+    {
+      "id": "components_meeting_card_meetingcardprops",
+      "label": "MeetingCardProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "meetingcardprops",
+      "source_file": "components/meeting-card.tsx",
+      "source_location": "L21"
+    },
+    {
+      "id": "components_meeting_simulator_meetingsimulatorprops",
+      "label": "MeetingSimulatorProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "meetingsimulatorprops",
+      "source_file": "components/meeting-simulator.tsx",
+      "source_location": "L16"
     },
     {
       "id": "jobs_rescore_rescoresummary",
@@ -134,17 +160,17 @@
       "source_location": "L10"
     },
     {
-      "id": "components_dashboard_nav_dashboardnavprops",
-      "label": "DashboardNavProps",
+      "id": "lib_db_meetingrecord",
+      "label": "MeetingRecord",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
+      "community": 3,
+      "community_name": "server-db.ts",
       "file_type": "code",
-      "norm_label": "dashboardnavprops",
-      "source_file": "components/dashboard-nav.tsx",
-      "source_location": "L11"
+      "norm_label": "meetingrecord",
+      "source_file": "lib/db.ts",
+      "source_location": "L8"
     },
     {
       "id": "components_pricing_modal_pricingmodalprops",
@@ -153,7 +179,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "pricing-modal.tsx",
       "file_type": "code",
       "norm_label": "pricingmodalprops",
       "source_file": "components/pricing-modal.tsx",
@@ -166,7 +192,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "[id]/route.ts",
+      "community_name": "slack.ts",
       "file_type": "code",
       "norm_label": "slackdraftmessage",
       "source_file": "lib/slack.ts",
@@ -179,7 +205,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "[id]/route.ts",
+      "community_name": "slack.ts",
       "file_type": "code",
       "norm_label": "slackdraftparams",
       "source_file": "lib/slack.ts",
@@ -250,6 +276,18 @@
       "source_location": "L3"
     },
     {
+      "id": "app_layout_rootlayout",
+      "label": "RootLayout()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "rootlayout()",
+      "source_file": "app/layout.tsx",
+      "source_location": "L17"
+    },
+    {
       "id": "app_login_page_loginpage",
       "label": "LoginPage()",
       "_callable": true,
@@ -283,7 +321,7 @@
       "file_type": "code",
       "norm_label": "dashboardpage()",
       "source_file": "app/page.tsx",
-      "source_location": "L18"
+      "source_location": "L19"
     },
     {
       "id": "app_privacy_page_privacypolicypage",
@@ -310,6 +348,30 @@
       "source_location": "L6"
     },
     {
+      "id": "components_dashboard_nav_dashboardnav",
+      "label": "DashboardNav()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "dashboardnav()",
+      "source_file": "components/dashboard-nav.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "components_guide_modal_guidemodal",
+      "label": "GuideModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "guidemodal()",
+      "source_file": "components/guide-modal.tsx",
+      "source_location": "L24"
+    },
+    {
       "id": "components_meeting_card_meetingcard",
       "label": "MeetingCard()",
       "_callable": true,
@@ -332,6 +394,42 @@
       "norm_label": "meetingsimulator()",
       "source_file": "components/meeting-simulator.tsx",
       "source_location": "L22"
+    },
+    {
+      "id": "components_mobile_dock_mobiledock",
+      "label": "MobileDock()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "mobiledock()",
+      "source_file": "components/mobile-dock.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "components_pricing_modal_pricingmodal",
+      "label": "PricingModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "pricingmodal()",
+      "source_file": "components/pricing-modal.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "components_providers_providers",
+      "label": "Providers()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "providers()",
+      "source_file": "components/providers.tsx",
+      "source_location": "L10"
     },
     {
       "id": "components_score_badge_scorebadge",
@@ -392,6 +490,18 @@
       "norm_label": "liquidglasspill()",
       "source_file": "components/ui/liquid-glass.tsx",
       "source_location": "L43"
+    },
+    {
+      "id": "components_vitals_hero_vitalshero",
+      "label": "VitalsHero()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "vitalshero()",
+      "source_file": "components/vitals-hero.tsx",
+      "source_location": "L18"
     },
     {
       "id": "scripts_capture_full_dashboard_run",
@@ -550,6 +660,42 @@
       "source_location": "L4"
     },
     {
+      "id": "app_api_meetings_id_route_get",
+      "label": "GET()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "get()",
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "app_api_meetings_id_route_patch",
+      "label": "PATCH()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "patch()",
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": "L75"
+    },
+    {
+      "id": "app_api_meetings_route_get",
+      "label": "GET()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "get()",
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "app_api_stripe_webhook_route_post",
       "label": "POST()",
       "_callable": true,
@@ -670,6 +816,18 @@
       "source_location": "L73"
     },
     {
+      "id": "lib_server_db_getmeetingbyid",
+      "label": "getMeetingById()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "getmeetingbyid()",
+      "source_file": "lib/server-db.ts",
+      "source_location": "L34"
+    },
+    {
       "id": "lib_server_db_getmeetings",
       "label": "getMeetings()",
       "_callable": true,
@@ -682,76 +840,28 @@
       "source_location": "L9"
     },
     {
+      "id": "lib_server_db_updatemeetingstatus",
+      "label": "updateMeetingStatus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "updatemeetingstatus()",
+      "source_file": "lib/server-db.ts",
+      "source_location": "L47"
+    },
+    {
       "id": "app_api_stripe_checkout_route_post",
       "label": "POST()",
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "pricing-modal.tsx",
       "file_type": "code",
       "norm_label": "post()",
       "source_file": "app/api/stripe/checkout/route.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "app_layout_rootlayout",
-      "label": "RootLayout()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "rootlayout()",
-      "source_file": "app/layout.tsx",
-      "source_location": "L17"
-    },
-    {
-      "id": "components_dashboard_nav_dashboardnav",
-      "label": "DashboardNav()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "dashboardnav()",
-      "source_file": "components/dashboard-nav.tsx",
-      "source_location": "L17"
-    },
-    {
-      "id": "components_guide_modal_guidemodal",
-      "label": "GuideModal()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "guidemodal()",
-      "source_file": "components/guide-modal.tsx",
-      "source_location": "L24"
-    },
-    {
-      "id": "components_pricing_modal_pricingmodal",
-      "label": "PricingModal()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "pricingmodal()",
-      "source_file": "components/pricing-modal.tsx",
-      "source_location": "L13"
-    },
-    {
-      "id": "components_providers_providers",
-      "label": "Providers()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "providers()",
-      "source_file": "components/providers.tsx",
-      "source_location": "L9"
     },
     {
       "id": "lib_stripe_createcheckoutsession",
@@ -759,47 +869,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "pricing-modal.tsx",
       "file_type": "code",
       "norm_label": "createcheckoutsession()",
       "source_file": "lib/stripe.ts",
       "source_location": "L64"
-    },
-    {
-      "id": "app_api_meetings_id_route_get",
-      "label": "GET()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "get()",
-      "source_file": "app/api/meetings/[id]/route.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "app_api_meetings_id_route_patch",
-      "label": "PATCH()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "patch()",
-      "source_file": "app/api/meetings/[id]/route.ts",
-      "source_location": "L75"
-    },
-    {
-      "id": "app_api_meetings_route_get",
-      "label": "GET()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "get()",
-      "source_file": "app/api/meetings/route.ts",
-      "source_location": "L6"
     },
     {
       "id": "app_api_slack_draft_route_post",
@@ -807,35 +881,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "[id]/route.ts",
+      "community_name": "slack.ts",
       "file_type": "code",
       "norm_label": "post()",
       "source_file": "app/api/slack/draft/route.ts",
       "source_location": "L5"
-    },
-    {
-      "id": "lib_server_db_getmeetingbyid",
-      "label": "getMeetingById()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "getmeetingbyid()",
-      "source_file": "lib/server-db.ts",
-      "source_location": "L34"
-    },
-    {
-      "id": "lib_server_db_updatemeetingstatus",
-      "label": "updateMeetingStatus()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "updatemeetingstatus()",
-      "source_file": "lib/server-db.ts",
-      "source_location": "L47"
     },
     {
       "id": "lib_slack_generateslackdraft",
@@ -843,7 +893,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "[id]/route.ts",
+      "community_name": "slack.ts",
       "file_type": "code",
       "norm_label": "generateslackdraft()",
       "source_file": "lib/slack.ts",
@@ -855,7 +905,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "[id]/route.ts",
+      "community_name": "slack.ts",
       "file_type": "code",
       "norm_label": "postslackmessage()",
       "source_file": "lib/slack.ts",
@@ -867,7 +917,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "[id]/route.ts",
+      "community_name": "slack.ts",
       "file_type": "code",
       "norm_label": "sendslackwebhook()",
       "source_file": "lib/slack.ts",
@@ -933,6 +983,39 @@
       "source_location": "L1"
     },
     {
+      "id": "app_layout",
+      "label": "layout.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "layout.tsx",
+      "source_file": "app/layout.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_layout_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "app/layout.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "app_layout_viewport",
+      "label": "viewport",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "viewport",
+      "source_file": "app/layout.tsx",
+      "source_location": "L12"
+    },
+    {
       "id": "app_login_page",
       "label": "login/page.tsx",
       "_origin": "ast",
@@ -988,6 +1071,17 @@
       "source_location": "L1"
     },
     {
+      "id": "components_dashboard_nav",
+      "label": "dashboard-nav.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "dashboard-nav.tsx",
+      "source_file": "components/dashboard-nav.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "components_guide_modal",
       "label": "guide-modal.tsx",
       "_origin": "ast",
@@ -1021,6 +1115,28 @@
       "source_location": "L1"
     },
     {
+      "id": "components_mobile_dock",
+      "label": "mobile-dock.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "mobile-dock.tsx",
+      "source_file": "components/mobile-dock.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_providers",
+      "label": "providers.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "providers.tsx",
+      "source_file": "components/providers.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "components_score_badge",
       "label": "score-badge.tsx",
       "_origin": "ast",
@@ -1051,6 +1167,17 @@
       "file_type": "code",
       "norm_label": "liquid-glass.tsx",
       "source_file": "components/ui/liquid-glass.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_vitals_hero",
+      "label": "vitals-hero.tsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "file_type": "code",
+      "norm_label": "vitals-hero.tsx",
+      "source_file": "components/vitals-hero.tsx",
       "source_location": "L1"
     },
     {
@@ -2632,116 +2759,6 @@
       "source_location": "L1"
     },
     {
-      "id": "package_devdependencies",
-      "label": "devDependencies",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "devdependencies",
-      "source_file": "package.json",
-      "source_location": "L26"
-    },
-    {
-      "id": "package_devdependencies_autoprefixer",
-      "label": "autoprefixer",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "autoprefixer",
-      "source_file": "package.json",
-      "source_location": "L32"
-    },
-    {
-      "id": "package_devdependencies_playwright_test",
-      "label": "@playwright/test",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@playwright/test",
-      "source_file": "package.json",
-      "source_location": "L27"
-    },
-    {
-      "id": "package_devdependencies_postcss",
-      "label": "postcss",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "postcss",
-      "source_file": "package.json",
-      "source_location": "L33"
-    },
-    {
-      "id": "package_devdependencies_tailwindcss",
-      "label": "tailwindcss",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "tailwindcss",
-      "source_file": "package.json",
-      "source_location": "L34"
-    },
-    {
-      "id": "package_devdependencies_types_node",
-      "label": "@types/node",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@types/node",
-      "source_file": "package.json",
-      "source_location": "L28"
-    },
-    {
-      "id": "package_devdependencies_types_pg",
-      "label": "@types/pg",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@types/pg",
-      "source_file": "package.json",
-      "source_location": "L29"
-    },
-    {
-      "id": "package_devdependencies_types_react",
-      "label": "@types/react",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@types/react",
-      "source_file": "package.json",
-      "source_location": "L30"
-    },
-    {
-      "id": "package_devdependencies_types_react_dom",
-      "label": "@types/react-dom",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@types/react-dom",
-      "source_file": "package.json",
-      "source_location": "L31"
-    },
-    {
-      "id": "package_devdependencies_typescript",
-      "label": "typescript",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "typescript",
-      "source_file": "package.json",
-      "source_location": "L35"
-    },
-    {
       "id": "package_name",
       "label": "name",
       "_origin": "ast",
@@ -3165,6 +3182,138 @@
       "source_location": "L1"
     },
     {
+      "id": "package_devdependencies",
+      "label": "devDependencies",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "devdependencies",
+      "source_file": "package.json",
+      "source_location": "L26"
+    },
+    {
+      "id": "package_devdependencies_autoprefixer",
+      "label": "autoprefixer",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "autoprefixer",
+      "source_file": "package.json",
+      "source_location": "L32"
+    },
+    {
+      "id": "package_devdependencies_playwright_test",
+      "label": "@playwright/test",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@playwright/test",
+      "source_file": "package.json",
+      "source_location": "L27"
+    },
+    {
+      "id": "package_devdependencies_postcss",
+      "label": "postcss",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "postcss",
+      "source_file": "package.json",
+      "source_location": "L33"
+    },
+    {
+      "id": "package_devdependencies_tailwindcss",
+      "label": "tailwindcss",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "tailwindcss",
+      "source_file": "package.json",
+      "source_location": "L34"
+    },
+    {
+      "id": "package_devdependencies_types_node",
+      "label": "@types/node",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/node",
+      "source_file": "package.json",
+      "source_location": "L28"
+    },
+    {
+      "id": "package_devdependencies_types_pg",
+      "label": "@types/pg",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/pg",
+      "source_file": "package.json",
+      "source_location": "L29"
+    },
+    {
+      "id": "package_devdependencies_types_react",
+      "label": "@types/react",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/react",
+      "source_file": "package.json",
+      "source_location": "L30"
+    },
+    {
+      "id": "package_devdependencies_types_react_dom",
+      "label": "@types/react-dom",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/react-dom",
+      "source_file": "package.json",
+      "source_location": "L31"
+    },
+    {
+      "id": "package_devdependencies_typescript",
+      "label": "typescript",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "typescript",
+      "source_file": "package.json",
+      "source_location": "L35"
+    },
+    {
+      "id": "app_api_auth_nextauth_route",
+      "label": "[...nextauth]/route.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "[...nextauth]/route.ts",
+      "source_file": "app/api/auth/[...nextauth]/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_api_auth_nextauth_route_handler",
+      "label": "handler",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "handler",
+      "source_file": "app/api/auth/[...nextauth]/route.ts",
+      "source_location": "L4"
+    },
+    {
       "id": "app_api_calendar_sync_route",
       "label": "sync/route.ts",
       "_origin": "ast",
@@ -3184,6 +3333,28 @@
       "file_type": "code",
       "norm_label": "rescore/route.ts",
       "source_file": "app/api/cron/rescore/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_api_meetings_id_route",
+      "label": "[id]/route.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "[id]/route.ts",
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_api_meetings_route",
+      "label": "meetings/route.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "meetings/route.ts",
+      "source_file": "app/api/meetings/route.ts",
       "source_location": "L1"
     },
     {
@@ -3207,6 +3378,28 @@
       "norm_label": "rescore.ts",
       "source_file": "jobs/rescore.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "lib_auth",
+      "label": "auth.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "auth.ts",
+      "source_file": "lib/auth.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_auth_authoptions",
+      "label": "authOptions",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "authoptions",
+      "source_file": "lib/auth.ts",
+      "source_location": "L4"
     },
     {
       "id": "lib_db",
@@ -3297,58 +3490,25 @@
       "source_location": "L14"
     },
     {
+      "id": "ref_next_auth",
+      "label": "next-auth",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "concept",
+      "norm_label": "next-auth",
+      "source_file": "package.json",
+      "source_location": "L18"
+    },
+    {
       "id": "app_api_stripe_checkout_route",
       "label": "checkout/route.ts",
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "pricing-modal.tsx",
       "file_type": "code",
       "norm_label": "checkout/route.ts",
       "source_file": "app/api/stripe/checkout/route.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_layout",
-      "label": "layout.tsx",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "layout.tsx",
-      "source_file": "app/layout.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_layout_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "app/layout.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "app_layout_viewport",
-      "label": "viewport",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "viewport",
-      "source_file": "app/layout.tsx",
-      "source_location": "L12"
-    },
-    {
-      "id": "components_dashboard_nav",
-      "label": "dashboard-nav.tsx",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "dashboard-nav.tsx",
-      "source_file": "components/dashboard-nav.tsx",
       "source_location": "L1"
     },
     {
@@ -3356,21 +3516,10 @@
       "label": "pricing-modal.tsx",
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "pricing-modal.tsx",
       "file_type": "code",
       "norm_label": "pricing-modal.tsx",
       "source_file": "components/pricing-modal.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_providers",
-      "label": "providers.tsx",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "providers.tsx",
-      "source_file": "components/providers.tsx",
       "source_location": "L1"
     },
     {
@@ -3378,7 +3527,7 @@
       "label": "stripe.ts",
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "pricing-modal.tsx",
       "file_type": "code",
       "norm_label": "stripe.ts",
       "source_file": "lib/stripe.ts",
@@ -3389,7 +3538,7 @@
       "label": "PLANS",
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "pricing-modal.tsx",
       "file_type": "code",
       "norm_label": "plans",
       "source_file": "lib/stripe.ts",
@@ -3400,110 +3549,33 @@
       "label": "stripe",
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "pricing-modal.tsx",
       "file_type": "concept",
       "norm_label": "stripe",
       "source_file": "package.json",
       "source_location": "L23"
     },
     {
-      "id": "app_api_auth_nextauth_route",
-      "label": "[...nextauth]/route.ts",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "[...nextauth]/route.ts",
-      "source_file": "app/api/auth/[...nextauth]/route.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_api_auth_nextauth_route_handler",
-      "label": "handler",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "handler",
-      "source_file": "app/api/auth/[...nextauth]/route.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "app_api_meetings_id_route",
-      "label": "[id]/route.ts",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "[id]/route.ts",
-      "source_file": "app/api/meetings/[id]/route.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_api_meetings_route",
-      "label": "meetings/route.ts",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "meetings/route.ts",
-      "source_file": "app/api/meetings/route.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "app_api_slack_draft_route",
       "label": "draft/route.ts",
       "_origin": "ast",
       "community": 5,
-      "community_name": "[id]/route.ts",
+      "community_name": "slack.ts",
       "file_type": "code",
       "norm_label": "draft/route.ts",
       "source_file": "app/api/slack/draft/route.ts",
       "source_location": "L1"
     },
     {
-      "id": "lib_auth",
-      "label": "auth.ts",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "auth.ts",
-      "source_file": "lib/auth.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_auth_authoptions",
-      "label": "authOptions",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "authoptions",
-      "source_file": "lib/auth.ts",
-      "source_location": "L4"
-    },
-    {
       "id": "lib_slack",
       "label": "slack.ts",
       "_origin": "ast",
       "community": 5,
-      "community_name": "[id]/route.ts",
+      "community_name": "slack.ts",
       "file_type": "code",
       "norm_label": "slack.ts",
       "source_file": "lib/slack.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "ref_next_auth",
-      "label": "next-auth",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "concept",
-      "norm_label": "next-auth",
-      "source_file": "package.json",
-      "source_location": "L18"
     },
     {
       "id": "tsconfig",
@@ -4301,6 +4373,18 @@
       "source_location": "L356"
     },
     {
+      "id": "app_globals",
+      "label": "app_globals",
+      "_origin": "semantic",
+      "community": 0,
+      "community_name": "LiquidGlassCard",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "app_globals",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "ref_child_process",
       "label": "ref_child_process",
       "_origin": "semantic",
@@ -4369,18 +4453,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_url",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "app_globals",
-      "label": "app_globals",
-      "_origin": "semantic",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "app_globals",
       "source_file": "",
       "type": "external"
     }
@@ -4616,6 +4688,18 @@
     },
     {
       "source": "app_page_dashboardpage",
+      "target": "components_vitals_hero_vitalshero",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "app/page.tsx",
+      "source_location": "L114",
+      "weight": 1.0
+    },
+    {
+      "source": "app_page_dashboardpage",
       "target": "components_ui_liquid_glass_liquidglasscard",
       "relation": "calls",
       "_origin": "ast",
@@ -4623,7 +4707,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/page.tsx",
-      "source_location": "L152",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -4635,7 +4719,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/page.tsx",
-      "source_location": "L194",
+      "source_location": "L200",
       "weight": 1.0
     },
     {
@@ -4647,7 +4731,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/page.tsx",
-      "source_location": "L291",
+      "source_location": "L297",
       "weight": 1.0
     },
     {
@@ -4659,7 +4743,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/page.tsx",
-      "source_location": "L303",
+      "source_location": "L309",
       "weight": 1.0
     },
     {
@@ -4779,7 +4863,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/providers.tsx",
-      "source_location": "L26",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "components_providers_providers",
+      "target": "components_mobile_dock_mobiledock",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "components/providers.tsx",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -4791,7 +4887,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/providers.tsx",
-      "source_location": "L35",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -4803,7 +4899,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/providers.tsx",
-      "source_location": "L40",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -5444,6 +5540,18 @@
       "weight": 1.0
     },
     {
+      "source": "app_page",
+      "target": "components_vitals_hero_vitalshero",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
       "source": "app_privacy_page",
       "target": "components_ui_liquid_glass_liquidglasscard",
       "relation": "imports",
@@ -5633,6 +5741,18 @@
       "context": "import",
       "source_file": "components/providers.tsx",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "components_providers",
+      "target": "components_mobile_dock_mobiledock",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/providers.tsx",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -6610,6 +6730,18 @@
     },
     {
       "source": "app_page",
+      "target": "components_vitals_hero",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "app_page",
       "target": "ref_react",
       "relation": "imports_from",
       "_origin": "ast",
@@ -6945,6 +7077,42 @@
       "weight": 1.0
     },
     {
+      "source": "components_mobile_dock",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/mobile-dock.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "components_mobile_dock",
+      "target": "ref_next",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/mobile-dock.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "components_mobile_dock",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/mobile-dock.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "components_pricing_modal",
       "target": "ref_react",
       "relation": "imports_from",
@@ -7053,6 +7221,18 @@
       "weight": 1.0
     },
     {
+      "source": "components_providers",
+      "target": "components_mobile_dock",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/providers.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
       "source": "components_score_badge",
       "target": "ref_react",
       "relation": "imports_from",
@@ -7110,6 +7290,30 @@
       "context": "import",
       "source_file": "components/ui/liquid-glass.tsx",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "components_vitals_hero",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/vitals-hero.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "components_vitals_hero",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "components/vitals-hero.tsx",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -7680,7 +7884,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -7794,6 +7998,28 @@
       "weight": 1.0
     },
     {
+      "source": "components_mobile_dock",
+      "target": "components_mobile_dock_mobiledock",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/mobile-dock.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "components_mobile_dock",
+      "target": "components_mobile_dock_mobiledockprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/mobile-dock.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
       "source": "components_pricing_modal",
       "target": "components_pricing_modal_pricingmodal",
       "relation": "contains",
@@ -7823,7 +8049,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/providers.tsx",
-      "source_location": "L9",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -7934,6 +8160,28 @@
       "confidence_score": 1.0,
       "source_file": "components/ui/liquid-glass.tsx",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "components_vitals_hero",
+      "target": "components_vitals_hero_vitalshero",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/vitals-hero.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "components_vitals_hero",
+      "target": "components_vitals_hero_vitalsheroprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/vitals-hero.tsx",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -10642,5 +10890,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "5a37c09aa84ca6a82b896eab4e58dfd1f4d8eef7"
+  "built_at_commit": "b1a0fa86cb3e86750326f06065797ada3b1027c3"
 }
