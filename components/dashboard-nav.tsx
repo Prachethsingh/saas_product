@@ -33,27 +33,27 @@ export function DashboardNav({ onSyncTriggered, onOpenPricing, onOpenGuide }: Da
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 border-b border-slate-200 backdrop-blur">
+    <header className="sticky top-0 z-40 w-full bg-white/70 border-b border-white/80 backdrop-blur-2xl shadow-[0_4px_20px_-2px_rgba(15,60,110,0.04)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         {/* Brand & Workspace */}
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-7 h-7 rounded-md bg-slate-900 flex items-center justify-center text-white">
-              <Activity className="w-3.5 h-3.5" />
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-sky-600 to-sky-500 shadow-sm flex items-center justify-center text-white border border-white/50">
+              <Activity className="w-4 h-4" />
             </div>
             <div className="flex items-baseline gap-1.5">
-              <span className="font-semibold text-sm tracking-tight text-slate-900 group-hover:text-slate-700">
+              <span className="font-semibold text-sm tracking-tight text-slate-800 group-hover:text-sky-700 transition-colors">
                 MeetingDebt
               </span>
-              <span className="text-[11px] font-mono text-slate-500">v1.0</span>
+              <span className="text-[11px] font-mono text-sky-800/60">v1.0</span>
             </div>
           </Link>
 
-          <div className="hidden md:flex items-center gap-2 pl-4 border-l border-slate-200 text-xs text-slate-600">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span className="text-slate-700">Google Workspace: Connected</span>
+          <div className="hidden md:flex items-center gap-2 pl-4 border-l border-sky-100 text-xs text-slate-600">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-xs" />
+            <span className="text-slate-700 font-medium">Google Workspace: Connected</span>
             <span className="text-slate-300">/</span>
-            <span className="text-slate-500 font-mono text-[11px]">Nightly Audit: Active</span>
+            <span className="text-sky-700/80 font-mono text-[11px]">Nightly Audit: Active</span>
           </div>
         </div>
 

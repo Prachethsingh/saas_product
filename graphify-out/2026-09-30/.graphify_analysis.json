@@ -1,0 +1,399 @@
+{
+  "communities": {
+    "0": [
+      "app_login_page",
+      "app_login_page_loginpage",
+      "app_meetings_id_page",
+      "app_meetings_id_page_meetingdetailpage",
+      "app_page",
+      "app_page_dashboardpage",
+      "app_privacy_page",
+      "app_privacy_page_privacypolicypage",
+      "app_terms_page",
+      "app_terms_page_termsofservicepage",
+      "components_guide_modal",
+      "components_guide_modal_guidemodal",
+      "components_guide_modal_guidemodalprops",
+      "components_meeting_card",
+      "components_meeting_card_meetingcard",
+      "components_meeting_card_meetingcardprops",
+      "components_meeting_simulator",
+      "components_meeting_simulator_meetingsimulator",
+      "components_meeting_simulator_meetingsimulatorprops",
+      "components_score_badge",
+      "components_score_badge_scorebadge",
+      "components_score_badge_scorebadgeprops",
+      "components_slack_modal",
+      "components_slack_modal_proposaltone",
+      "components_slack_modal_slackmodal",
+      "components_slack_modal_slackmodalprops",
+      "components_ui_liquid_glass",
+      "components_ui_liquid_glass_liquidglasscard",
+      "components_ui_liquid_glass_liquidglasscardprops",
+      "components_ui_liquid_glass_liquidglassfilterdefs",
+      "components_ui_liquid_glass_liquidglasspill",
+      "components_ui_liquid_glass_liquidglasspillprops",
+      "lib_db_meetingrecord",
+      "ref_lucide_react",
+      "ref_react"
+    ],
+    "1": [
+      "ref_child_process",
+      "ref_fs",
+      "ref_https",
+      "ref_os",
+      "ref_path",
+      "ref_url",
+      "scripts_capture_full_dashboard",
+      "scripts_capture_full_dashboard_run",
+      "scripts_check_db",
+      "scripts_check_db_config",
+      "scripts_check_db_configpath",
+      "scripts_check_db_homedir",
+      "scripts_check_db_main",
+      "scripts_deploy_antideploy",
+      "scripts_deploy_antideploy_antideployjsonpath",
+      "scripts_deploy_antideploy_archivedata",
+      "scripts_deploy_antideploy_archivesizekb",
+      "scripts_deploy_antideploy_configpath",
+      "scripts_deploy_antideploy_dirname",
+      "scripts_deploy_antideploy_headerparts",
+      "scripts_deploy_antideploy_isforce",
+      "scripts_deploy_antideploy_polldeployment",
+      "scripts_deploy_antideploy_polldeployment_check",
+      "scripts_deploy_antideploy_postbuffer",
+      "scripts_deploy_antideploy_prebuffer",
+      "scripts_deploy_antideploy_req",
+      "scripts_deploy_antideploy_rootdir",
+      "scripts_deploy_antideploy_temptarpath",
+      "scripts_test_interactivity",
+      "scripts_test_interactivity_verify",
+      "scripts_test_react_events",
+      "scripts_test_react_events_testall",
+      "scripts_test_ui",
+      "scripts_test_ui_runtest"
+    ],
+    "2": [
+      "package",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_deploy_antideploy",
+      "package_scripts_dev",
+      "package_scripts_lint",
+      "package_scripts_start",
+      "package_version",
+      "playwright_config",
+      "ref_autoprefixer",
+      "ref_clsx",
+      "ref_date_fns",
+      "ref_pg",
+      "ref_playwright_test",
+      "ref_postcss",
+      "ref_react_dom",
+      "ref_recharts",
+      "ref_slack_bolt",
+      "ref_tailwind_merge",
+      "ref_tailwindcss",
+      "ref_types_node",
+      "ref_types_pg",
+      "ref_types_react",
+      "ref_types_react_dom",
+      "ref_typescript",
+      "tailwind_config",
+      "tailwind_config_config",
+      "tests_example_spec",
+      "tests_white_liquid_ui_spec"
+    ],
+    "3": [
+      "app_api_calendar_sync_route",
+      "app_api_calendar_sync_route_get",
+      "app_api_calendar_sync_route_post",
+      "app_api_cron_rescore_route",
+      "app_api_cron_rescore_route_get",
+      "app_api_stripe_webhook_route",
+      "app_api_stripe_webhook_route_post",
+      "jobs_rescore",
+      "jobs_rescore_rescoresummary",
+      "jobs_rescore_runnightlyrescorejob",
+      "lib_db",
+      "lib_db_initial_demo_meetings",
+      "lib_db_ispostgresconfigured",
+      "lib_db_issupabaseconfigured",
+      "lib_db_supabase",
+      "lib_postgres",
+      "lib_postgres_getmeetingbyidfrompostgres",
+      "lib_postgres_getmeetingsfrompostgres",
+      "lib_postgres_getpostgrespool",
+      "lib_postgres_initpostgresschema",
+      "lib_postgres_querypostgres",
+      "lib_postgres_seedpostgresdemodata",
+      "lib_postgres_updatemeetingstatusinpostgres",
+      "lib_server_db",
+      "lib_server_db_getmeetings",
+      "lib_stripe_stripe"
+    ],
+    "4": [
+      "app_api_health_route",
+      "app_api_health_route_get",
+      "app_api_stripe_checkout_route",
+      "app_api_stripe_checkout_route_post",
+      "app_globals",
+      "app_layout",
+      "app_layout_metadata",
+      "app_layout_rootlayout",
+      "app_layout_viewport",
+      "components_dashboard_nav",
+      "components_dashboard_nav_dashboardnav",
+      "components_dashboard_nav_dashboardnavprops",
+      "components_pricing_modal",
+      "components_pricing_modal_pricingmodal",
+      "components_pricing_modal_pricingmodalprops",
+      "components_providers",
+      "components_providers_providers",
+      "lib_stripe",
+      "lib_stripe_createcheckoutsession",
+      "lib_stripe_plans",
+      "ref_next",
+      "ref_stripe"
+    ],
+    "5": [
+      "app_api_auth_nextauth_route",
+      "app_api_auth_nextauth_route_handler",
+      "app_api_meetings_id_route",
+      "app_api_meetings_id_route_get",
+      "app_api_meetings_id_route_patch",
+      "app_api_meetings_route",
+      "app_api_meetings_route_get",
+      "app_api_slack_draft_route",
+      "app_api_slack_draft_route_post",
+      "lib_auth",
+      "lib_auth_authoptions",
+      "lib_scoring_calculatezombiescore",
+      "lib_server_db_getmeetingbyid",
+      "lib_server_db_updatemeetingstatus",
+      "lib_slack",
+      "lib_slack_generateslackdraft",
+      "lib_slack_postslackmessage",
+      "lib_slack_sendslackwebhook",
+      "lib_slack_slackdraftmessage",
+      "lib_slack_slackdraftparams",
+      "ref_next_auth"
+    ],
+    "6": [
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowjs",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_incremental",
+      "tsconfig_compileroptions_isolatedmodules",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_plugins",
+      "tsconfig_compileroptions_resolvejsonmodule",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_exclude",
+      "tsconfig_include"
+    ],
+    "7": [
+      "package_dependencies",
+      "package_dependencies_clsx",
+      "package_dependencies_date_fns",
+      "package_dependencies_lucide_react",
+      "package_dependencies_next",
+      "package_dependencies_next_auth",
+      "package_dependencies_pg",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_recharts",
+      "package_dependencies_slack_bolt",
+      "package_dependencies_stripe",
+      "package_dependencies_tailwind_merge"
+    ],
+    "8": [
+      "lib_google_calendar",
+      "lib_google_calendar_calendareventinstance",
+      "lib_google_calendar_fetchcalendarevents",
+      "lib_google_calendar_hashstring",
+      "lib_google_calendar_mapgoogleeventstooccurrences",
+      "lib_google_calendar_refreshgoogleaccesstoken",
+      "lib_scoring",
+      "lib_scoring_occurrenceinput",
+      "lib_scoring_scorebreakdown",
+      "lib_scoring_scoreresult"
+    ],
+    "9": [
+      "package_devdependencies",
+      "package_devdependencies_autoprefixer",
+      "package_devdependencies_playwright_test",
+      "package_devdependencies_postcss",
+      "package_devdependencies_tailwindcss",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_pg",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript"
+    ],
+    "10": [
+      "next",
+      "next_config",
+      "next_config_nextconfig"
+    ],
+    "11": [
+      "scripts_check_network",
+      "scripts_check_network_checknetwork"
+    ],
+    "12": [
+      "scripts_debug_client",
+      "scripts_debug_client_testhydration"
+    ],
+    "13": [
+      "scripts_inspect_hydration",
+      "scripts_inspect_hydration_check"
+    ],
+    "14": [
+      "vercel",
+      "vercel_crons"
+    ],
+    "15": [
+      "postcss_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.15798319327731092,
+    "1": 0.07130124777183601,
+    "2": 0.06451612903225806,
+    "3": 0.17846153846153845,
+    "4": 0.1471861471861472,
+    "5": 0.19047619047619047,
+    "6": 0.1111111111111111,
+    "7": 0.15384615384615385,
+    "8": 0.24444444444444444,
+    "9": 0.2,
+    "10": 0.6666666666666666,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0
+  },
+  "gods": [
+    {
+      "id": "components_ui_liquid_glass_liquidglasscard",
+      "label": "LiquidGlassCard()",
+      "degree": 21
+    },
+    {
+      "id": "ref_next",
+      "label": "next",
+      "degree": 17
+    },
+    {
+      "id": "ref_react",
+      "label": "react",
+      "degree": 15
+    },
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 15
+    },
+    {
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
+      "degree": 12
+    },
+    {
+      "id": "lib_postgres_getpostgrespool",
+      "label": "getPostgresPool()",
+      "degree": 9
+    },
+    {
+      "id": "jobs_rescore_runnightlyrescorejob",
+      "label": "runNightlyRescoreJob()",
+      "degree": 8
+    },
+    {
+      "id": "lib_db_meetingrecord",
+      "label": "MeetingRecord",
+      "degree": 8
+    },
+    {
+      "id": "lib_server_db_getmeetingbyid",
+      "label": "getMeetingById()",
+      "degree": 8
+    },
+    {
+      "id": "components_score_badge_scorebadge",
+      "label": "ScoreBadge()",
+      "degree": 7
+    }
+  ],
+  "surprises": [
+    {
+      "source": "GET()",
+      "target": "getMeetings()",
+      "source_files": [
+        "app/api/meetings/route.ts",
+        "lib/server-db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities; peripheral node `GET()` unexpectedly reaches hub `getMeetings()`"
+    },
+    {
+      "source": "POST()",
+      "target": "runNightlyRescoreJob()",
+      "source_files": [
+        "app/api/calendar/sync/route.ts",
+        "jobs/rescore.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `POST()` unexpectedly reaches hub `runNightlyRescoreJob()`"
+    },
+    {
+      "source": "GET()",
+      "target": "runNightlyRescoreJob()",
+      "source_files": [
+        "app/api/cron/rescore/route.ts",
+        "jobs/rescore.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `GET()` unexpectedly reaches hub `runNightlyRescoreJob()`"
+    },
+    {
+      "source": "POST()",
+      "target": "postSlackMessage()",
+      "source_files": [
+        "app/api/slack/draft/route.ts",
+        "lib/slack.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `postSlackMessage()` unexpectedly reaches hub `POST()`"
+    },
+    {
+      "source": "RootLayout()",
+      "target": "Providers()",
+      "source_files": [
+        "app/layout.tsx",
+        "components/providers.tsx"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `RootLayout()` unexpectedly reaches hub `Providers()`"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

@@ -4,8 +4,10 @@ test('Clean Enterprise UI visual and interaction test', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('http://localhost:3000');
 
-  // Verify Title
-  await expect(page.locator('h1')).toContainText('Recurring Calendar Audit');
+  // Verify Greeting & Hero
+  await expect(page.locator('body')).toContainText('Good Morning, Serena!');
+  await expect(page.locator('body')).toContainText('Your Daily Vitals');
+  await expect(page.locator('body')).toContainText('My Wellness Journey');
 
   // Verify Loaded Rate Slider interaction
   const slider = page.locator('input[type="range"]').first();
@@ -15,7 +17,7 @@ test('Clean Enterprise UI visual and interaction test', async ({ page }) => {
   await expect(page.getByText('$120/hr', { exact: true })).toBeVisible();
 
   // Test filter buttons
-  await page.click('button:has-text("Sunset Recommended")');
+  await page.click('button:has-text("Sunset")');
   await page.waitForTimeout(300);
 
   // Take screenshot of clean dashboard
@@ -46,4 +48,10 @@ test('Clean Enterprise UI visual and interaction test', async ({ page }) => {
   await page.waitForSelector('text=Scoring Signal Breakdown');
   await page.waitForTimeout(300);
   await page.screenshot({ path: 'screenshot-clean-enterprise-detail.png', fullPage: true });
+
+  // Mobile App Viewport Capture
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('http://localhost:3000');
+  await page.waitForTimeout(400);
+  await page.screenshot({ path: 'screenshot-serene-mobile-dashboard.png' });
 });

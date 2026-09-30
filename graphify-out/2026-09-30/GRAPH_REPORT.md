@@ -1,17 +1,17 @@
 # Graph Report - saas_product  (2026-09-30)
 
 ## Corpus Check
-- 66 files · ~30,855 words
+- 63 files · ~29,029 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: .example 1, (none) 1, .css 1)
 
 ## Summary
-- 381 nodes · 560 edges · 25 communities (15 shown, 10 thin omitted)
+- 375 nodes · 545 edges · 24 communities (14 shown, 10 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b1a0fa86`
+- Built from commit: `5a37c09a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,8 +20,8 @@
 - deploy-antideploy.mjs
 - package.json
 - server-db.ts
-- pricing-modal.tsx
-- slack.ts
+- providers.tsx
+- [id]/route.ts
 - compilerOptions
 - dependencies
 - scoring.ts
@@ -35,60 +35,59 @@
 - meetingdebt Design System
 - rules/graphify.md
 - workflows/graphify.md
-- devDependencies
 
 ## God Nodes (most connected - your core abstractions)
 1. `LiquidGlassCard()` - 21 edges
-2. `next` - 18 edges
-3. `react` - 17 edges
+2. `next` - 17 edges
+3. `react` - 15 edges
 4. `compilerOptions` - 15 edges
-5. `lucide-react` - 14 edges
-6. `meetingdebt Design System` - 13 edges
+5. `meetingdebt Design System` - 13 edges
+6. `lucide-react` - 12 edges
 7. `meetingdebt DESIGN.md` - 11 edges
 8. `meetingdebt DESIGN.md` - 11 edges
 9. `meetingdebt DESIGN.md` - 11 edges
 10. `getPostgresPool()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `GET()` --calls--> `getMeetings()`  [EXTRACTED]
+  app/api/meetings/route.ts → lib/server-db.ts
 - `POST()` --calls--> `runNightlyRescoreJob()`  [EXTRACTED]
   app/api/calendar/sync/route.ts → jobs/rescore.ts
 - `GET()` --calls--> `runNightlyRescoreJob()`  [EXTRACTED]
   app/api/cron/rescore/route.ts → jobs/rescore.ts
-- `GET()` --calls--> `generateSlackDraft()`  [EXTRACTED]
-  app/api/meetings/[id]/route.ts → lib/slack.ts
-- `GET()` --calls--> `getMeetings()`  [EXTRACTED]
-  app/api/meetings/route.ts → lib/server-db.ts
-- `POST()` --calls--> `getMeetingById()`  [EXTRACTED]
-  app/api/slack/draft/route.ts → lib/server-db.ts
+- `GET()` --calls--> `calculateZombieScore()`  [EXTRACTED]
+  app/api/meetings/[id]/route.ts → lib/scoring.ts
+- `POST()` --calls--> `postSlackMessage()`  [EXTRACTED]
+  app/api/slack/draft/route.ts → lib/slack.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (25 total, 10 thin omitted)
+## Communities (24 total, 10 thin omitted)
 
 ### Community 0 - "LiquidGlassCard"
-Cohesion: 0.10
-Nodes (32): app_globals, metadata, RootLayout(), viewport, LoginPage(), MeetingDetailPage(), DashboardPage(), PrivacyPolicyPage() (+24 more)
+Cohesion: 0.15
+Nodes (22): LoginPage(), MeetingDetailPage(), DashboardPage(), PrivacyPolicyPage(), TermsOfServicePage(), GuideModalProps, MeetingCard(), MeetingCardProps (+14 more)
 
 ### Community 1 - "deploy-antideploy.mjs"
 Cohesion: 0.07
 Nodes (22): ref_child_process, ref_fs, ref_https, ref_os, ref_path, ref_url, config, configPath (+14 more)
 
 ### Community 2 - "package.json"
-Cohesion: 0.07
-Nodes (26): name, private, scripts, build, deploy:antideploy, dev, lint, start (+18 more)
+Cohesion: 0.05
+Nodes (36): devDependencies, autoprefixer, @playwright/test, postcss, tailwindcss, @types/node, @types/pg, @types/react (+28 more)
 
 ### Community 3 - "server-db.ts"
-Cohesion: 0.11
-Nodes (30): handler, POST(), GET(), GET(), PATCH(), GET(), POST(), MeetingCardProps (+22 more)
+Cohesion: 0.17
+Nodes (19): POST(), GET(), POST(), RescoreSummary, runNightlyRescoreJob(), INITIAL_DEMO_MEETINGS, isPostgresConfigured, isSupabaseConfigured (+11 more)
 
-### Community 4 - "pricing-modal.tsx"
-Cohesion: 0.39
-Nodes (5): POST(), PricingModalProps, createCheckoutSession(), PLANS, stripe
+### Community 4 - "providers.tsx"
+Cohesion: 0.16
+Nodes (14): POST(), app_globals, metadata, RootLayout(), viewport, DashboardNav(), DashboardNavProps, GuideModal() (+6 more)
 
-### Community 5 - "slack.ts"
-Cohesion: 0.46
-Nodes (6): POST(), generateSlackDraft(), postSlackMessage(), sendSlackWebhook(), SlackDraftMessage, SlackDraftParams
+### Community 5 - "[id]/route.ts"
+Cohesion: 0.20
+Nodes (14): handler, GET(), PATCH(), GET(), POST(), authOptions, getMeetingById(), updateMeetingStatus() (+6 more)
 
 ### Community 6 - "compilerOptions"
 Cohesion: 0.11
@@ -122,29 +121,25 @@ Nodes (27): 10. Agent Prompt Guide, 1. Visual Theme & Atmosphere, 2. Color Palet
 Cohesion: 0.14
 Nodes (13): 1. Install Dependencies, 2. Configure Environment (Optional for Local Demo), 3. Run Development Server, 🚢 Deploying to Production (Antideploy), 🚀 Getting Started, 🌐 Live Production Deployment, MeetingDebt 💀 — Zombie-Meeting Score & Calendar Auditor, 📂 Repository Structure (+5 more)
 
-### Community 24 - "devDependencies"
-Cohesion: 0.20
-Nodes (10): devDependencies, autoprefixer, @playwright/test, postcss, tailwindcss, @types/node, @types/pg, @types/react (+2 more)
-
 ## Knowledge Gaps
-- **199 isolated node(s):** `handler`, `metadata`, `viewport`, `DashboardNavProps`, `GuideModalProps` (+194 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 233 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **197 isolated node(s):** `handler`, `metadata`, `viewport`, `DashboardNavProps`, `GuideModalProps` (+192 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 231 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `next` connect `LiquidGlassCard` to `package.json`, `server-db.ts`, `pricing-modal.tsx`, `slack.ts`?**
-  _High betweenness centrality (0.065) - this node is a cross-community bridge._
-- **Why does `react` connect `LiquidGlassCard` to `package.json`, `pricing-modal.tsx`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+- **Why does `next` connect `LiquidGlassCard` to `package.json`, `server-db.ts`, `providers.tsx`, `[id]/route.ts`?**
+  _High betweenness centrality (0.063) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
+- **Why does `react` connect `LiquidGlassCard` to `package.json`, `providers.tsx`?**
+  _High betweenness centrality (0.024) - this node is a cross-community bridge._
 - **What connects `handler`, `metadata`, `viewport` to the rest of the system?**
-  _199 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _197 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `LiquidGlassCard` be split into smaller, more focused modules?**
-  _Cohesion score 0.10105580693815988 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.14864864864864866 - nodes in this community are weakly interconnected._
 - **Should `deploy-antideploy.mjs` be split into smaller, more focused modules?**
   _Cohesion score 0.07130124777183601 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05 - nodes in this community are weakly interconnected._

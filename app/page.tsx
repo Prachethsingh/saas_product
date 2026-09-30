@@ -14,6 +14,7 @@ import { SlackModal } from '@/components/slack-modal';
 import { MeetingSimulator } from '@/components/meeting-simulator';
 import { MeetingRecord, INITIAL_DEMO_MEETINGS } from '@/lib/db';
 import { LiquidGlassCard } from '@/components/ui/liquid-glass';
+import { VitalsHero } from '@/components/vitals-hero';
 
 export default function DashboardPage() {
   const [meetings, setMeetings] = useState<MeetingRecord[]>(INITIAL_DEMO_MEETINGS);
@@ -103,45 +104,50 @@ export default function DashboardPage() {
     <div className="space-y-6">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-3.5 py-2 rounded-md bg-slate-900 border border-slate-800 text-white text-xs shadow-lg font-mono">
-          <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+        <div className="fixed bottom-20 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white text-slate-800 text-xs shadow-xl font-medium">
+          <Check className="w-4 h-4 text-emerald-500 shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}
 
-      {/* Header & Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-5">
-        <div>
-          <h1 className="text-xl font-bold tracking-tight text-slate-900">
-            Recurring Calendar Audit
-          </h1>
-          <p className="text-xs text-slate-500 mt-0.5">
-            Analyzed 90-day attendance metrics and engagement health across {meetings.length} recurring series.
-          </p>
+      {/* Vitals Hero Dashboard (Reproducing the Serene Glassmorphic Mobile App Aesthetic) */}
+      <VitalsHero
+        totalReclaimableHours={totalHoursReclaimable}
+        annualWaste={dynamicAnnualWaste}
+        hourlyRate={hourlyRate}
+        killCount={killCount}
+        shortenCount={shortenCount}
+        healthyCount={healthyCount}
+        onOpenGuide={() => window.dispatchEvent(new CustomEvent('open-guide'))}
+        onOpenSimulator={() => {
+          const el = document.getElementById('meeting-simulator');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }}
+        onOpenPricing={() => window.dispatchEvent(new CustomEvent('open-pricing'))}
+      />
+
+      {/* Loaded Rate Adjuster Bar */}
+      <div className="rounded-2xl bg-white/60 backdrop-blur-xl border border-white/80 p-3.5 shadow-[0_4px_16px_-2px_rgba(15,60,110,0.04)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <Sliders className="w-4 h-4 text-sky-600" />
+          <span className="text-xs font-semibold text-slate-700">Team Hourly Loaded Rate:</span>
+          <span className="font-mono font-bold text-sky-950 text-xs">${hourlyRate}/hr</span>
         </div>
-
-        <div className="flex items-center gap-2 flex-wrap">
-          {/* Loaded Rate Adjuster */}
-          <div className="flex items-center gap-2.5 bg-white border border-slate-200 rounded-md px-3 py-1.5 text-xs">
-            <Sliders className="w-3.5 h-3.5 text-slate-500" />
-            <span className="text-slate-600">Loaded Rate:</span>
-            <input
-              type="range"
-              min="50"
-              max="150"
-              step="5"
-              value={hourlyRate}
-              onChange={(e) => setHourlyRate(Number(e.target.value))}
-              className="w-24 accent-slate-800 cursor-pointer"
-            />
-            <span className="font-mono font-semibold text-slate-900 tabular-nums">${hourlyRate}/hr</span>
-          </div>
-
+        <div className="flex items-center gap-3">
+          <input
+            type="range"
+            min="50"
+            max="150"
+            step="5"
+            value={hourlyRate}
+            onChange={(e) => setHourlyRate(Number(e.target.value))}
+            className="w-36 accent-sky-600 cursor-pointer"
+          />
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('open-guide'))}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-medium text-sky-800 bg-white/70 hover:bg-white border border-white transition-all shadow-xs"
           >
-            <BookOpen className="w-3.5 h-3.5 text-slate-500" />
+            <BookOpen className="w-3.5 h-3.5 text-sky-600" />
             <span>Audit Guide</span>
           </button>
         </div>
@@ -199,68 +205,68 @@ export default function DashboardPage() {
       </div>
 
       {/* Baseline Policy Notice */}
-      <div className="rounded-md border border-slate-200 bg-slate-50 px-4 py-2.5 flex items-start sm:items-center justify-between gap-3 text-xs text-slate-600">
+      <div className="rounded-2xl border border-white/80 bg-white/55 backdrop-blur-xl px-4 py-3 flex items-start sm:items-center justify-between gap-3 text-xs text-slate-600 shadow-xs">
         <div className="flex items-center gap-2">
-          <Info className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+          <Info className="w-4 h-4 text-sky-600 shrink-0" />
           <span>
             <strong className="text-slate-800">Minimum Baseline Requirement:</strong> Series require at least 6 occurrences before scoring to prevent false positives from short sprints or seasonal changes.
           </span>
         </div>
-        <span className="hidden md:inline font-mono text-[11px] text-slate-500 shrink-0">
+        <span className="hidden md:inline font-mono text-[11px] text-sky-800/70 shrink-0">
           N &ge; 6 Baseline Rule
         </span>
       </div>
 
       {/* Filters and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
+      <div id="audit-list" className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
         {/* Filter Segmented Controls */}
-        <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 text-xs font-mono">
+        <div className="p-1 rounded-2xl bg-white/45 backdrop-blur-xl border border-white/80 shadow-[inset_0_1px_2px_rgba(255,255,255,0.9)] flex items-center gap-1 overflow-x-auto text-xs font-mono">
           <button
             onClick={() => setFilter('all')}
-            className={`px-3 py-1.5 rounded-md transition-colors ${
+            className={`px-3 py-1.5 rounded-xl transition-all ${
               filter === 'all'
-                ? 'bg-slate-900 text-white font-medium'
-                : 'text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200'
+                ? 'bg-sky-700 text-white font-semibold shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white/40'
             }`}
           >
             All ({meetings.length})
           </button>
           <button
             onClick={() => setFilter('kill')}
-            className={`px-3 py-1.5 rounded-md transition-colors ${
+            className={`px-3 py-1.5 rounded-xl transition-all ${
               filter === 'kill'
-                ? 'bg-rose-600 text-white font-medium'
-                : 'text-slate-600 hover:text-rose-700 bg-white hover:bg-rose-50 border border-slate-200'
+                ? 'bg-rose-500 text-white font-semibold shadow-xs'
+                : 'text-rose-700 hover:text-rose-900 hover:bg-rose-50/50'
             }`}
           >
-            Sunset Recommended ({killCount})
+            Sunset ({killCount})
           </button>
           <button
             onClick={() => setFilter('shorten')}
-            className={`px-3 py-1.5 rounded-md transition-colors ${
+            className={`px-3 py-1.5 rounded-xl transition-all ${
               filter === 'shorten'
-                ? 'bg-amber-600 text-white font-medium'
-                : 'text-slate-600 hover:text-amber-800 bg-white hover:bg-amber-50 border border-slate-200'
+                ? 'bg-amber-500 text-white font-semibold shadow-xs'
+                : 'text-amber-700 hover:text-amber-900 hover:bg-amber-50/50'
             }`}
           >
-            Shorten Recommended ({shortenCount})
+            Shorten ({shortenCount})
           </button>
           <button
             onClick={() => setFilter('healthy')}
-            className={`px-3 py-1.5 rounded-md transition-colors ${
+            className={`px-3 py-1.5 rounded-xl transition-all ${
               filter === 'healthy'
-                ? 'bg-emerald-600 text-white font-medium'
-                : 'text-slate-600 hover:text-emerald-800 bg-white hover:bg-emerald-50 border border-slate-200'
+                ? 'bg-emerald-500 text-white font-semibold shadow-xs'
+                : 'text-emerald-700 hover:text-emerald-900 hover:bg-emerald-50/50'
             }`}
           >
             Healthy ({healthyCount})
           </button>
           <button
             onClick={() => setFilter('observation')}
-            className={`px-3 py-1.5 rounded-md transition-colors ${
+            className={`px-3 py-1.5 rounded-xl transition-all ${
               filter === 'observation'
-                ? 'bg-slate-700 text-white font-medium'
-                : 'text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200'
+                ? 'bg-slate-700 text-white font-semibold shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white/40'
             }`}
           >
             Baseline ({observationCount})
@@ -269,13 +275,13 @@ export default function DashboardPage() {
 
         {/* Search Input */}
         <div className="relative w-full sm:w-64">
-          <Search className="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-slate-400" />
+          <Search className="w-3.5 h-3.5 absolute left-3 top-3 text-sky-500" />
           <input
             type="text"
-            placeholder="Search title or host..."
+            placeholder="Search series title..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-8 pr-2.5 py-1.5 text-xs rounded-md bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-400 font-mono"
+            className="w-full pl-8 pr-3 py-2 text-xs rounded-2xl bg-white/65 backdrop-blur-xl border border-white/80 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:bg-white/90 font-mono shadow-xs transition-all"
           />
         </div>
       </div>

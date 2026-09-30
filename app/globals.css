@@ -3,8 +3,8 @@
 @import "tailwindcss/utilities";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #edf5fc;
+  --foreground: #0f233a;
 }
 
 body {
@@ -13,6 +13,13 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(at 15% 15%, rgba(186, 230, 253, 0.7) 0px, transparent 45%),
+    radial-gradient(at 85% 12%, rgba(199, 210, 254, 0.5) 0px, transparent 40%),
+    radial-gradient(at 50% 65%, rgba(224, 242, 254, 0.8) 0px, transparent 55%),
+    radial-gradient(at 80% 85%, rgba(186, 230, 253, 0.6) 0px, transparent 50%),
+    linear-gradient(180deg, #eaf4fd 0%, #dbeafe 50%, #eff6ff 100%);
+  background-attachment: fixed;
 }
 
 /* Tabular mono numbers for data tables and metrics */
@@ -20,23 +27,59 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Standard B2B Glass/Surface Utilities */
+/* Serene Blue Frosted Glass Utilities */
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.65);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 34px -4px rgba(15, 60, 110, 0.07), inset 0 1px 2px 0 rgba(255, 255, 255, 0.9);
+}
+
+.frosted-subcard {
+  background: rgba(255, 255, 255, 0.52);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 18px -2px rgba(15, 60, 110, 0.05), inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.frosted-nav {
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 20px -2px rgba(15, 60, 110, 0.04);
+}
+
+.frosted-dock {
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 -8px 30px -4px rgba(15, 60, 110, 0.1), inset 0 1px 2px 0 rgba(255, 255, 255, 0.95);
+}
+
 .glass-panel {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.65);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px -4px rgba(15, 60, 110, 0.06), inset 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.95);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .glass-pill {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
 }
 
 /* Crisp scrollbars */
