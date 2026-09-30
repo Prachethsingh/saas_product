@@ -4,19 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "id": "components_dashboard_nav_dashboardnavprops",
-      "label": "DashboardNavProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "LiquidGlassCard",
-      "file_type": "code",
-      "norm_label": "dashboardnavprops",
-      "source_file": "components/dashboard-nav.tsx",
-      "source_location": "L11"
-    },
-    {
       "id": "components_guide_modal_guidemodalprops",
       "label": "GuideModalProps",
       "_callable": true,
@@ -54,19 +41,6 @@
       "norm_label": "meetingsimulatorprops",
       "source_file": "components/meeting-simulator.tsx",
       "source_location": "L16"
-    },
-    {
-      "id": "components_mobile_dock_mobiledockprops",
-      "label": "MobileDockProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "LiquidGlassCard",
-      "file_type": "code",
-      "norm_label": "mobiledockprops",
-      "source_file": "components/mobile-dock.tsx",
-      "source_location": "L7"
     },
     {
       "id": "components_score_badge_scorebadgeprops",
@@ -173,17 +147,30 @@
       "source_location": "L10"
     },
     {
-      "id": "components_pricing_modal_pricingmodalprops",
-      "label": "PricingModalProps",
+      "id": "components_dashboard_nav_dashboardnavprops",
+      "label": "DashboardNavProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
       "community_name": "providers.tsx",
       "file_type": "code",
-      "norm_label": "pricingmodalprops",
-      "source_file": "components/pricing-modal.tsx",
-      "source_location": "L8"
+      "norm_label": "dashboardnavprops",
+      "source_file": "components/dashboard-nav.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "components_mobile_dock_mobiledockprops",
+      "label": "MobileDockProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "providers.tsx",
+      "file_type": "code",
+      "norm_label": "mobiledockprops",
+      "source_file": "components/mobile-dock.tsx",
+      "source_location": "L7"
     },
     {
       "id": "lib_slack_slackdraftmessage",
@@ -262,6 +249,19 @@
       "norm_label": "scoreresult",
       "source_file": "lib/scoring.ts",
       "source_location": "L57"
+    },
+    {
+      "id": "components_pricing_modal_pricingmodalprops",
+      "label": "PricingModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "pricing-modal.tsx",
+      "file_type": "code",
+      "norm_label": "pricingmodalprops",
+      "source_file": "components/pricing-modal.tsx",
+      "source_location": "L8"
     },
     {
       "id": "app_api_health_route_get",
@@ -600,6 +600,18 @@
       "source_location": "L330"
     },
     {
+      "id": "lib_scoring_calculatezombiescore",
+      "label": "calculateZombieScore()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "server-db.ts",
+      "file_type": "code",
+      "norm_label": "calculatezombiescore()",
+      "source_file": "lib/scoring.ts",
+      "source_location": "L73"
+    },
+    {
       "id": "lib_server_db_getmeetings",
       "label": "getMeetings()",
       "_callable": true,
@@ -610,18 +622,6 @@
       "norm_label": "getmeetings()",
       "source_file": "lib/server-db.ts",
       "source_location": "L9"
-    },
-    {
-      "id": "app_api_stripe_checkout_route_post",
-      "label": "POST()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "post()",
-      "source_file": "app/api/stripe/checkout/route.ts",
-      "source_location": "L4"
     },
     {
       "id": "app_layout_rootlayout",
@@ -696,18 +696,6 @@
       "source_location": "L10"
     },
     {
-      "id": "lib_stripe_createcheckoutsession",
-      "label": "createCheckoutSession()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "createcheckoutsession()",
-      "source_file": "lib/stripe.ts",
-      "source_location": "L64"
-    },
-    {
       "id": "app_api_meetings_id_route_get",
       "label": "GET()",
       "_callable": true,
@@ -754,18 +742,6 @@
       "norm_label": "post()",
       "source_file": "app/api/slack/draft/route.ts",
       "source_location": "L5"
-    },
-    {
-      "id": "lib_scoring_calculatezombiescore",
-      "label": "calculateZombieScore()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "[id]/route.ts",
-      "file_type": "code",
-      "norm_label": "calculatezombiescore()",
-      "source_file": "lib/scoring.ts",
-      "source_location": "L73"
     },
     {
       "id": "lib_server_db_getmeetingbyid",
@@ -876,6 +852,30 @@
       "source_location": "L26"
     },
     {
+      "id": "app_api_stripe_checkout_route_post",
+      "label": "POST()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "pricing-modal.tsx",
+      "file_type": "code",
+      "norm_label": "post()",
+      "source_file": "app/api/stripe/checkout/route.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "lib_stripe_createcheckoutsession",
+      "label": "createCheckoutSession()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "pricing-modal.tsx",
+      "file_type": "code",
+      "norm_label": "createcheckoutsession()",
+      "source_file": "lib/stripe.ts",
+      "source_location": "L64"
+    },
+    {
       "id": "app_api_health_route",
       "label": "health/route.ts",
       "_origin": "ast",
@@ -942,17 +942,6 @@
       "source_location": "L1"
     },
     {
-      "id": "components_dashboard_nav",
-      "label": "dashboard-nav.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "LiquidGlassCard",
-      "file_type": "code",
-      "norm_label": "dashboard-nav.tsx",
-      "source_file": "components/dashboard-nav.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "components_guide_modal",
       "label": "guide-modal.tsx",
       "_origin": "ast",
@@ -983,17 +972,6 @@
       "file_type": "code",
       "norm_label": "meeting-simulator.tsx",
       "source_file": "components/meeting-simulator.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_mobile_dock",
-      "label": "mobile-dock.tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "LiquidGlassCard",
-      "file_type": "code",
-      "norm_label": "mobile-dock.tsx",
-      "source_file": "components/mobile-dock.tsx",
       "source_location": "L1"
     },
     {
@@ -1247,28 +1225,6 @@
       "file_type": "code",
       "norm_label": "nextconfig",
       "source_file": "next.config.mjs",
-      "source_location": "L2"
-    },
-    {
-      "id": "vercel",
-      "label": "vercel.json",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "vercel.json",
-      "file_type": "code",
-      "norm_label": "vercel.json",
-      "source_file": "vercel.json",
-      "source_location": "L1"
-    },
-    {
-      "id": "vercel_crons",
-      "label": "crons",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "vercel.json",
-      "file_type": "code",
-      "norm_label": "crons",
-      "source_file": "vercel.json",
       "source_location": "L2"
     },
     {
@@ -2079,17 +2035,6 @@
       "source_location": "L14"
     },
     {
-      "id": "app_api_stripe_checkout_route",
-      "label": "checkout/route.ts",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "checkout/route.ts",
-      "source_file": "app/api/stripe/checkout/route.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "app_layout",
       "label": "layout.tsx",
       "_origin": "ast",
@@ -2123,14 +2068,25 @@
       "source_location": "L12"
     },
     {
-      "id": "components_pricing_modal",
-      "label": "pricing-modal.tsx",
+      "id": "components_dashboard_nav",
+      "label": "dashboard-nav.tsx",
       "_origin": "ast",
       "community": 4,
       "community_name": "providers.tsx",
       "file_type": "code",
-      "norm_label": "pricing-modal.tsx",
-      "source_file": "components/pricing-modal.tsx",
+      "norm_label": "dashboard-nav.tsx",
+      "source_file": "components/dashboard-nav.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_mobile_dock",
+      "label": "mobile-dock.tsx",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "providers.tsx",
+      "file_type": "code",
+      "norm_label": "mobile-dock.tsx",
+      "source_file": "components/mobile-dock.tsx",
       "source_location": "L1"
     },
     {
@@ -2143,39 +2099,6 @@
       "norm_label": "providers.tsx",
       "source_file": "components/providers.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "lib_stripe",
-      "label": "stripe.ts",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "stripe.ts",
-      "source_file": "lib/stripe.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_stripe_plans",
-      "label": "PLANS",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "code",
-      "norm_label": "plans",
-      "source_file": "lib/stripe.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "ref_stripe",
-      "label": "stripe",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "providers.tsx",
-      "file_type": "concept",
-      "norm_label": "stripe",
-      "source_file": "package.json",
-      "source_location": "L23"
     },
     {
       "id": "app_api_auth_nextauth_route",
@@ -2638,6 +2561,61 @@
       "norm_label": "scoring.ts",
       "source_file": "lib/scoring.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "app_api_stripe_checkout_route",
+      "label": "checkout/route.ts",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "pricing-modal.tsx",
+      "file_type": "code",
+      "norm_label": "checkout/route.ts",
+      "source_file": "app/api/stripe/checkout/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_pricing_modal",
+      "label": "pricing-modal.tsx",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "pricing-modal.tsx",
+      "file_type": "code",
+      "norm_label": "pricing-modal.tsx",
+      "source_file": "components/pricing-modal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_stripe",
+      "label": "stripe.ts",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "pricing-modal.tsx",
+      "file_type": "code",
+      "norm_label": "stripe.ts",
+      "source_file": "lib/stripe.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_stripe_plans",
+      "label": "PLANS",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "pricing-modal.tsx",
+      "file_type": "code",
+      "norm_label": "plans",
+      "source_file": "lib/stripe.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "ref_stripe",
+      "label": "stripe",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "pricing-modal.tsx",
+      "file_type": "concept",
+      "norm_label": "stripe",
+      "source_file": "package.json",
+      "source_location": "L23"
     },
     {
       "id": "ref_child_process",
@@ -7552,17 +7530,6 @@
       "weight": 1.0
     },
     {
-      "source": "vercel",
-      "target": "vercel_crons",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vercel.json",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
       "source": "next_config",
       "target": "next",
       "relation": "dynamic_import",
@@ -7573,5 +7540,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "714b2a9f2733e659444d6841214cbc0a02b2433a"
+  "built_at_commit": "1a8e55e13f3ff512872db945d48fcc97cb636085"
 }

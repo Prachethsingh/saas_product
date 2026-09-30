@@ -263,12 +263,6 @@
     "ast_hash": "570e85507d1fb0c609255b9a0aa95595",
     "semantic_hash": "570e85507d1fb0c609255b9a0aa95595"
   },
-  "vercel.json": {
-    "mtime": 1790353447.5423186,
-    "seen": 1790783472.9690864,
-    "ast_hash": "6d9ba6ec86332b0102a2296ae051282d",
-    "semantic_hash": "6d9ba6ec86332b0102a2296ae051282d"
-  },
   ".agents/rules/graphify.md": {
     "mtime": 1790783553.4022684,
     "seen": 1790783753.1427124,

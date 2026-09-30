@@ -144,10 +144,10 @@
     "semantic_hash": ""
   },
   "components/score-badge.tsx": {
-    "mtime": 1790782592.7837603,
-    "seen": 1790783472.9690385,
-    "ast_hash": "a2d9fa8e4ed66d2a95b19385f0227cb8",
-    "semantic_hash": "a2d9fa8e4ed66d2a95b19385f0227cb8"
+    "mtime": 1790786683.7978566,
+    "seen": 1790786843.8704276,
+    "ast_hash": "0a3abbe6b38b488ce357cab528de00ef",
+    "semantic_hash": ""
   },
   "components/slack-modal.tsx": {
     "mtime": 1790785574.0150723,
@@ -239,59 +239,11 @@
     "ast_hash": "8640f9b2e6475cc3f5b1ff4548925765",
     "semantic_hash": "8640f9b2e6475cc3f5b1ff4548925765"
   },
-  "scripts/capture-full-dashboard.mjs": {
-    "mtime": 1790362455.144171,
-    "seen": 1790783472.969064,
-    "ast_hash": "757bee84fa22d87e5516f5e2113b6e78",
-    "semantic_hash": "757bee84fa22d87e5516f5e2113b6e78"
-  },
-  "scripts/check-db.mjs": {
-    "mtime": 1790526908.5130775,
-    "seen": 1790783472.9690654,
-    "ast_hash": "b9cb8367deff779dd71d19569a9f9c34",
-    "semantic_hash": "b9cb8367deff779dd71d19569a9f9c34"
-  },
-  "scripts/check-network.mjs": {
-    "mtime": 1790362662.898455,
-    "seen": 1790783472.9690673,
-    "ast_hash": "f41921bf82ed342d9fa97ced30ed17d0",
-    "semantic_hash": "f41921bf82ed342d9fa97ced30ed17d0"
-  },
-  "scripts/debug-client.mjs": {
-    "mtime": 1790362580.42093,
-    "seen": 1790783472.969071,
-    "ast_hash": "c7ebedd6ed87e6a0eb974950a733c13e",
-    "semantic_hash": "c7ebedd6ed87e6a0eb974950a733c13e"
-  },
   "scripts/deploy-antideploy.mjs": {
     "mtime": 1790526085.4440022,
     "seen": 1790783472.9690723,
     "ast_hash": "04788e3f6fa0f089b2011bc3abea81a2",
     "semantic_hash": "04788e3f6fa0f089b2011bc3abea81a2"
-  },
-  "scripts/inspect-hydration.mjs": {
-    "mtime": 1790362884.7262006,
-    "seen": 1790783472.969074,
-    "ast_hash": "c074eff35119d62dd7d62b6e800f872e",
-    "semantic_hash": "c074eff35119d62dd7d62b6e800f872e"
-  },
-  "scripts/test-interactivity.mjs": {
-    "mtime": 1790362864.3805232,
-    "seen": 1790783472.9690754,
-    "ast_hash": "7c39e2328589a9e55850426659b0ed9f",
-    "semantic_hash": "7c39e2328589a9e55850426659b0ed9f"
-  },
-  "scripts/test-react-events.mjs": {
-    "mtime": 1790362969.6903274,
-    "seen": 1790783472.969077,
-    "ast_hash": "568378a63e991f926cc5218f7bfff80b",
-    "semantic_hash": "568378a63e991f926cc5218f7bfff80b"
-  },
-  "scripts/test-ui.mjs": {
-    "mtime": 1790362271.6429324,
-    "seen": 1790783472.9690785,
-    "ast_hash": "5f2b43d7ebc6f978e0701c0fe06b97c1",
-    "semantic_hash": "5f2b43d7ebc6f978e0701c0fe06b97c1"
   },
   "tailwind.config.ts": {
     "mtime": 1790785322.0605588,
@@ -300,9 +252,9 @@
     "semantic_hash": ""
   },
   "tests/white-liquid-ui.spec.js": {
-    "mtime": 1790786011.9234498,
-    "seen": 1790786087.3386004,
-    "ast_hash": "c5f51ad5902a07be0aaacb39b91d8f77",
+    "mtime": 1790786594.6959095,
+    "seen": 1790786843.8729472,
+    "ast_hash": "b9d5f15744eb8342fdcca1df6ccd8b1f",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -339,36 +291,6 @@
     "mtime": 1790528251.3727982,
     "seen": 1790783753.1427228,
     "ast_hash": "9de2ec5040e8d3e0bca8a4b601110aae",
-    "semantic_hash": ""
-  },
-  "design-system/meetingdebt-design/CLAUDE.md": {
-    "mtime": 1790783377.306181,
-    "seen": 1790783753.1427262,
-    "ast_hash": "eca8e48a60da071d791b77e83ec5385a",
-    "semantic_hash": ""
-  },
-  "design-system/meetingdebt-design/DESIGN.md": {
-    "mtime": 1790783377.2586088,
-    "seen": 1790783753.1427288,
-    "ast_hash": "306d7c787777a7b2fb0d058a1d2c0d37",
-    "semantic_hash": ""
-  },
-  "design-system/meetingdebt-design/SKILL.md": {
-    "mtime": 1790783377.270036,
-    "seen": 1790783753.142731,
-    "ast_hash": "29017ba649c70ecaf95762150a853d59",
-    "semantic_hash": ""
-  },
-  "design-system/meetingdebt-design/meetingdebt-design.skill": {
-    "mtime": 1790783377.3015046,
-    "seen": 1790783753.1427338,
-    "ast_hash": "a7321cef16dbc82a4c85908a81dcb818",
-    "semantic_hash": ""
-  },
-  "design-system/meetingdebt-design/references/DESIGN.md": {
-    "mtime": 1790783377.2598088,
-    "seen": 1790783753.142736,
-    "ast_hash": "306d7c787777a7b2fb0d058a1d2c0d37",
     "semantic_hash": ""
   },
   ".vscode/settings.json": {
