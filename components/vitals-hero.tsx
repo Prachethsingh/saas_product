@@ -160,11 +160,11 @@ export function VitalsHero({
               </svg>
 
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                <span className="text-base font-bold text-sky-950 tracking-tight">
-                  10,245
+                <span className="text-xl font-mono font-bold text-sky-950 tracking-tight tabular-nums">
+                  +{totalReclaimableHours}h
                 </span>
-                <span className="text-[10px] text-sky-800/70 font-medium -mt-0.5">
-                  (Goal: 12,000)
+                <span className="text-[10px] text-sky-800/80 font-medium -mt-0.5 font-mono">
+                  Recovery/Mo
                 </span>
               </div>
             </div>
@@ -173,22 +173,22 @@ export function VitalsHero({
             <div className="flex-1 space-y-2.5">
               <div className="flex items-center justify-between text-xs">
                 <div>
-                  <div className="text-[11px] text-slate-600 font-medium">Steps / Focus Score</div>
-                  <div className="text-xs font-semibold text-sky-950">10,245 pts</div>
+                  <div className="text-[11px] text-slate-600 font-medium">Review Queue</div>
+                  <div className="text-xs font-semibold text-sky-950">{killCount + shortenCount} Series</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-[11px] text-slate-600 font-medium">Sync Cadence</div>
-                  <div className="text-xs font-semibold text-sky-950">72 bpm</div>
+                  <div className="text-[11px] text-slate-600 font-medium">Healthy Cadence</div>
+                  <div className="text-xs font-semibold text-emerald-600">{healthyCount} Series</div>
                 </div>
               </div>
 
               <div className="pt-2 border-t border-sky-100 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-1.5 text-[11px] text-slate-600">
                   <Moon className="w-3.5 h-3.5 text-sky-500" />
-                  <span>Deep Work</span>
+                  <span>Est. Annual Waste</span>
                 </div>
-                <div className="font-semibold text-sky-800 text-xs">
-                  7h 15m
+                <div className="font-semibold text-rose-600 text-xs font-mono tabular-nums">
+                  ${annualWaste.toLocaleString()}/yr
                 </div>
               </div>
             </div>
@@ -229,15 +229,12 @@ export function VitalsHero({
 
           <div className="flex items-center justify-between mt-2 pt-2 border-t border-sky-100">
             <div>
-              <div className="text-xs font-semibold text-sky-950">Calm</div>
-              <div className="text-[10px] text-slate-600">Low meeting fatigue index</div>
+              <div className="text-xs font-semibold text-sky-950">Calm Cadence</div>
+              <div className="text-[10px] text-slate-600">Low meeting fatigue index across team</div>
             </div>
-            <button
-              onClick={onOpenGuide}
-              className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white text-xs font-medium shadow-sm transition-all hover:scale-105 active:scale-95"
-            >
-              See More
-            </button>
+            <span className="text-[11px] font-mono font-medium text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md border border-sky-100">
+              Score: 24/100
+            </span>
           </div>
         </div>
       </div>
@@ -245,23 +242,23 @@ export function VitalsHero({
       {/* Row of 3 Quick Glass Chips */}
       <div className="grid grid-cols-3 gap-3">
         <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
-          <div className="text-[10px] font-medium text-slate-600">Today's Focus</div>
+          <div className="text-[10px] font-medium text-slate-600">Audit Status</div>
           <div className="text-xs sm:text-sm font-semibold text-sky-950 mt-0.5 truncate">
-            Mindfulness
+            Nightly Active
           </div>
         </div>
 
         <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
-          <div className="text-[10px] font-medium text-slate-600">Workouts</div>
-          <div className="text-xs sm:text-sm font-semibold text-sky-950 mt-0.5 truncate">
-            2 Remaining
+          <div className="text-[10px] font-medium text-slate-600">Sunset Candidates</div>
+          <div className="text-xs sm:text-sm font-semibold text-rose-600 mt-0.5 truncate">
+            {killCount} Series Flagged
           </div>
         </div>
 
         <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
-          <div className="text-[10px] font-medium text-slate-600">Hydration</div>
-          <div className="text-xs sm:text-sm font-semibold text-sky-950 mt-0.5 truncate">
-            5/8 Glasses
+          <div className="text-[10px] font-medium text-slate-600">Focus Recovery</div>
+          <div className="text-xs sm:text-sm font-semibold text-emerald-600 mt-0.5 truncate">
+            +{totalReclaimableHours} hrs/month
           </div>
         </div>
       </div>
@@ -270,17 +267,14 @@ export function VitalsHero({
       <div className="rounded-2xl bg-white/70 backdrop-blur-2xl border border-white/90 p-5 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.07),inset_0_1px_2px_rgba(255,255,255,0.95)]">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-sm font-semibold text-sky-950 tracking-tight">My Wellness Journey</h2>
+            <h2 className="text-sm font-semibold text-sky-950 tracking-tight">Weekly Attendance & Focus Journey</h2>
             <p className="text-[11px] text-slate-600 mt-0.5">
               Attendance consistency and focus capacity over the past 7 days
             </p>
           </div>
-          <button
-            onClick={onOpenGuide}
-            className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white text-xs font-medium shadow-sm transition-all hover:scale-105 active:scale-95"
-          >
-            See More
-          </button>
+          <span className="text-[11px] font-mono text-sky-800 bg-sky-50 px-2.5 py-1 rounded-lg border border-sky-100 font-medium">
+            7-Day Cadence
+          </span>
         </div>
 
         {/* Smooth Connecting Dot Curve Graph */}

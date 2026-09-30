@@ -143,13 +143,9 @@ export default function DashboardPage() {
             onChange={(e) => setHourlyRate(Number(e.target.value))}
             className="w-36 accent-sky-600 cursor-pointer"
           />
-          <button
-            onClick={() => window.dispatchEvent(new CustomEvent('open-guide'))}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-medium text-sky-800 bg-white/70 hover:bg-white border border-white transition-all shadow-xs"
-          >
-            <BookOpen className="w-3.5 h-3.5 text-sky-600" />
-            <span>Audit Guide</span>
-          </button>
+          <span className="text-[11px] font-mono text-sky-800/80 bg-sky-50 px-2 py-1 rounded-lg border border-sky-100">
+            $50–$150/hr
+          </span>
         </div>
       </div>
 

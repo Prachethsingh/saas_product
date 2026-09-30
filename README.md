@@ -1,11 +1,11 @@
-# MeetingDebt 💀 — Zombie-Meeting Score & Calendar Auditor
+# MeetingDebt — Zombie-Meeting Score & Calendar Auditor
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-saas--product.antideploy.com-emerald?style=for-the-badge&logo=vercel)](https://saas-product.antideploy.com)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Prachethsingh%2Fsaas__product-blue?style=for-the-badge&logo=github)](https://github.com/Prachethsingh/saas_product)
 [![Next.js 14](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![Deployment](https://img.shields.io/badge/Deploy-Antideploy-6366f1?style=for-the-badge)](https://antideploy.com)
 
-> **Niche B2B SaaS tool for Engineering Managers & Ops Leads.** Connects read-only to Google Calendar, analyzes attendance decay, detects stale agendas, scores recurring meetings (0–100), and auto-drafts data-backed Slack messages to kill, shorten, or async-ize them.
+> **B2B SaaS tool for Engineering Managers & Ops Leads.** Connects read-only to Google Calendar, analyzes attendance decay, detects stale agendas, scores recurring meetings (0–100), and auto-drafts data-backed Slack messages to kill, shorten, or async-ize them.
 
 ---
 
@@ -13,12 +13,11 @@
 
 - **Live URL**: [https://saas-product.antideploy.com](https://saas-product.antideploy.com)
 - **Deployment Dashboard**: [Antideploy Console](https://antideploy.com/app/cee70017-5498-4fd1-9ad7-fd238e45f509)
-- **GitHub Repository**: [Prachethsingh/saas_product](https://github.com/Prachethsingh/saas_product)
-
-Deploying fresh updates takes a single command:
-```bash
-npm run deploy:antideploy
-```
+- **Deploy Command**:
+  ```bash
+  npm run deploy:antideploy
+  ```
+  Antideploy automatically detects the Next.js runtime, builds the container, and provisions database variables (`DATABASE_URL`).
 
 ---
 
@@ -58,7 +57,7 @@ All sub-scores are normalized between $0.00$ and $1.00$ before weighting:
 
 ## 🛠️ Stack & Architecture
 
-- **Frontend**: Next.js 14 (App Router) + Tailwind CSS + Lucide Icons + Recharts
+- **Frontend**: Next.js 14 (App Router) + Tailwind CSS + Lucide Icons + Apple San Francisco Typography + Golden Ratio Grid
 - **Backend**: Next.js 14 API Route Handlers (`/api/calendar/sync`, `/api/cron/rescore`, `/api/slack/draft`, `/api/stripe/checkout`)
 - **Hosting & CI/CD**: [Antideploy](https://antideploy.com) (Containerized Node.js runtime)
 - **Database**: Antideploy Built-in PostgreSQL 17 (Auto-provisioned via `DATABASE_URL`, connection pooled via `pg`, auto-migrated schema)
@@ -76,11 +75,6 @@ All sub-scores are normalized between $0.00$ and $1.00$ before weighting:
 saas_product/
 ├── .antideploy.json                   # Antideploy application configuration
 ├── app/
-│   ├── (auth)/login/page.tsx          # High-conversion Google OAuth permission page
-│   ├── (dashboard)/
-│   │   ├── layout.tsx                 # Dashboard navigation, modal contexts
-│   │   ├── page.tsx                   # Main meeting list, zombie filters, cost calculator
-│   │   └── meetings/[id]/page.tsx     # Deep-dive decay curve, formula breakdown, Slack draft
 │   ├── api/
 │   │   ├── auth/[...nextauth]/route.ts# Google OAuth login handler
 │   │   ├── calendar/sync/route.ts     # Google Calendar sync API
@@ -90,16 +84,25 @@ saas_product/
 │   │   ├── slack/draft/route.ts       # Slack draft generator & 1-click dispatch API
 │   │   ├── stripe/checkout/route.ts   # Stripe checkout session generator
 │   │   └── stripe/webhook/route.ts    # Stripe subscription webhook
-│   ├── globals.css                    # Tailwind & dark theme styling
-│   └── layout.tsx                     # Root HTML & metadata
+│   ├── login/page.tsx                 # Google Workspace OAuth authentication page
+│   ├── meetings/[id]/page.tsx         # Deep-dive decay curve, formula breakdown, Slack draft
+│   ├── privacy/page.tsx               # Compliance & Google API privacy policy
+│   ├── terms/page.tsx                 # SaaS terms of service
+│   ├── globals.css                    # Serene sky glassmorphism tokens & Golden Ratio grid
+│   ├── layout.tsx                     # Root HTML layout with providers & dock
+│   └── page.tsx                       # Main audit dashboard, filters & simulator
 ├── components/
 │   ├── dashboard-nav.tsx              # Top bar, sync button, pricing trigger
+│   ├── guide-modal.tsx                # Methodology & audit formula reference modal
 │   ├── meeting-card.tsx               # Rich meeting card with financial burn badge
+│   ├── meeting-simulator.tsx          # Real-time schedule impact calculator
+│   ├── mobile-dock.tsx                # Floating frosted dock for mobile navigation
+│   ├── pricing-modal.tsx              # Stripe Manager ($15/mo) and Org ($299/mo) plans
+│   ├── providers.tsx                  # Global client providers and modal orchestrator
 │   ├── score-badge.tsx                # Zombie score visual indicator (0-100)
 │   ├── slack-modal.tsx                # Interactive Slack preview & one-click dispatch
-│   └── pricing-modal.tsx              # Stripe Manager ($15/mo) and Org ($299/mo) plans
-├── migrations/
-│   └── 001_initial_schema.sql         # Antideploy Postgres migration: users, calendars, meetings, occurrences, scores
+│   ├── vitals-hero.tsx                # Daily Vitals & Stress Level hero (Golden Ratio 1.618 : 1)
+│   └── ui/liquid-glass.tsx            # Serene frosted glass card & pill components
 ├── db/
 │   └── schema.sql                     # Postgres reference schema & views
 ├── jobs/
@@ -107,17 +110,19 @@ saas_product/
 ├── lib/
 │   ├── auth.ts                        # NextAuth Google provider setup
 │   ├── db.ts                          # Client-safe models & initial demo dataset
-│   ├── postgres.ts                    # Antideploy PostgreSQL pool, auto-migration & queries
-│   ├── server-db.ts                   # Unified database coordinator
 │   ├── google-calendar.ts             # Google Calendar API event parser & token refresh
+│   ├── postgres.ts                    # Antideploy PostgreSQL pool, auto-migration & queries
 │   ├── scoring.ts                     # Mathematical zombie score formula
+│   ├── server-db.ts                   # Unified database coordinator
 │   ├── slack.ts                       # Bolt SDK & Slack Block Kit auto-draft generator
 │   └── stripe.ts                      # Stripe SDK, pricing plans & checkout
+├── migrations/
+│   └── 001_initial_schema.sql         # Antideploy Postgres migration
 ├── scripts/
-│   ├── check-db.mjs                   # Antideploy database health & table inspection script
 │   └── deploy-antideploy.mjs          # Standalone Antideploy packaging & deploy pipeline
+├── tests/
+│   └── white-liquid-ui.spec.js        # Playwright visual & interactive test suite
 ├── .env.local.example                 # Environment configuration template
-├── vercel.json                        # Cron configuration
 ├── package.json
 └── README.md
 ```
@@ -132,11 +137,10 @@ npm install
 ```
 
 ### 2. Configure Environment (Optional for Local Demo)
-Copy the environment template:
 ```bash
 cp .env.local.example .env.local
 ```
-*Note: MeetingDebt includes an instant high-fidelity demo state out of the box, allowing full testing of the dashboard, decay curves, Slack auto-drafts, and calculator before connecting external API keys.*
+*Note: MeetingDebt includes an instant high-fidelity demo dataset out of the box, allowing full testing of the dashboard, decay curves, Slack auto-drafts, and calculator without external API keys.*
 
 ### 3. Run Development Server
 ```bash
@@ -146,26 +150,13 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🚢 Deploying to Production (Antideploy)
-
-The project includes pre-configured Antideploy integration:
-
-```bash
-# Package, upload, and deploy container to Antideploy
-npm run deploy:antideploy
-```
-
-Antideploy automatically detects the Next.js runtime, builds the container, and provisions database variables (`DATABASE_URL`).
-
----
-
 ## 🧪 Testing the Core Features
 
-1. **Dashboard & Score Filters**: Filter by `Kill it (70+)`, `Shorten (40-70)`, `Healthy (<40)`, or `Observation Mode`.
-2. **Loaded Rate Slider**: Drag the hourly rate slider in the top right to watch company burn rate calculations update dynamically.
-3. **Decay Curve Drilldown**: Click **"View Decay Curve"** on any meeting (e.g. *Weekly Cross-Functional Status Sync*) to inspect:
+1. **Dashboard & Score Filters**: Filter by `Sunset (70+)`, `Shorten (40-69)`, `Healthy (<40)`, or `Baseline Calibration`.
+2. **Loaded Rate Slider**: Drag the hourly rate slider ($50–$150/hr) to watch company burn rate calculations update dynamically.
+3. **Decay Curve Drilldown**: Click **"View Occurrence History"** on any meeting (e.g. *Weekly Cross-Functional Status Sync*) to inspect:
    - Historical acceptance vs decline bar chart over time.
    - The exact mathematical sub-scores: Attendance Decay ($88\%$), Agenda Staleness ($100\%$), Decision Ratio ($95\%$ penalty).
    - The occurrence audit table flagging stale agenda hashes.
-4. **Slack Auto-Draft**: Click **"Auto-Draft Slack"** to preview the pre-composed proposal. Copy it to your clipboard or send it directly via an incoming Slack Webhook.
+4. **Slack Auto-Draft**: Click **"Draft Slack Notice"** to preview the pre-composed proposal. Copy it to your clipboard or send it directly via an incoming Slack Webhook.
 5. **Calendar Sync**: Test the rescoring engine manually by clicking **"Sync Calendar"** in the top navigation or triggering `POST /api/calendar/sync`.

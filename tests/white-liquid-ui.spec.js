@@ -7,7 +7,7 @@ test('Clean Enterprise UI visual and interaction test', async ({ page }) => {
   // Verify Greeting & Hero
   await expect(page.locator('body')).toContainText('Good Morning, Serena!');
   await expect(page.locator('body')).toContainText('Your Daily Vitals');
-  await expect(page.locator('body')).toContainText('My Wellness Journey');
+  await expect(page.locator('body')).toContainText('Weekly Attendance & Focus Journey');
 
   // Verify Loaded Rate Slider interaction
   const slider = page.locator('input[type="range"]').first();
