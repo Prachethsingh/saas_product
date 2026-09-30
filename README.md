@@ -58,14 +58,14 @@ All sub-scores are normalized between $0.00$ and $1.00$ before weighting:
 ## 🛠️ Stack & Architecture
 
 - **Frontend**: Next.js 14 (App Router) + Tailwind CSS + Lucide Icons + Apple San Francisco Typography + Golden Ratio Grid
-- **Backend**: Next.js 14 API Route Handlers (`/api/calendar/sync`, `/api/cron/rescore`, `/api/slack/draft`, `/api/stripe/checkout`)
+- **Backend**: Next.js 14 API Route Handlers (`/api/calendar/sync`, `/api/cron/rescore`, `/api/slack/draft`, `/api/stripe/checkout`, `/api/stripe/webhook`)
 - **Hosting & CI/CD**: [Antideploy](https://antideploy.com) (Containerized Node.js runtime)
 - **Database**: Antideploy Built-in PostgreSQL 17 (Auto-provisioned via `DATABASE_URL`, connection pooled via `pg`, auto-migrated schema)
-- **Auth & Calendar API**: NextAuth.js + Google OAuth (`calendar.readonly` scope)
+- **Authentication**: `next-auth` (`^4.24.11`) dependency with Google OAuth provider (`calendar.readonly` scope, JWT offline refresh)
+- **Payments**: `stripe` (`^17.6.0`) dependency with Stripe Checkout & Webhook listeners (`$15/seat/mo` Manager Pro, `$299/mo` Flat Org Tier)
 - **Scoring Engine**: `lib/scoring.ts`
 - **Nightly Worker**: Antideploy Scheduled Tasks (`jobs/rescore.ts`)
 - **Slack Messaging**: Slack App + Bolt SDK / Webhooks (`lib/slack.ts`)
-- **Payments**: Stripe Billing (`$15/seat/mo` Manager Pro, `$299/mo` Flat Org Tier)
 
 ---
 
