@@ -15,6 +15,7 @@ interface LiquidGlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export function LiquidGlassCard({
   children,
   variant = 'neutral',
+  interactive = false,
   className = '',
   ...props
 }: LiquidGlassCardProps) {
@@ -26,9 +27,13 @@ export function LiquidGlassCard({
     success: 'border-emerald-200/80 bg-emerald-50/50 shadow-[0_12px_32px_-4px_rgba(16,185,129,0.08)] text-slate-800',
   }[variant];
 
+  const interactiveStyles = interactive
+    ? 'card-smooth hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-4px_rgba(15,60,110,0.11)] hover:border-white active:scale-[0.995]'
+    : 'transition-all duration-300 ease-spring';
+
   return (
     <div
-      className={`relative rounded-2xl border backdrop-blur-xl transition-all duration-200 overflow-hidden shadow-[inset_0_1px_2px_rgba(255,255,255,0.9)] ${variantStyles} ${className}`}
+      className={`relative rounded-2xl border backdrop-blur-xl overflow-hidden shadow-[inset_0_1px_2px_rgba(255,255,255,0.9)] ${interactiveStyles} ${variantStyles} ${className}`}
       {...props}
     >
       <div className="relative z-10">{children}</div>

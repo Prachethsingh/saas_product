@@ -61,7 +61,7 @@ export function DashboardNav({ onSyncTriggered, onOpenPricing, onOpenGuide }: Da
         <div className="flex items-center gap-2">
           <button
             onClick={onOpenGuide}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-sky-950 bg-white/70 hover:bg-white border border-white/90 shadow-2xs transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-sky-950 bg-white/70 hover:bg-white border border-white/90 shadow-2xs transition-all duration-200 ease-spring active:scale-95 hover:shadow-xs"
           >
             <BookOpen className="w-3.5 h-3.5 text-sky-600" />
             <span className="hidden sm:inline">Audit Guide</span>
@@ -70,7 +70,7 @@ export function DashboardNav({ onSyncTriggered, onOpenPricing, onOpenGuide }: Da
           <button
             onClick={handleManualSync}
             disabled={isSyncing}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-sky-950 bg-white/70 hover:bg-white border border-white/90 shadow-2xs transition-all disabled:opacity-50"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-sky-950 bg-white/70 hover:bg-white border border-white/90 shadow-2xs transition-all duration-200 ease-spring active:scale-95 hover:shadow-xs disabled:opacity-50"
           >
             <RotateCw className={`w-3.5 h-3.5 text-sky-600 ${isSyncing ? 'animate-spin text-sky-800' : ''}`} />
             <span className="hidden sm:inline">{isSyncing ? 'Syncing...' : justSynced ? 'Synced' : 'Sync Calendar'}</span>
@@ -78,7 +78,7 @@ export function DashboardNav({ onSyncTriggered, onOpenPricing, onOpenGuide }: Da
 
           <button
             onClick={onOpenPricing}
-            className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-white bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 shadow-sm transition-all hover:scale-105 active:scale-95"
+            className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-white bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 shadow-sm transition-all duration-200 ease-spring hover:scale-105 active:scale-95"
           >
             <span>Plans & Billing</span>
           </button>

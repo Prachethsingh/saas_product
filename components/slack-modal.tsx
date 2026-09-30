@@ -131,8 +131,8 @@ Please comment with your feedback or mention if there are topics requiring live 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sky-950/20 backdrop-blur-md">
-      <LiquidGlassCard variant="serene" className="relative w-full max-w-2xl flex flex-col max-h-[92vh] overflow-hidden bg-white/95 border-sky-100/80 shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sky-950/20 backdrop-blur-md animate-fade-in">
+      <LiquidGlassCard variant="serene" className="relative w-full max-w-2xl flex flex-col max-h-[92vh] overflow-hidden bg-white/95 border-sky-100/80 shadow-2xl animate-scale-in">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-sky-100 bg-sky-50/50">
           <div className="flex items-center gap-2">

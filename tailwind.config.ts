@@ -89,6 +89,16 @@ const config: Config = {
           "monospace",
         ],
       },
+      transitionTimingFunction: {
+        'spring': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'fluid': 'cubic-bezier(0.22, 1, 0.36, 1)',
+        'bounce-subtle': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+      },
+      transitionDuration: {
+        '250': '250ms',
+        '350': '350ms',
+        '400': '400ms',
+      },
     },
   },
   plugins: [],

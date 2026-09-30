@@ -160,16 +160,16 @@ export function MeetingCard({
 
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-medium text-sky-950 hover:text-sky-900 bg-white/70 hover:bg-white border border-white/90 shadow-2xs transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-sky-950 hover:text-sky-900 bg-white/70 hover:bg-white border border-white/90 shadow-2xs transition-all duration-200 active:scale-95"
           >
             <span>{isExpanded ? 'Hide Details' : 'View Audit'}</span>
-            {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5 text-sky-600" />}
+            <ChevronDown className={`w-3.5 h-3.5 text-sky-600 transition-transform duration-300 ease-spring ${isExpanded ? 'rotate-180' : ''}`} />
           </button>
 
           {onToggleStatus && (
             <button
               onClick={() => onToggleStatus(meeting.id, isKilled ? 'active' : 'killed')}
-              className={`p-1.5 rounded-md text-xs border transition-colors ${
+              className={`p-1.5 rounded-md text-xs border transition-all duration-200 active:scale-95 ${
                 isKilled
                   ? 'bg-emerald-50 border-emerald-300 text-emerald-700 hover:bg-emerald-100'
                   : 'bg-white border-slate-200 text-slate-500 hover:text-rose-600 hover:border-rose-300'
@@ -212,9 +212,15 @@ export function MeetingCard({
         </div>
       )}
 
-      {/* Expandable Audit Drawer */}
-      {isExpanded && (
-        <div className="mt-4 pt-4 border-t border-slate-200 space-y-4">
+      {/* Expandable Audit Drawer with Smooth Physics */}
+      <div
+        className={`grid transition-all duration-300 ease-spring ${
+          isExpanded
+            ? 'grid-rows-[1fr] opacity-100 mt-4 pt-4 border-t border-sky-100'
+            : 'grid-rows-[0fr] opacity-0 overflow-hidden'
+        }`}
+      >
+        <div className="overflow-hidden space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Signal Breakdown */}
             <div className="rounded-md border border-slate-200 bg-slate-50 p-4 space-y-2.5">
@@ -319,7 +325,7 @@ export function MeetingCard({
             </button>
           </div>
         </div>
-      )}
+      </div>
     </LiquidGlassCard>
   );
 }

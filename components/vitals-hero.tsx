@@ -77,7 +77,7 @@ export function VitalsHero({
       <div className="p-1 rounded-2xl bg-white/45 backdrop-blur-xl border border-white/80 shadow-[inset_0_1px_2px_rgba(255,255,255,0.9)] flex items-center gap-1">
         <button
           onClick={() => setActiveTab('overview')}
-          className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all duration-200 ${
+          className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all duration-200 ease-spring active:scale-95 ${
             activeTab === 'overview'
               ? 'bg-white/90 text-sky-900 shadow-sm border border-white'
               : 'text-slate-600 hover:text-slate-900 hover:bg-white/30'
@@ -90,7 +90,7 @@ export function VitalsHero({
             setActiveTab('goals');
             if (onOpenSimulator) onOpenSimulator();
           }}
-          className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all duration-200 ${
+          className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all duration-200 ease-spring active:scale-95 ${
             activeTab === 'goals'
               ? 'bg-white/90 text-sky-900 shadow-sm border border-white'
               : 'text-slate-600 hover:text-slate-900 hover:bg-white/30'
@@ -104,7 +104,7 @@ export function VitalsHero({
             const el = document.getElementById('audit-list');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
-          className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all duration-200 ${
+          className={`flex-1 py-2 text-xs font-semibold rounded-xl transition-all duration-200 ease-spring active:scale-95 ${
             activeTab === 'audit'
               ? 'bg-white/90 text-sky-900 shadow-sm border border-white'
               : 'text-slate-600 hover:text-slate-900 hover:bg-white/30'
@@ -117,7 +117,7 @@ export function VitalsHero({
       {/* Two Hero Cards: Your Daily Vitals + Stress Level - Golden Ratio Alignment (1.618 : 1) */}
       <div className="grid grid-cols-1 lg:grid-cols-[1.618fr_1fr] gap-4">
         {/* Your Daily Vitals (Golden Major: 61.8%) */}
-        <div className="rounded-2xl bg-white/70 backdrop-blur-2xl border border-white/90 p-5 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.06),inset_0_1px_2px_rgba(255,255,255,0.95)] flex flex-col justify-between">
+        <div className="rounded-2xl bg-white/70 backdrop-blur-2xl border border-white/90 p-5 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.06),inset_0_1px_2px_rgba(255,255,255,0.95)] flex flex-col justify-between transition-all duration-300 ease-spring card-smooth">
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-sm font-semibold text-sky-950 tracking-tight">Your Daily Vitals</h2>
             <div className="w-6 h-6 rounded-full bg-sky-100/90 border border-white flex items-center justify-center text-sky-600 shadow-xs">
@@ -196,7 +196,7 @@ export function VitalsHero({
         </div>
 
         {/* Stress Level / Schedule Density Card (Golden Minor: 38.2%) */}
-        <div className="rounded-2xl bg-white/70 backdrop-blur-2xl border border-white/90 p-5 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.06),inset_0_1px_2px_rgba(255,255,255,0.95)] flex flex-col justify-between">
+        <div className="rounded-2xl bg-white/70 backdrop-blur-2xl border border-white/90 p-5 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.06),inset_0_1px_2px_rgba(255,255,255,0.95)] flex flex-col justify-between transition-all duration-300 ease-spring card-smooth">
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-sm font-semibold text-sky-950 tracking-tight">Stress Level</h2>
             <span className="text-[10px] font-medium text-sky-800 bg-sky-100/80 border border-sky-200/60 px-2.5 py-0.5 rounded-full">
@@ -241,21 +241,21 @@ export function VitalsHero({
 
       {/* Row of 3 Quick Glass Chips */}
       <div className="grid grid-cols-3 gap-3">
-        <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
+        <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)] transition-all duration-200 ease-spring hover:-translate-y-0.5 hover:bg-white/80 cursor-default">
           <div className="text-[10px] font-medium text-slate-600">Audit Status</div>
           <div className="text-xs sm:text-sm font-semibold text-sky-950 mt-0.5 truncate">
             Nightly Active
           </div>
         </div>
 
-        <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
+        <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)] transition-all duration-200 ease-spring hover:-translate-y-0.5 hover:bg-white/80 cursor-default">
           <div className="text-[10px] font-medium text-slate-600">Sunset Candidates</div>
           <div className="text-xs sm:text-sm font-semibold text-rose-600 mt-0.5 truncate">
             {killCount} Series Flagged
           </div>
         </div>
 
-        <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)]">
+        <div className="rounded-2xl bg-white/65 backdrop-blur-xl border border-white/85 p-3.5 shadow-[0_6px_20px_-2px_rgba(15,60,110,0.04),inset_0_1px_2px_rgba(255,255,255,0.9)] transition-all duration-200 ease-spring hover:-translate-y-0.5 hover:bg-white/80 cursor-default">
           <div className="text-[10px] font-medium text-slate-600">Focus Recovery</div>
           <div className="text-xs sm:text-sm font-semibold text-emerald-600 mt-0.5 truncate">
             +{totalReclaimableHours} hrs/month
@@ -264,7 +264,7 @@ export function VitalsHero({
       </div>
 
       {/* My Wellness Journey / Weekly Trend Card */}
-      <div className="rounded-2xl bg-white/70 backdrop-blur-2xl border border-white/90 p-5 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.07),inset_0_1px_2px_rgba(255,255,255,0.95)]">
+      <div className="rounded-2xl bg-white/70 backdrop-blur-2xl border border-white/90 p-5 shadow-[0_12px_32px_-4px_rgba(15,60,110,0.07),inset_0_1px_2px_rgba(255,255,255,0.95)] transition-all duration-300 ease-spring card-smooth">
         <div className="flex items-center justify-between mb-4">
           <div>
             <h2 className="text-sm font-semibold text-sky-950 tracking-tight">Weekly Attendance & Focus Journey</h2>

@@ -127,15 +127,21 @@ export function MeetingSimulator({
             recommendation={simResult.recommendation}
             size="sm"
           />
-          <button className="p-1 rounded text-slate-400 hover:text-slate-700 transition-colors">
-            {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          <button className="p-1 rounded text-slate-400 hover:text-sky-900 transition-colors">
+            <ChevronDown className={`w-4 h-4 text-sky-600 transition-transform duration-300 ease-spring ${isOpen ? 'rotate-180' : ''}`} />
           </button>
         </div>
       </div>
 
-      {/* Expanded Controls */}
-      {isOpen && (
-        <div className="mt-5 pt-4 border-t border-slate-200 space-y-4">
+      {/* Expanded Controls with Smooth Accordion */}
+      <div
+        className={`grid transition-all duration-300 ease-spring ${
+          isOpen
+            ? 'grid-rows-[1fr] opacity-100 mt-5 pt-4 border-t border-sky-100'
+            : 'grid-rows-[0fr] opacity-0 overflow-hidden'
+        }`}
+      >
+        <div className="overflow-hidden space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Title & Duration */}
             <div className="space-y-1.5">
@@ -259,7 +265,7 @@ export function MeetingSimulator({
             </div>
           </div>
         </div>
-      )}
+      </div>
     </LiquidGlassCard>
   );
 }

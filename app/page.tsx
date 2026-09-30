@@ -151,7 +151,7 @@ export default function DashboardPage() {
 
       {/* Metric Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <LiquidGlassCard variant="danger" className="p-4">
+        <LiquidGlassCard variant="danger" interactive={true} className="p-4">
           <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Est. Annual Cost</div>
           <div className="text-xl sm:text-2xl font-mono font-bold text-rose-600 mt-1 tabular-nums">
             ${dynamicAnnualWaste.toLocaleString()}
@@ -160,7 +160,7 @@ export default function DashboardPage() {
           <div className="text-[11px] text-slate-500 mt-0.5">Calculated at ${hourlyRate}/hr</div>
         </LiquidGlassCard>
 
-        <LiquidGlassCard variant="neutral" className="p-4">
+        <LiquidGlassCard variant="neutral" interactive={true} className="p-4">
           <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Reclaimable Hours</div>
           <div className="text-xl sm:text-2xl font-mono font-bold text-sky-950 mt-1 tabular-nums">
             {totalHoursReclaimable}
@@ -169,7 +169,7 @@ export default function DashboardPage() {
           <div className="text-[11px] text-slate-500 mt-0.5">Approx. {Math.round(totalHoursReclaimable * 12)} team hours/yr</div>
         </LiquidGlassCard>
 
-        <LiquidGlassCard variant="warning" className="p-4">
+        <LiquidGlassCard variant="warning" interactive={true} className="p-4">
           <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Review Candidates</div>
           <div className="text-xl sm:text-2xl font-mono font-bold text-sky-950 mt-1 flex items-baseline gap-1.5 tabular-nums">
             <span className="text-rose-600">{killCount}</span>
@@ -181,7 +181,7 @@ export default function DashboardPage() {
           <div className="text-[11px] text-slate-500 mt-0.5">{healthyCount} series verified healthy</div>
         </LiquidGlassCard>
 
-        <LiquidGlassCard variant="neutral" className="p-4">
+        <LiquidGlassCard variant="neutral" interactive={true} className="p-4">
           <div className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Baseline Calibration</div>
           <div className="text-xl sm:text-2xl font-mono font-bold text-sky-950 mt-1 tabular-nums">
             {observationCount}
@@ -201,7 +201,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Baseline Policy Notice */}
-      <div className="rounded-2xl border border-white/80 bg-white/55 backdrop-blur-xl px-4 py-3 flex items-start sm:items-center justify-between gap-3 text-xs text-slate-600 shadow-xs">
+      <div className="rounded-2xl border border-white/80 bg-white/55 backdrop-blur-xl px-4 py-3 flex items-start sm:items-center justify-between gap-3 text-xs text-slate-600 shadow-xs transition-all duration-300">
         <div className="flex items-center gap-2">
           <Info className="w-4 h-4 text-sky-600 shrink-0" />
           <span>
@@ -219,7 +219,7 @@ export default function DashboardPage() {
         <div className="p-1 rounded-2xl bg-white/45 backdrop-blur-xl border border-white/80 shadow-[inset_0_1px_2px_rgba(255,255,255,0.9)] flex items-center gap-1 overflow-x-auto text-xs font-mono">
           <button
             onClick={() => setFilter('all')}
-            className={`px-3 py-1.5 rounded-xl transition-all ${
+            className={`px-3 py-1.5 rounded-xl transition-all duration-200 active:scale-95 ease-spring ${
               filter === 'all'
                 ? 'bg-sky-600 text-white font-semibold shadow-xs'
                 : 'text-slate-600 hover:text-sky-950 hover:bg-white/40'
@@ -229,7 +229,7 @@ export default function DashboardPage() {
           </button>
           <button
             onClick={() => setFilter('kill')}
-            className={`px-3 py-1.5 rounded-xl transition-all ${
+            className={`px-3 py-1.5 rounded-xl transition-all duration-200 active:scale-95 ease-spring ${
               filter === 'kill'
                 ? 'bg-rose-500 text-white font-semibold shadow-xs'
                 : 'text-rose-700 hover:text-rose-900 hover:bg-rose-50/50'
@@ -239,7 +239,7 @@ export default function DashboardPage() {
           </button>
           <button
             onClick={() => setFilter('shorten')}
-            className={`px-3 py-1.5 rounded-xl transition-all ${
+            className={`px-3 py-1.5 rounded-xl transition-all duration-200 active:scale-95 ease-spring ${
               filter === 'shorten'
                 ? 'bg-amber-500 text-white font-semibold shadow-xs'
                 : 'text-amber-700 hover:text-amber-900 hover:bg-amber-50/50'
@@ -249,7 +249,7 @@ export default function DashboardPage() {
           </button>
           <button
             onClick={() => setFilter('healthy')}
-            className={`px-3 py-1.5 rounded-xl transition-all ${
+            className={`px-3 py-1.5 rounded-xl transition-all duration-200 active:scale-95 ease-spring ${
               filter === 'healthy'
                 ? 'bg-emerald-500 text-white font-semibold shadow-xs'
                 : 'text-emerald-700 hover:text-emerald-900 hover:bg-emerald-50/50'
@@ -259,7 +259,7 @@ export default function DashboardPage() {
           </button>
           <button
             onClick={() => setFilter('observation')}
-            className={`px-3 py-1.5 rounded-xl transition-all ${
+            className={`px-3 py-1.5 rounded-xl transition-all duration-200 active:scale-95 ease-spring ${
               filter === 'observation'
                 ? 'bg-sky-800 text-white font-semibold shadow-xs'
                 : 'text-slate-600 hover:text-sky-950 hover:bg-white/40'

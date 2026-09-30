@@ -90,9 +90,9 @@
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1790787644.3808246,
-    "seen": 1790787841.7675405,
-    "ast_hash": "8ca57e214c97d95c8066f53f2c203c99",
+    "mtime": 1790790293.7965443,
+    "seen": 1790790705.3113267,
+    "ast_hash": "87338e7f877f90657fe1cc97ccf96a2b",
     "semantic_hash": ""
   },
   "app/privacy/page.tsx": {
@@ -108,33 +108,33 @@
     "semantic_hash": "85805b7a3f42ff6991d9e742eabfae43"
   },
   "components/dashboard-nav.tsx": {
-    "mtime": 1790785395.5084448,
-    "seen": 1790786087.3356266,
-    "ast_hash": "fbcad2b2f0c2d95f15d4c206f9e814f6",
+    "mtime": 1790790386.5239303,
+    "seen": 1790790705.311602,
+    "ast_hash": "32c39763f5d0c2c1c80d9072c1cd6136",
     "semantic_hash": ""
   },
   "components/guide-modal.tsx": {
-    "mtime": 1790785549.1642385,
-    "seen": 1790786087.3356283,
-    "ast_hash": "0668e0b491749fe235224e9c2c6f6112",
+    "mtime": 1790790230.4660401,
+    "seen": 1790790705.3116047,
+    "ast_hash": "b2a9e230a96b10830be5e297667d68a3",
     "semantic_hash": ""
   },
   "components/meeting-card.tsx": {
-    "mtime": 1790785583.20955,
-    "seen": 1790786087.33563,
-    "ast_hash": "d8a179d845fab6a832db1ee6f246c72f",
+    "mtime": 1790790165.3673568,
+    "seen": 1790790705.3116062,
+    "ast_hash": "a5107a84e660b4c95581de0e70958874",
     "semantic_hash": ""
   },
   "components/meeting-simulator.tsx": {
-    "mtime": 1790785446.6056082,
-    "seen": 1790786087.3356311,
-    "ast_hash": "c7a499375193c8a328c2a5efc8fe29c7",
+    "mtime": 1790790451.8543992,
+    "seen": 1790790705.3116083,
+    "ast_hash": "111f575930a1d8d9dccc16035484d73a",
     "semantic_hash": ""
   },
   "components/pricing-modal.tsx": {
-    "mtime": 1790785563.5089035,
-    "seen": 1790786087.3357754,
-    "ast_hash": "235c563dda170b04987129283724e8d1",
+    "mtime": 1790790246.4055705,
+    "seen": 1790790705.3116126,
+    "ast_hash": "a2f915940eccc1bb338904d3cc7cb042",
     "semantic_hash": ""
   },
   "components/providers.tsx": {
@@ -150,15 +150,15 @@
     "semantic_hash": ""
   },
   "components/slack-modal.tsx": {
-    "mtime": 1790785574.0150723,
-    "seen": 1790786087.3360496,
-    "ast_hash": "4f517ac151924589989d47182cb73d46",
+    "mtime": 1790790263.189245,
+    "seen": 1790790705.311888,
+    "ast_hash": "ced5f20223b88be26a7018c0abee0271",
     "semantic_hash": ""
   },
   "components/ui/liquid-glass.tsx": {
-    "mtime": 1790785725.119215,
-    "seen": 1790786087.3360522,
-    "ast_hash": "77b4b552e97a3fb5d4bcef4d8f2913f0",
+    "mtime": 1790790115.2872353,
+    "seen": 1790790705.3118894,
+    "ast_hash": "d5d4fb5118c5f7c2511e2aab6b0a4597",
     "semantic_hash": ""
   },
   "jobs/rescore.ts": {
@@ -246,15 +246,15 @@
     "semantic_hash": "04788e3f6fa0f089b2011bc3abea81a2"
   },
   "tailwind.config.ts": {
-    "mtime": 1790785322.0605588,
-    "seen": 1790786087.3385987,
-    "ast_hash": "852aa194e5077764f3cf6be672022d6e",
+    "mtime": 1790790071.2567592,
+    "seen": 1790790705.315515,
+    "ast_hash": "a06f0abc8a408e74b05a0f85e17e34d6",
     "semantic_hash": ""
   },
   "tests/white-liquid-ui.spec.js": {
-    "mtime": 1790787744.577848,
-    "seen": 1790787841.7712886,
-    "ast_hash": "57fe576477eddd0a2b1ce2cb63804c24",
+    "mtime": 1790790651.5310252,
+    "seen": 1790790705.315518,
+    "ast_hash": "083a506b71dfe5bb62f2fefbaf6ec808",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -294,15 +294,15 @@
     "semantic_hash": ""
   },
   "components/mobile-dock.tsx": {
-    "mtime": 1790784644.5114229,
-    "seen": 1790785086.8152955,
-    "ast_hash": "a8d62beb842241d6970a430cad9a4edc",
+    "mtime": 1790790396.445853,
+    "seen": 1790790705.311611,
+    "ast_hash": "13d20b21cb6b3cb591b1513aa51e33ca",
     "semantic_hash": ""
   },
   "components/vitals-hero.tsx": {
-    "mtime": 1790787613.511243,
-    "seen": 1790787841.7692387,
-    "ast_hash": "dbae9d77b04e7547b0b64422297ef098",
+    "mtime": 1790790377.4993308,
+    "seen": 1790790705.3118916,
+    "ast_hash": "e80bbe1fd57826042672d1edf1ea9315",
     "semantic_hash": ""
   }
 }

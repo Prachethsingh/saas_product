@@ -22,13 +22,13 @@ export function MobileDock({ onOpenSimulator, onOpenGuide, onOpenPricing }: Mobi
             setActiveItem('home');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition-all duration-200 ${
+          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition-all duration-200 ease-spring active:scale-90 ${
             activeItem === 'home'
               ? 'text-sky-600 scale-105'
               : 'text-slate-500 hover:text-slate-800'
           }`}
         >
-          <div className={`p-1 rounded-xl ${activeItem === 'home' ? 'bg-sky-100/70' : ''}`}>
+          <div className={`p-1 rounded-xl transition-colors duration-200 ${activeItem === 'home' ? 'bg-sky-100/70' : ''}`}>
             <Home className="w-5 h-5" />
           </div>
           <span className="text-[10px] font-semibold tracking-tight">Home</span>
@@ -41,13 +41,13 @@ export function MobileDock({ onOpenSimulator, onOpenGuide, onOpenPricing }: Mobi
             const el = document.getElementById('audit-list');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
-          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition-all duration-200 ${
+          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition-all duration-200 ease-spring active:scale-90 ${
             activeItem === 'explore'
               ? 'text-sky-600 scale-105'
               : 'text-slate-500 hover:text-slate-800'
           }`}
         >
-          <div className={`p-1 rounded-xl ${activeItem === 'explore' ? 'bg-sky-100/70' : ''}`}>
+          <div className={`p-1 rounded-xl transition-colors duration-200 ${activeItem === 'explore' ? 'bg-sky-100/70' : ''}`}>
             <Compass className="w-5 h-5" />
           </div>
           <span className="text-[10px] font-semibold tracking-tight">Explore</span>
@@ -64,13 +64,13 @@ export function MobileDock({ onOpenSimulator, onOpenGuide, onOpenPricing }: Mobi
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }
           }}
-          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition-all duration-200 ${
+          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition-all duration-200 ease-spring active:scale-90 ${
             activeItem === 'plan'
               ? 'text-sky-600 scale-105'
               : 'text-slate-500 hover:text-slate-800'
           }`}
         >
-          <div className={`p-1 rounded-xl ${activeItem === 'plan' ? 'bg-sky-100/70' : ''}`}>
+          <div className={`p-1 rounded-xl transition-colors duration-200 ${activeItem === 'plan' ? 'bg-sky-100/70' : ''}`}>
             <Calendar className="w-5 h-5" />
           </div>
           <span className="text-[10px] font-semibold tracking-tight">Plan</span>
@@ -83,13 +83,13 @@ export function MobileDock({ onOpenSimulator, onOpenGuide, onOpenPricing }: Mobi
             if (onOpenGuide) onOpenGuide();
             else window.dispatchEvent(new CustomEvent('open-guide'));
           }}
-          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition-all duration-200 ${
+          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition-all duration-200 ease-spring active:scale-90 ${
             activeItem === 'community'
               ? 'text-sky-600 scale-105'
               : 'text-slate-500 hover:text-slate-800'
           }`}
         >
-          <div className={`p-1 rounded-xl ${activeItem === 'community' ? 'bg-sky-100/70' : ''}`}>
+          <div className={`p-1 rounded-xl transition-colors duration-200 ${activeItem === 'community' ? 'bg-sky-100/70' : ''}`}>
             <Users className="w-5 h-5" />
           </div>
           <span className="text-[10px] font-semibold tracking-tight">Guide</span>
@@ -102,13 +102,13 @@ export function MobileDock({ onOpenSimulator, onOpenGuide, onOpenPricing }: Mobi
             if (onOpenPricing) onOpenPricing();
             else window.dispatchEvent(new CustomEvent('open-pricing'));
           }}
-          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition-all duration-200 ${
+          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition-all duration-200 ease-spring active:scale-90 ${
             activeItem === 'profile'
               ? 'text-sky-600 scale-105'
               : 'text-slate-500 hover:text-slate-800'
           }`}
         >
-          <div className={`p-1 rounded-xl ${activeItem === 'profile' ? 'bg-sky-100/70' : ''}`}>
+          <div className={`p-1 rounded-xl transition-colors duration-200 ${activeItem === 'profile' ? 'bg-sky-100/70' : ''}`}>
             <User className="w-5 h-5" />
           </div>
           <span className="text-[10px] font-semibold tracking-tight">Profile</span>

@@ -153,7 +153,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "dashboardnavprops",
       "source_file": "components/dashboard-nav.tsx",
@@ -166,11 +166,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "mobiledockprops",
       "source_file": "components/mobile-dock.tsx",
       "source_location": "L7"
+    },
+    {
+      "id": "components_pricing_modal_pricingmodalprops",
+      "label": "PricingModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "pricingmodalprops",
+      "source_file": "components/pricing-modal.tsx",
+      "source_location": "L8"
     },
     {
       "id": "lib_slack_slackdraftmessage",
@@ -249,31 +262,6 @@
       "norm_label": "scoreresult",
       "source_file": "lib/scoring.ts",
       "source_location": "L57"
-    },
-    {
-      "id": "components_pricing_modal_pricingmodalprops",
-      "label": "PricingModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "pricing-modal.tsx",
-      "file_type": "code",
-      "norm_label": "pricingmodalprops",
-      "source_file": "components/pricing-modal.tsx",
-      "source_location": "L8"
-    },
-    {
-      "id": "app_api_health_route_get",
-      "label": "GET()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "LiquidGlassCard",
-      "file_type": "code",
-      "norm_label": "get()",
-      "source_file": "app/api/health/route.ts",
-      "source_location": "L3"
     },
     {
       "id": "app_login_page_loginpage",
@@ -624,12 +612,36 @@
       "source_location": "L9"
     },
     {
+      "id": "app_api_health_route_get",
+      "label": "GET()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "get()",
+      "source_file": "app/api/health/route.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "app_api_stripe_checkout_route_post",
+      "label": "POST()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "post()",
+      "source_file": "app/api/stripe/checkout/route.ts",
+      "source_location": "L4"
+    },
+    {
       "id": "app_layout_rootlayout",
       "label": "RootLayout()",
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "rootlayout()",
       "source_file": "app/layout.tsx",
@@ -641,7 +653,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "dashboardnav()",
       "source_file": "components/dashboard-nav.tsx",
@@ -653,7 +665,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "guidemodal()",
       "source_file": "components/guide-modal.tsx",
@@ -665,7 +677,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "mobiledock()",
       "source_file": "components/mobile-dock.tsx",
@@ -677,7 +689,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "pricingmodal()",
       "source_file": "components/pricing-modal.tsx",
@@ -689,11 +701,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "providers()",
       "source_file": "components/providers.tsx",
       "source_location": "L10"
+    },
+    {
+      "id": "lib_stripe_createcheckoutsession",
+      "label": "createCheckoutSession()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "createcheckoutsession()",
+      "source_file": "lib/stripe.ts",
+      "source_location": "L64"
     },
     {
       "id": "app_api_meetings_id_route_get",
@@ -852,41 +876,6 @@
       "source_location": "L26"
     },
     {
-      "id": "app_api_stripe_checkout_route_post",
-      "label": "POST()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "pricing-modal.tsx",
-      "file_type": "code",
-      "norm_label": "post()",
-      "source_file": "app/api/stripe/checkout/route.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "lib_stripe_createcheckoutsession",
-      "label": "createCheckoutSession()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "pricing-modal.tsx",
-      "file_type": "code",
-      "norm_label": "createcheckoutsession()",
-      "source_file": "lib/stripe.ts",
-      "source_location": "L64"
-    },
-    {
-      "id": "app_api_health_route",
-      "label": "health/route.ts",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "LiquidGlassCard",
-      "file_type": "code",
-      "norm_label": "health/route.ts",
-      "source_file": "app/api/health/route.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "app_login_page",
       "label": "login/page.tsx",
       "_origin": "ast",
@@ -1028,17 +1017,6 @@
       "norm_label": "lucide-react",
       "source_file": "package.json",
       "source_location": "L16"
-    },
-    {
-      "id": "ref_next",
-      "label": "next",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "LiquidGlassCard",
-      "file_type": "concept",
-      "norm_label": "next",
-      "source_file": "package.json",
-      "source_location": "L17"
     },
     {
       "id": "ref_react",
@@ -1243,7 +1221,7 @@
       "label": "README.md",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "page",
       "norm_label": "readme.md",
@@ -1255,67 +1233,55 @@
       "label": "1. Install Dependencies",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "1. install dependencies",
       "source_file": "README.md",
-      "source_location": "L129"
+      "source_location": "L134"
     },
     {
       "id": "readme_2_configure_environment_optional_for_local_demo",
       "label": "2. Configure Environment (Optional for Local Demo)",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "2. configure environment (optional for local demo)",
       "source_file": "README.md",
-      "source_location": "L134"
+      "source_location": "L139"
     },
     {
       "id": "readme_3_run_development_server",
       "label": "3. Run Development Server",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "3. run development server",
       "source_file": "README.md",
-      "source_location": "L141"
-    },
-    {
-      "id": "readme_deploying_to_production_antideploy",
-      "label": "\ud83d\udea2 Deploying to Production (Antideploy)",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "\ud83d\udea2 deploying to production (antideploy)",
-      "source_file": "README.md",
-      "source_location": "L149"
+      "source_location": "L145"
     },
     {
       "id": "readme_getting_started",
       "label": "\ud83d\ude80 Getting Started",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "\ud83d\ude80 getting started",
       "source_file": "README.md",
-      "source_location": "L127"
+      "source_location": "L132"
     },
     {
       "id": "readme_live_production_deployment",
       "label": "\ud83c\udf10 Live Production Deployment",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "\ud83c\udf10 live production deployment",
@@ -1324,13 +1290,13 @@
     },
     {
       "id": "readme_meetingdebt_zombie_meeting_score_calendar_auditor",
-      "label": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "label": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "meetingdebt \ud83d\udc80 \u2014 zombie-meeting score & calendar auditor",
+      "norm_label": "meetingdebt \u2014 zombie-meeting score & calendar auditor",
       "source_file": "README.md",
       "source_location": "L1"
     },
@@ -1339,72 +1305,72 @@
       "label": "\ud83d\udcc2 Repository Structure",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "\ud83d\udcc2 repository structure",
       "source_file": "README.md",
-      "source_location": "L73"
+      "source_location": "L72"
     },
     {
       "id": "readme_stack_architecture",
       "label": "\ud83d\udee0\ufe0f Stack & Architecture",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "\ud83d\udee0\ufe0f stack & architecture",
       "source_file": "README.md",
-      "source_location": "L59"
+      "source_location": "L58"
     },
     {
       "id": "readme_testing_the_core_features",
       "label": "\ud83e\uddea Testing the Core Features",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "\ud83e\uddea testing the core features",
       "source_file": "README.md",
-      "source_location": "L162"
+      "source_location": "L153"
     },
     {
       "id": "readme_the_problem_value_proposition",
       "label": "\ud83c\udfaf The Problem & Value Proposition",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "\ud83c\udfaf the problem & value proposition",
       "source_file": "README.md",
-      "source_location": "L25"
+      "source_location": "L24"
     },
     {
       "id": "readme_the_zombie_scoring_algorithm",
       "label": "\ud83e\uddee The Zombie Scoring Algorithm",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "\ud83e\uddee the zombie scoring algorithm",
       "source_file": "README.md",
-      "source_location": "L37"
+      "source_location": "L36"
     },
     {
       "id": "readme_threshold_actions",
       "label": "Threshold Actions:",
       "_origin": "ast",
       "community": 19,
-      "community_name": "MeetingDebt \ud83d\udc80 \u2014 Zombie-Meeting Score & Calendar Auditor",
+      "community_name": "MeetingDebt \u2014 Zombie-Meeting Score & Calendar Auditor",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "threshold actions:",
       "source_file": "README.md",
-      "source_location": "L51"
+      "source_location": "L50"
     },
     {
       "id": "package",
@@ -2035,11 +2001,33 @@
       "source_location": "L14"
     },
     {
+      "id": "app_api_health_route",
+      "label": "health/route.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "health/route.ts",
+      "source_file": "app/api/health/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_api_stripe_checkout_route",
+      "label": "checkout/route.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "checkout/route.ts",
+      "source_file": "app/api/stripe/checkout/route.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "app_layout",
       "label": "layout.tsx",
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "layout.tsx",
       "source_file": "app/layout.tsx",
@@ -2050,7 +2038,7 @@
       "label": "metadata",
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "metadata",
       "source_file": "app/layout.tsx",
@@ -2061,7 +2049,7 @@
       "label": "viewport",
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "viewport",
       "source_file": "app/layout.tsx",
@@ -2072,7 +2060,7 @@
       "label": "dashboard-nav.tsx",
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "dashboard-nav.tsx",
       "source_file": "components/dashboard-nav.tsx",
@@ -2083,10 +2071,21 @@
       "label": "mobile-dock.tsx",
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "mobile-dock.tsx",
       "source_file": "components/mobile-dock.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_pricing_modal",
+      "label": "pricing-modal.tsx",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "pricing-modal.tsx",
+      "source_file": "components/pricing-modal.tsx",
       "source_location": "L1"
     },
     {
@@ -2094,11 +2093,55 @@
       "label": "providers.tsx",
       "_origin": "ast",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "file_type": "code",
       "norm_label": "providers.tsx",
       "source_file": "components/providers.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "lib_stripe",
+      "label": "stripe.ts",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "stripe.ts",
+      "source_file": "lib/stripe.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_stripe_plans",
+      "label": "PLANS",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "plans",
+      "source_file": "lib/stripe.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "ref_next",
+      "label": "next",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "next",
+      "file_type": "concept",
+      "norm_label": "next",
+      "source_file": "package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "ref_stripe",
+      "label": "stripe",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "next",
+      "file_type": "concept",
+      "norm_label": "stripe",
+      "source_file": "package.json",
+      "source_location": "L23"
     },
     {
       "id": "app_api_auth_nextauth_route",
@@ -2563,61 +2606,6 @@
       "source_location": "L1"
     },
     {
-      "id": "app_api_stripe_checkout_route",
-      "label": "checkout/route.ts",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "pricing-modal.tsx",
-      "file_type": "code",
-      "norm_label": "checkout/route.ts",
-      "source_file": "app/api/stripe/checkout/route.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_pricing_modal",
-      "label": "pricing-modal.tsx",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "pricing-modal.tsx",
-      "file_type": "code",
-      "norm_label": "pricing-modal.tsx",
-      "source_file": "components/pricing-modal.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_stripe",
-      "label": "stripe.ts",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "pricing-modal.tsx",
-      "file_type": "code",
-      "norm_label": "stripe.ts",
-      "source_file": "lib/stripe.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_stripe_plans",
-      "label": "PLANS",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "pricing-modal.tsx",
-      "file_type": "code",
-      "norm_label": "plans",
-      "source_file": "lib/stripe.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "ref_stripe",
-      "label": "stripe",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "pricing-modal.tsx",
-      "file_type": "concept",
-      "norm_label": "stripe",
-      "source_file": "package.json",
-      "source_location": "L23"
-    },
-    {
       "id": "ref_child_process",
       "label": "ref_child_process",
       "_origin": "semantic",
@@ -2694,7 +2682,7 @@
       "label": "app_globals",
       "_origin": "semantic",
       "community": 4,
-      "community_name": "providers.tsx",
+      "community_name": "next",
       "external": true,
       "file_type": "concept",
       "norm_label": "app_globals",
@@ -2952,7 +2940,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/page.tsx",
-      "source_location": "L158",
+      "source_location": "L154",
       "weight": 1.0
     },
     {
@@ -2964,7 +2952,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/page.tsx",
-      "source_location": "L200",
+      "source_location": "L196",
       "weight": 1.0
     },
     {
@@ -2976,7 +2964,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/page.tsx",
-      "source_location": "L297",
+      "source_location": "L293",
       "weight": 1.0
     },
     {
@@ -2988,7 +2976,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/page.tsx",
-      "source_location": "L309",
+      "source_location": "L305",
       "weight": 1.0
     },
     {
@@ -7064,7 +7052,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L129",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -7075,7 +7063,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L134",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -7086,7 +7074,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L141",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -7108,18 +7096,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L127",
-      "weight": 1.0
-    },
-    {
-      "source": "readme_meetingdebt_zombie_meeting_score_calendar_auditor",
-      "target": "readme_deploying_to_production_antideploy",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "L149",
+      "source_location": "L132",
       "weight": 1.0
     },
     {
@@ -7130,7 +7107,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L162",
+      "source_location": "L153",
       "weight": 1.0
     },
     {
@@ -7141,7 +7118,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L25",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -7152,7 +7129,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L37",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -7163,7 +7140,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L59",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -7174,7 +7151,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L73",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -7185,7 +7162,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L51",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -7540,5 +7517,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1a8e55e13f3ff512872db945d48fcc97cb636085"
+  "built_at_commit": "ffa3e088e08434401dda69b3ee8735dafa24f922"
 }

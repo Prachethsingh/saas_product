@@ -27,8 +27,8 @@ export function GuideModal({ isOpen, onClose, onOpenSimulator }: GuideModalProps
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-sky-950/20 backdrop-blur-md overflow-y-auto">
-      <LiquidGlassCard variant="serene" className="relative w-full max-w-4xl p-5 sm:p-7 max-h-[90vh] flex flex-col overflow-hidden my-auto bg-white/95 border-sky-100/80 shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-sky-950/20 backdrop-blur-md overflow-y-auto animate-fade-in">
+      <LiquidGlassCard variant="serene" className="relative w-full max-w-4xl p-5 sm:p-7 max-h-[90vh] flex flex-col overflow-hidden my-auto bg-white/95 border-sky-100/80 shadow-2xl animate-scale-in">
         {/* Close Button */}
         <button
           onClick={onClose}

@@ -90,9 +90,9 @@
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1790785630.679212,
-    "seen": 1790786087.3354166,
-    "ast_hash": "42abfeffa9748730fcb81493e912d70c",
+    "mtime": 1790787644.3808246,
+    "seen": 1790787841.7675405,
+    "ast_hash": "8ca57e214c97d95c8066f53f2c203c99",
     "semantic_hash": ""
   },
   "app/privacy/page.tsx": {
@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "tests/white-liquid-ui.spec.js": {
-    "mtime": 1790786594.6959095,
-    "seen": 1790786843.8729472,
-    "ast_hash": "b9d5f15744eb8342fdcca1df6ccd8b1f",
+    "mtime": 1790787744.577848,
+    "seen": 1790787841.7712886,
+    "ast_hash": "57fe576477eddd0a2b1ce2cb63804c24",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -282,9 +282,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1790528251.3727982,
-    "seen": 1790783753.1427228,
-    "ast_hash": "9de2ec5040e8d3e0bca8a4b601110aae",
+    "mtime": 1790787588.1512907,
+    "seen": 1790787841.7718503,
+    "ast_hash": "52bee53069cb44b8cd1bd4318b48863c",
     "semantic_hash": ""
   },
   ".vscode/settings.json": {
@@ -300,9 +300,9 @@
     "semantic_hash": ""
   },
   "components/vitals-hero.tsx": {
-    "mtime": 1790785374.3198032,
-    "seen": 1790786087.336054,
-    "ast_hash": "05d672c6b9bdc2ebb5bb1c22c14a33e6",
+    "mtime": 1790787613.511243,
+    "seen": 1790787841.7692387,
+    "ast_hash": "dbae9d77b04e7547b0b64422297ef098",
     "semantic_hash": ""
   }
 }

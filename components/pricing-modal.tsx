@@ -38,8 +38,8 @@ export function PricingModal({ isOpen, onClose }: PricingModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sky-950/20 backdrop-blur-md">
-      <LiquidGlassCard variant="serene" className="relative w-full max-w-2xl p-6 sm:p-7 bg-white/95 border-sky-100/80 shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-sky-950/20 backdrop-blur-md animate-fade-in">
+      <LiquidGlassCard variant="serene" className="relative w-full max-w-2xl p-6 sm:p-7 bg-white/95 border-sky-100/80 shadow-2xl animate-scale-in">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-1.5 rounded text-slate-400 hover:text-sky-900 transition-colors"
